@@ -3,6 +3,8 @@
 **Zixun Zhou** | Royal College of Art, Graduate Diploma Design Pathway | 2026
 Target programme: Innovation Design Engineering (IDE), RCA + Imperial College
 
+**[ZIXUN_Portfolio.pdf](ZIXUN_Portfolio.pdf)** — Combined design portfolio covering both U2 and U3-U4 projects
+
 ---
 
 ## U2 — EEG-Driven Tactile Neurofeedback Device
