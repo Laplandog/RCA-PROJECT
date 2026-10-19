@@ -3,3 +3,4 @@
 ## Padlet Blog
 
 **[Realise Blog (Padlet)](https://padlet.com/royal_college_of_art/zixun-realise-blog-aar113u0h9evdci8)**
+**[Investigate Blog (Padlet)](https://padlet.com/royal_college_of_art/zixun-investigate-blog-pxbxtn4oec6obw16)**
