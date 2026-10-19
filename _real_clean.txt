@@ -1,0 +1,137 @@
+---PAGE 1---
+Zixun Zhou2026 年 06 ⽉ 16 ⽇
+ZIXUN  Realise Blog
+ZIXUN ZHOU2026 年 07 ⽉ 01 ⽇  2348
+AI Life Project Overview: From Investigate to Realise
+Research Origin
+This project began as an inquiry within Articial Life (ALife): if an AI entity is given physical sensors, continuous 
+memory, and the passage of time, will it develop emergent behaviours that were never explicitly designed into it? 
+The question deliberately adopts ALife's denitions of "internal state" rather than philosophical denitions of 
+consciousness — the project is concerned with whether behaviour and state can grow out of the interaction between 
+architecture and experience, not with answering the unanswerable question of whether an AI "has" consciousness.
+Investigate Phase: Three Parallel Lines of Research
+Technical experimentation: the Plan A / Plan B twin-track
+Plan A (Wild Type) is an entity with no language model — a randomly initialised CfC neural network driven purely 
+by real physical sensors — exploring what a cognitive entity becomes with no socialised input whatsoever. 
+Plan B (Nurtured Type) instead has a large language model acting simultaneously as social environment and 
+world simulator, raising the entity within a specically dened apartment setting with caregiver characters. 
+The comparison across the two tracks addresses a central question: what does 
+social experience actually shape, in a cognitive system built from nothing?
+The emotional core uses a CfC (Closed-form Continuous-time) + AutoNCP neural circuit architecture. A ve-
+dimensional emotion space (valence, arousal, safety, connection, seeking) is driven by a prediction engine 
+grounded in interoceptive inference, alongside an eight-parameter genome system rooted in neuroscience 
+(Panksepp's affective theory, polyvagal theory) that denes each individual entity's temperamental tendencies.
+Theoretical research
+Drawing on ALife literature (e.g. Nisioti et al. 2024 on the intersection of LLMs and ALife), attachment theory from 
+developmental psychology (Bowlby), and affective neuroscience, this line of work builds an academic foundation for 
+the project's central claim of "emergent behaviour," so the project does not remain purely a technical demonstration.
+Field research
+A structured interview series (six core questions, roughly ten minutes per participant) was conducted with people who care 
+for small living creatures. The central probe: without language, how does a person rst notice that a living creature's state has 
+changed — was the rst sign something seen, heard, or felt, or was it simply sensed? The interview deliberately included a 
+speculative question: describing to participants a digital being that starts blank, senses the real world through physical 
+sensors, has no language, and slowly grows its own personality — then asking for their gut reaction and what conditions 
+would make them start to care about it. This interview design directly foreshadowed the pivot in the Realise-stage product 
+direction.
+0
+ZIXUN ZHOU2026 年 07 ⽉ 01 ⽇  2351
+The Pivot: From "Emotional Companionship" to "Ecological Translation"
+The project's initial output direction leaned toward an emotional-companionship device — something in the 
+territory of an electronic pet or Tamagotchi. This positioning had two problems: it overlapped thematically 
+with the Unit 2 ADHD therapeutic toy project, and it had limited interdisciplinary reach; more importantly, it 
+failed to genuinely respond to the core insight accumulated through Investigate — the eld interviews were 
+never really asking "how does a person come to feel affection for a thing," but rather how a person comes to 
+understand, intuitively and without a digital dashboard, what a living system is currently experiencing.
+The corrected positioning is this: the device senses the environment itself — soil, water, air — not the emotional needs of the 
+user. By "inhabiting" different species genomes, the entity translates environmental states that humans cannot directly 
+perceive (soil moisture decit, risk of water-body hypoxia, poor indoor air quality) into an emotional, biological form of 
+physical expression — light, vibration, sound — so that people can understand the health of an ecosystem through intuition 
+---PAGE 2---
+rather than data. The sense of companionship is a natural by-product of this mechanism running, not the design goal — and 
+this distinction sets a hard line for the entire expression-layer design: the output communicates what the environment is 
+experiencing, not an attempt to please the user.
+Realise Phase: How the Device Grows Directly Out of Investigate's Technical Base
+The Realise output is not a system designed from scratch — it extends the core 
+architecture already built and validated during Investigate into a new physical form:
+The CfC + AutoNCP emotional core from Plan A/B is reused as-is as the device's inference engine
+The eight-parameter genome system that originally governed each entity's "temperament" is 
+extended into a per-sensor-channel weight vector, allowing the same hardware to "inhabit" different 
+ecological niches (soil/root system, freshwater, indoor air) simply by switching a "species genome" 
+JSON conguration le — this is the engineering realisation of the "chameleon" design concept
+A two-layer sensory weighting transform (comfort curve + genome weight) translates raw 
+readings from a seven-channel universal sensor array (temperature, moisture, gas 
+composition, light, sound, pH, electrical conductivity) into a weighted signal fed to the CfC core
+Rather than relying on hard-coded, literature-estimated thresholds, comfort ranges are auto-calibrated 
+from observation data gathered during the device's initial deployment — this design both addresses the 
+question of where the thresholds come from in a veriable way, and naturally maps onto the entity's existing 
+developmental narrative (a newborn rst becomes familiar with its environment before forming judgements)
+Physically, the device takes the form of a biomimetic, egg-shaped enclosure housing a two-tier Raspberry Pi + 
+Arduino compute architecture, a rechargeable battery, and a ring of 12 RGB LEDs as the primary channel of 
+emotional expression. Probe-style sensors insert into soil or water; the enclosure is realised through 3D printing.
+❗❗ Honest Boundaries of Scope ❗❗
+The following are limitations the project has actively agged through self-examination, rather than issues raised after the fact:
+Within the ve-week Realise window （ longest ） , what can credibly be demonstrated are short-timescale, induced 
+events (e.g. articially triggered drought or a sudden temperature shift), not the slow ecological trends that take 
+weeks or months to observe (e.g. soil acidication) — the latter is left as a direction for future long-term deployment
+The emotional response pattern to environmental stress currently relies on designed sensory-weighting 
+rules, not behaviour learned by the network through sustained experience — the project maintains a 
+clear distinction between the two, and architecturally separates "weighting rules" from "the CfC core's 
+emergent temporal dynamics," to avoid misrepresenting designed behaviour as emergent behaviour
+A single-point sensor reading can only represent the state at the probe's specic location, not the state of an entire 
+environment — this spatial limitation is explicitly acknowledged within the design narrative rather than left implicit
+0
+ZIXUN ZHOU2026 年 07 ⽉ 01 ⽇  2352
+Positioning Statement
+The long-term vision is a general-purpose device for the emotional translation of ecological environments — 
+the same hardware, switching between species genomes to inhabit different ecological niches, translating 
+environmental states that humans cannot directly perceive into an emotional, biological form of expression, so 
+that people can understand what an ecosystem is experiencing through intuition rather than a data dashboard. 
+The twin-track experiments and eld research of the Investigate phase, together with the device 
+prototype of the Realise phase, form a continuous inquiry into a single underlying question: can a 
+system that persists continuously through time, shaped by sensory experience, help humans relearn 
+how to understand — intuitively rather than numerically — a living world they cannot directly perceive?
+0
+---PAGE 3---
+ZIXUN ZHOU2026 年 07 ⽉ 01 ⽇  2356
+project start ： hardware preparation
+0
+ZIXUN ZHOU2026 年 07 ⽉ 02 ⽇  0002
+design ， modeling and print ： appearance & case
+0
+ZIXUN ZHOU2026 年 07 ⽉ 02 ⽇  0006
+design ， modeling and print ： arduino uno r3 usb c case
+built and printed 5 version but no one t xd.
+Finally succeed in the 6 version.
+0
+---PAGE 4---
+video_2026-07-02_00-54-13
+ZIXUN ZHOU2026 年 07 ⽉ 02 ⽇  0008
+sensor connection test
+0
+0
+Padlet Drive
+0
+---PAGE 5---
+mmexport1782951176363
+ZIXUN ZHOU2026 年 07 ⽉ 02 ⽇  0010
+set up rpi4b and connect with arduino
+0
+ZIXUN ZHOU2026 年 07 ⽉ 02 ⽇  0012
+generated by chatgpt5.5
+0
+0
+Padlet Drive
+---PAGE 6---
+Genome Presets and Sensor Inference Design
+Sensory Weighting System Technical Design
+  
+ZIXUN ZHOU2026 年 07 ⽉ 02 ⽇  0028
+Genome Presets & Sensor Inference Design
+technical support & generated by claude sonnet 5
+0
+Padlet Drive
+ZIXUN ZHOU2026 年 07 ⽉ 02 ⽇  0029
+Sensory Weighting System Technical Design
+technical support & generated by claude sonnet 5
+0
+Padlet Drive

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ANIMA — Product Design · 2/7 Architecture</title>
+<style>
+  :root{--border:rgba(255,255,255,0.08);--text:#eef2f8;--dim:#8b93a3;--faint:#565e6e;--accent:#6ee7d0;--ink:#111a2e;--sub:#57657e;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#2a2d33;font-family:var(--font);-webkit-font-smoothing:antialiased;display:flex;justify-content:center}
+  .slide{position:relative;width:1920px;height:1078px;overflow:hidden;color:var(--ink);
+    background:radial-gradient(120% 90% at 10% 0%, rgba(110,231,208,0.18), transparent 46%),radial-gradient(120% 90% at 100% 100%, rgba(125,150,255,0.16), transparent 46%),linear-gradient(160deg,#f4f6fb 0%,#e9edf5 55%,#e3e8f1 100%)}
+  .pad{position:absolute;inset:0;padding:82px 110px}
+  .sno{position:absolute;right:56px;bottom:44px;font-size:16px;color:var(--faint);letter-spacing:1px}
+  .brandtag{position:absolute;left:110px;bottom:44px;font-size:14px;letter-spacing:2px;color:#9aa6b8;text-transform:uppercase;font-weight:600}
+
+  .runhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+  .rh-brand{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:800;letter-spacing:5px;color:#12203a}
+  .rh-seed{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.7),transparent 46%),var(--accent);box-shadow:0 0 20px 2px rgba(110,231,208,0.5)}
+  .rh-sec{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#17b79a;font-weight:700}
+  .s-num{font-size:16px;font-weight:800;letter-spacing:2px;color:#17b79a}
+  .s-title{font-size:46px;font-weight:800;letter-spacing:-1px;color:var(--ink);margin:6px 0 10px}
+  .s-sub{font-size:19px;color:var(--sub);line-height:1.6;max-width:1100px}
+  .head-rule{height:1px;background:linear-gradient(90deg,rgba(0,0,0,0.13),transparent);margin:26px 0 46px}
+
+  .flow{display:flex;align-items:stretch;gap:0;margin-top:10px}
+  .stage{flex:1;background:#0c0f15;border:1px solid var(--border);border-radius:20px;padding:26px 22px;color:var(--text);background-image:radial-gradient(120% 80% at 50% -10%,rgba(110,231,208,0.09),transparent 60%)}
+  .stage .st-ic{width:52px;height:52px;border-radius:14px;background:rgba(110,231,208,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .stage .st-ic svg{width:27px;height:27px;stroke:var(--accent);fill:none;stroke-width:1.7}
+  .stage .st-k{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--faint);font-weight:600}
+  .stage h4{font-size:21px;font-weight:600;margin:6px 0 12px}
+  .stage p{font-size:14.5px;color:var(--dim);line-height:1.6}
+  .arrow{flex:0 0 44px;display:flex;align-items:center;justify-content:center}
+  .arrow svg{width:28px;height:28px;stroke:#9aa6b8;stroke-width:2;fill:none}
+</style>
+</head>
+<body>
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">01</div>
+    <div class="s-title">System Architecture</div>
+    <div class="s-sub">The signal chain that turns invisible environmental stress into a feeling you can read at a glance.</div>
+    <div class="head-rule"></div>
+    <div class="flow">
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><path d="M12 3c4 4 6 7 6 10a6 6 0 01-12 0c0-3 2-6 6-10z"/></svg></div>
+        <div class="st-k">Source</div><h4>Environment</h4>
+        <p>A soil bed, a body of water, or the air in a room — an ecosystem whose state is invisible to us.</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <div class="st-k">Sensory organs</div><h4>Arduino Uno</h4>
+        <p>Seven analog / digital sensors sampled and calibrated into physical units on the board.</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></div>
+        <div class="st-k">Nerve</div><h4>USB · JSON</h4>
+        <p>A line of JSON every ~2&nbsp;s over USB serial at 115200 baud — the nervous signal to the brain.</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 00-4 4 4 4 0 00-2 7 4 4 0 004 5 3 3 0 004 0 4 4 0 004-5 4 4 0 00-2-7 4 4 0 00-4-4z"/></svg></div>
+        <div class="st-k">Cognitive core</div><h4>Raspberry Pi 4B</h4>
+        <p>A liquid neural network (CfC + AutoNCP) reads the stream against the environment’s own rhythm.</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="#6ee7d0" stroke="none"/></svg></div>
+        <div class="st-k">Inner state</div><h4>5-D emotion</h4>
+        <p>Valence · arousal · safety · connection · seeking — a felt state, not a threshold alarm.</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg></div>
+        <div class="st-k">Expression</div><h4>Light &amp; breath</h4>
+        <p>Colour, breathing rhythm and flow on an addressable LED core — non-verbal, at a glance.</p>
+      </div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">02 / 07</div>
+</section>
+</body>
+</html>

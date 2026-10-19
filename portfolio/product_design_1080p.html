@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANIMA — Product Design (1920×1078 deck)</title>
+<style>
+  :root{
+    --bg:#0a0c10; --panel:rgba(255,255,255,0.04); --border:rgba(255,255,255,0.08);
+    --text:#eef2f8; --dim:#8b93a3; --faint:#565e6e;
+    --accent:#6ee7d0; --danger:#ff6b6b; --warn:#ffb454; --relief:#7dd3fc; --seek:#c9a2ff;
+    --ink:#111a2e; --sub:#57657e;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#2a2d33;font-family:var(--font);-webkit-font-smoothing:antialiased}
+
+  .slide{position:relative;width:1920px;height:1078px;overflow:hidden;margin:0 auto 30px;color:var(--ink);
+    background:
+      radial-gradient(120% 90% at 10% 0%, rgba(110,231,208,0.18), transparent 46%),
+      radial-gradient(120% 90% at 100% 100%, rgba(125,150,255,0.16), transparent 46%),
+      linear-gradient(160deg,#f4f6fb 0%,#e9edf5 55%,#e3e8f1 100%);}
+  .slide.dark{color:var(--text);background:radial-gradient(120% 90% at 80% 0%, rgba(110,231,208,0.10), transparent 50%),linear-gradient(160deg,#0d1118,#0a0c10)}
+  .pad{position:absolute;inset:0;padding:82px 110px}
+  .sno{position:absolute;right:56px;bottom:44px;font-size:16px;color:var(--faint);letter-spacing:1px}
+  .brandtag{position:absolute;left:110px;bottom:44px;font-size:14px;letter-spacing:2px;color:#9aa6b8;text-transform:uppercase;font-weight:600}
+
+  /* running header */
+  .runhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+  .rh-brand{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:800;letter-spacing:5px;color:#12203a}
+  .rh-seed{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.7),transparent 46%),var(--accent);box-shadow:0 0 20px 2px rgba(110,231,208,0.5)}
+  .rh-sec{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#17b79a;font-weight:700}
+  .slide.dark .rh-brand{color:#eaf0f6}
+
+  /* section heading block */
+  .s-num{font-size:16px;font-weight:800;letter-spacing:2px;color:#17b79a}
+  .s-title{font-size:46px;font-weight:800;letter-spacing:-1px;color:var(--ink);margin:6px 0 10px}
+  .slide.dark .s-title{color:#eef2f8}
+  .s-sub{font-size:19px;color:var(--sub);line-height:1.6;max-width:1100px}
+  .s-sub b{color:#2b3852;font-weight:600}
+  .head-rule{height:1px;background:linear-gradient(90deg,rgba(0,0,0,0.13),transparent);margin:26px 0 46px}
+
+  /* ================= COVER ================= */
+  .cover-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:60px;align-items:center;height:820px}
+  .cover .brand-mark{display:flex;align-items:center;gap:18px;margin-bottom:6px}
+  .brand-seed{width:60px;height:60px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.7),transparent 46%),var(--accent);box-shadow:0 0 40px 5px rgba(110,231,208,0.5)}
+  .brand-name{font-size:44px;font-weight:800;letter-spacing:9px;color:#12203a}
+  .brand-name span{font-weight:300;color:#8a94a8;letter-spacing:3px;font-size:30px}
+  .cover .kicker{font-size:15px;font-weight:700;letter-spacing:3px;color:#17b79a;text-transform:uppercase;margin:40px 0 18px}
+  .cover h1{font-size:66px;font-weight:800;line-height:1.05;letter-spacing:-2px;color:#111a2e}
+  .cover h1 em{font-style:normal;background:linear-gradient(90deg,#17b79a,#3aa0ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .cover .lede{font-size:21px;color:var(--sub);line-height:1.65;margin-top:28px;max-width:820px}
+  .cover .lede em{font-style:normal;color:#2f6f63;font-weight:600}
+  .meta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+  .chip{font-size:15px;font-weight:600;letter-spacing:.3px;color:#2f6f63;background:rgba(110,231,208,0.16);border:1px solid rgba(23,183,154,0.25);padding:10px 18px;border-radius:999px}
+  .chip.alt{color:#3a5b9e;background:rgba(125,150,255,0.14);border-color:rgba(90,120,255,0.22)}
+
+  /* egg hero / object */
+  .egg-stage{position:relative;height:100%;min-height:520px;border-radius:26px;background:#0a0c10;border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;
+    background-image:radial-gradient(90% 70% at 50% 34%,rgba(110,231,208,0.14),transparent 60%)}
+  .egg{position:relative;width:300px;height:410px;border-radius:50% 50% 50% 50% / 62% 62% 40% 40%;
+    background:linear-gradient(160deg,#eef3f6 0%,#d6dee6 55%,#b9c4cf 100%);
+    box-shadow:inset -22px -28px 58px rgba(60,80,110,0.35),inset 18px 20px 38px rgba(255,255,255,0.75),0 50px 90px -30px rgba(24,34,58,0.6);
+    display:flex;align-items:center;justify-content:center}
+  .egg::after{content:"";position:absolute;top:34px;left:44px;width:74px;height:128px;border-radius:50%;background:linear-gradient(160deg,rgba(255,255,255,0.85),transparent);filter:blur(7px);opacity:.7}
+  .egg-glow{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 45% 40%,rgba(255,255,255,0.9),rgba(110,231,208,0.95) 40%,rgba(43,169,140,0.6) 70%,transparent 78%);
+    box-shadow:0 0 80px 14px rgba(110,231,208,0.55);animation:breathe 4.5s ease-in-out infinite}
+  .egg-slit{position:absolute;bottom:92px;width:186px;height:2px;background:rgba(110,231,208,0.35);border-radius:2px}
+  .probes{position:absolute;bottom:70px;left:50%;transform:translateX(-50%);display:flex;gap:20px}
+  .probe{width:2px;height:88px;background:linear-gradient(180deg,rgba(155,166,184,0.1),rgba(155,166,184,0.6));position:relative}
+  .probe::after{content:"";position:absolute;bottom:-5px;left:-2px;width:7px;height:7px;border-radius:50%;background:#9aa6b8}
+  @keyframes breathe{0%,100%{transform:scale(0.94);opacity:.82}50%{transform:scale(1.06);opacity:1}}
+
+  /* ================= FLOW ================= */
+  .flow{display:flex;align-items:stretch;gap:0;margin-top:10px}
+  .stage{flex:1;background:#0c0f15;border:1px solid var(--border);border-radius:20px;padding:26px 22px;color:var(--text);
+    background-image:radial-gradient(120% 80% at 50% -10%,rgba(110,231,208,0.09),transparent 60%)}
+  .stage .st-ic{width:52px;height:52px;border-radius:14px;background:rgba(110,231,208,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:18px}
+  .stage .st-ic svg{width:27px;height:27px;stroke:var(--accent);fill:none;stroke-width:1.7}
+  .stage .st-k{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:var(--faint);font-weight:600}
+  .stage h4{font-size:21px;font-weight:600;margin:6px 0 12px}
+  .stage p{font-size:14.5px;color:var(--dim);line-height:1.6}
+  .arrow{flex:0 0 44px;display:flex;align-items:center;justify-content:center}
+  .arrow svg{width:28px;height:28px;stroke:#9aa6b8;stroke-width:2;fill:none}
+
+  /* ================= SENSORS ================= */
+  .grid-sensors{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .sensor{background:#fff;border:1px solid rgba(20,30,50,0.08);border-radius:18px;padding:26px 26px 22px;box-shadow:0 16px 36px -26px rgba(24,34,58,0.5)}
+  .sensor .s-top{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .sensor .s-ic{width:56px;height:56px;border-radius:15px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:27px;background:linear-gradient(160deg,#eafaf5,#dff0ff)}
+  .sensor .s-ch{font-size:12px;font-weight:700;letter-spacing:1.6px;color:#17b79a}
+  .sensor h4{font-size:21px;font-weight:700;color:#1b2740}
+  .sensor .s-model{font-size:13.5px;color:#93a0b4;margin:2px 0 12px}
+  .sensor .s-sense{font-size:15px;color:#5b6a82;line-height:1.6}
+  .sensor .s-sense b{color:#2b3852;font-weight:600}
+  .sensor.dark{background:linear-gradient(160deg,#0c0f15,#0a0c10);border-color:rgba(110,231,208,0.22);color:var(--text)}
+  .sensor.dark h4{color:var(--text)}
+  .sensor.dark .s-ic{background:rgba(110,231,208,0.12)}
+  .sensor.dark .s-sense{color:var(--dim)}
+  .sensor.dark .s-sense b{color:var(--accent)}
+
+  /* ================= GENOMES ================= */
+  .grid-genomes{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .genome{background:#0c0f15;border:1px solid var(--border);border-radius:22px;padding:30px 30px;color:var(--text);
+    background-image:radial-gradient(130% 90% at 100% 0,rgba(110,231,208,0.09),transparent 55%)}
+  .genome .g-h{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+  .genome .g-glyph{width:52px;height:52px;border-radius:15px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:26px;flex:0 0 auto}
+  .genome h4{font-size:23px;font-weight:600}
+  .genome .g-niche{font-size:13px;color:var(--accent);letter-spacing:.3px}
+  .genome .g-desc{font-size:14.5px;color:var(--dim);line-height:1.6;margin:14px 0 22px}
+  .wt{margin-bottom:12px}
+  .wt-h{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:5px}
+  .wt-h .n{color:var(--dim)}
+  .wt-h .v{color:var(--faint);font-variant-numeric:tabular-nums}
+  .wt-bar{height:6px;border-radius:3px;background:rgba(255,255,255,0.07);overflow:hidden}
+  .wt-bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),#a5f3e4)}
+  .wt.zero .wt-bar i{background:rgba(255,255,255,0.14)}
+  .genome .g-note{font-size:13px;color:var(--faint);line-height:1.55;margin-top:16px;border-top:1px solid var(--border);padding-top:16px}
+
+  /* ================= EXPRESSION ================= */
+  .express{display:grid;grid-template-columns:440px 1fr;gap:56px;align-items:center;height:648px}
+  .orb-stage{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:#0a0c10;border:1px solid var(--border);border-radius:24px;
+    background-image:radial-gradient(100% 80% at 50% 40%,rgba(110,231,208,0.14),transparent 60%)}
+  .orb-wrap{position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center}
+  .orb-halo{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,0.06)}
+  .orb-halo.h2{inset:40px;border-color:rgba(255,255,255,0.045)}
+  .orb-halo.h3{inset:80px;border-color:rgba(255,255,255,0.04)}
+  .orbcore{width:170px;height:170px;border-radius:50%;background:rgb(73,211,175);box-shadow:0 0 90px 12px rgba(73,211,175,0.55);animation:breathe 4.5s ease-in-out infinite}
+  .orb-cap{color:var(--dim);font-size:15px;margin-top:34px;letter-spacing:.4px;text-align:center;line-height:1.6}
+  .maps{display:flex;flex-direction:column}
+  .map{display:flex;align-items:flex-start;gap:22px;padding:20px 6px;border-bottom:1px dashed rgba(20,30,50,0.12)}
+  .map:last-child{border-bottom:none}
+  .map .swatch{width:20px;height:20px;border-radius:50%;flex:0 0 auto;margin-top:4px}
+  .map .m-dim{width:190px;flex:0 0 auto}
+  .map .m-dim b{font-size:19px;color:#1b2740;font-weight:700;display:block}
+  .map .m-dim span{font-size:13.5px;color:#93a0b4}
+  .map .m-out{flex:1}
+  .map .m-out b{font-size:16px;color:#2f6f63;font-weight:600}
+  .map .m-out p{font-size:15px;color:#5b6a82;line-height:1.55;margin-top:3px}
+
+  /* ================= OBJECT / ANATOMY ================= */
+  .object{display:grid;grid-template-columns:560px 1fr;gap:64px;align-items:center;height:648px}
+  .anatomy{display:flex;flex-direction:column}
+  .layer{display:flex;gap:20px;padding:19px 0;border-bottom:1px solid rgba(20,30,50,0.1)}
+  .layer:last-child{border-bottom:none}
+  .layer .l-n{width:34px;height:34px;border-radius:10px;flex:0 0 auto;background:#0c0f15;color:var(--accent);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .layer .l-b h4{font-size:19px;color:#1b2740;font-weight:700}
+  .layer .l-b p{font-size:15px;color:#63718a;line-height:1.55;margin-top:3px}
+  .layer .l-b p b{color:#2f6f63;font-weight:600}
+
+  /* ================= PRINCIPLES ================= */
+  .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:10px}
+  .principle{background:#fff;border:1px solid rgba(20,30,50,0.08);border-radius:20px;padding:38px 36px;box-shadow:0 16px 36px -28px rgba(24,34,58,0.5)}
+  .principle .p-n{font-size:44px;font-weight:800;color:#cfd8e2;font-family:Georgia,serif;line-height:1}
+  .principle h4{font-size:24px;font-weight:700;color:#1b2740;margin:16px 0 14px;letter-spacing:-.3px}
+  .principle p{font-size:16.5px;color:#5b6a82;line-height:1.62}
+  .principle p b{color:#2f6f63;font-weight:600}
+  .closing{margin-top:60px;font-size:17px;color:#6b788f;line-height:1.8}
+  .closing b{color:#2b3852;font-weight:700}
+
+  /* ================= PAGINATION ================= */
+  body.paged{display:flex;flex-direction:column;align-items:center;min-height:100vh;background:#1c1e24}
+  body.paged .slide{display:none;margin:0}
+  body.paged .slide.active{display:block}
+  .pager{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);z-index:9999;
+    display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:999px;
+    background:rgba(16,18,24,0.82);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.12);
+    box-shadow:0 14px 34px -14px rgba(0,0,0,0.6);font-family:var(--font);transition:opacity .25s}
+  .pager.hidden{opacity:0;pointer-events:none}
+  .pager button{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,0.14);
+    background:rgba(255,255,255,0.06);color:#eef2f8;font-size:17px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.15s}
+  .pager button:hover{background:rgba(110,231,208,0.18);border-color:rgba(110,231,208,0.4)}
+  .pager button:disabled{opacity:.3;cursor:default}
+  .pager .count{min-width:74px;text-align:center;color:#cfd6e2;font-size:14px;font-variant-numeric:tabular-nums;letter-spacing:.5px}
+  .pager .count b{color:var(--accent);font-weight:700}
+  .pager .dots{display:flex;gap:7px;padding:0 6px}
+  .pager .dot{width:9px;height:9px;border-radius:50%;background:rgba(255,255,255,0.22);cursor:pointer;transition:.15s}
+  .pager .dot.on{background:var(--accent);box-shadow:0 0 10px rgba(110,231,208,0.7)}
+  .pager .hint{color:#7a8496;font-size:11px;letter-spacing:.4px;padding:0 8px;border-left:1px solid rgba(255,255,255,0.12);margin-left:2px}
+
+  /* ================= PRINT (Ctrl+P → 7-page PDF, each 1920×1078) ================= */
+  @page{size:1920px 1078px;margin:0}
+  @media print{
+    html,body{background:#fff}
+    body.paged{display:block}
+    .slide,body.paged .slide{display:block !important;margin:0;page-break-after:always;break-after:page}
+    .slide:last-of-type{page-break-after:auto;break-after:auto}
+    .pager{display:none !important}
+    .orbcore,.egg-glow{animation:none !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================================================== SLIDE 1 · COVER -->
+<section class="slide cover">
+  <div class="pad">
+    <div class="cover-grid">
+      <div>
+        <div class="brand-mark">
+          <div class="brand-seed"></div>
+          <div class="brand-name">ANIMA<span> / A LIVING PRESENCE</span></div>
+        </div>
+        <div class="kicker">Product Design</div>
+        <h1>A <em>sensing body</em><br>for an environment<br>you cannot feel.</h1>
+        <p class="lede">A self-contained ambient object that gives an ecosystem a body. Environment flows in through sensory organs; a liquid neural network translates it into a felt state; the object breathes it back as light. One body — a <em>genome</em> re-weights the senses so it can inhabit soil, water, or air.</p>
+        <div class="meta-row">
+          <span class="chip">Raspberry Pi 4B</span>
+          <span class="chip">Arduino Uno · 7 sensors</span>
+          <span class="chip alt">Liquid Neural Network · CfC</span>
+          <span class="chip alt">Self-contained · battery</span>
+        </div>
+      </div>
+      <div class="egg-stage">
+        <div class="egg"><div class="egg-glow"></div><div class="egg-slit"></div></div>
+        <div class="probes"><div class="probe"></div><div class="probe" style="height:108px"></div><div class="probe" style="height:76px"></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">01 / 07</div>
+</section>
+
+<!-- ==================================================== SLIDE 2 · ARCHITECTURE -->
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">01</div>
+    <div class="s-title">System Architecture</div>
+    <div class="s-sub">The signal chain that turns invisible environmental stress into a feeling you can read at a glance.</div>
+    <div class="head-rule"></div>
+    <div class="flow">
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><path d="M12 3c4 4 6 7 6 10a6 6 0 01-12 0c0-3 2-6 6-10z"/></svg></div>
+        <div class="st-k">Source</div><h4>Environment</h4>
+        <p>A soil bed, a body of water, or the air in a room — an ecosystem whose state is invisible to us.</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></div>
+        <div class="st-k">Sensory organs</div><h4>Arduino Uno</h4>
+        <p>Seven analog / digital sensors sampled and calibrated into physical units on the board.</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></svg></div>
+        <div class="st-k">Nerve</div><h4>USB · JSON</h4>
+        <p>A line of JSON every ~2&nbsp;s over USB serial at 115200 baud — the nervous signal to the brain.</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><path d="M12 3a4 4 0 00-4 4 4 4 0 00-2 7 4 4 0 004 5 3 3 0 004 0 4 4 0 004-5 4 4 0 00-2-7 4 4 0 00-4-4z"/></svg></div>
+        <div class="st-k">Cognitive core</div><h4>Raspberry Pi 4B</h4>
+        <p>A liquid neural network (CfC + AutoNCP) reads the stream against the environment’s own rhythm.</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="#6ee7d0" stroke="none"/></svg></div>
+        <div class="st-k">Inner state</div><h4>5-D emotion</h4>
+        <p>Valence · arousal · safety · connection · seeking — a felt state, not a threshold alarm.</p>
+      </div>
+      <div class="arrow"><svg viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></svg></div>
+      <div class="stage">
+        <div class="st-ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M19 5l-1.5 1.5M6.5 17.5L5 19"/></svg></div>
+        <div class="st-k">Expression</div><h4>Light &amp; breath</h4>
+        <p>Colour, breathing rhythm and flow on an addressable LED core — non-verbal, at a glance.</p>
+      </div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">02 / 07</div>
+</section>
+
+<!-- ==================================================== SLIDE 3 · SENSORY ORGANS -->
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">02</div>
+    <div class="s-title">Sensory Organs</div>
+    <div class="s-sub">Seven universal channels — one shared body of senses. Every genome listens to all of them; it only cares about them differently.</div>
+    <div class="head-rule"></div>
+    <div class="grid-sensors">
+      <div class="sensor"><div class="s-top"><div class="s-ic">🌡️</div><div><div class="s-ch">CH · T</div><h4>Temperature</h4></div></div><div class="s-model">DS18B20 · waterproof probe</div><p class="s-sense">The <b>core of metabolism</b> — the internal temperature of the soil or water the life is rooted in.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">💧</div><div><div class="s-ch">CH · M</div><h4>Moisture</h4></div></div><div class="s-model">Capacitive soil probe</div><p class="s-sense"><b>Thirst</b> — substrate water content. Zeroed when submerged or in air, where it does not apply.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">🫧</div><div><div class="s-ch">CH · G</div><h4>Air &amp; VOC</h4></div></div><div class="s-model">BME680 · T/RH/pressure/VOC</div><p class="s-sense"><b>Breath &amp; staleness</b> — a sudden VOC rise hints at rot, poor ventilation, or an unusual source.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">☀️</div><div><div class="s-ch">CH · L</div><h4>Light</h4></div></div><div class="s-model">BH1750 · lux (digital)</div><p class="s-sense"><b>Day &amp; night rhythm</b> — dark at night is normal; bright when it should be dark is a disturbed cycle.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">🔊</div><div><div class="s-ch">CH · S</div><h4>Sound</h4></div></div><div class="s-model">INMP441 mic · peak-to-peak</div><p class="s-sense"><b>Disturbance</b> — mechanical agitation, water flow, or sustained noise as an independent stressor.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">⚗️</div><div><div class="s-ch">CH · pH</div><h4>Acidity</h4></div></div><div class="s-model">PH-4502C · glass electrode</div><p class="s-sense"><b>Chemical comfort</b> — the acidity of the medium; slow drift out of range affects nutrient uptake.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">⚡</div><div><div class="s-ch">CH · EC</div><h4>Nutrients</h4></div></div><div class="s-model">TDS module · conductivity</div><p class="s-sense"><b>Nourishment</b> — ion concentration: too low reads as starvation, too high as salt stress.</p></div>
+      <div class="sensor dark"><div class="s-top"><div class="s-ic">🧬</div><div><div class="s-ch">Principle</div><h4>Complete senses</h4></div></div><p class="s-sense">A channel weighted to zero is <b>still recorded</b> — the body always senses fully; the genome only decides what it feels.</p></div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">03 / 07</div>
+</section>
+
+<!-- ==================================================== SLIDE 4 · GENOME -->
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">03</div>
+    <div class="s-title">The Genome — one body, many natures</div>
+    <div class="s-sub">A genome is not different hardware — it is a <b>sensory weighting table</b>: a weight (0–1), a comfort range and a sensitivity curve per channel. Switching it lets the same object inhabit a different niche.</div>
+    <div class="head-rule"></div>
+    <div class="grid-genomes">
+      <div class="genome">
+        <div class="g-h"><div class="g-glyph">🌱</div><div><h4>Soil / Root</h4><div class="g-niche">e.g. a tomato rooted in soil</div></div></div>
+        <div class="g-desc">A crop’s view from within the soil — moisture and nutrients matter most; it fears drought and root suffocation.</div>
+        <div class="wt"><div class="wt-h"><span class="n">Moisture</span><span class="v">0.9</span></div><div class="wt-bar"><i style="width:90%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Temperature</span><span class="v">0.8</span></div><div class="wt-bar"><i style="width:80%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Light</span><span class="v">0.7</span></div><div class="wt-bar"><i style="width:70%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">pH</span><span class="v">0.7</span></div><div class="wt-bar"><i style="width:70%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Air / VOC</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Nutrients (EC)</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Sound</span><span class="v">0.15</span></div><div class="wt-bar"><i style="width:15%"></i></div></div>
+        <div class="g-note">Signature stress: moisture ↓ + temp ↑ + light ↑ over hours → <b style="color:var(--warn)">drought</b>.</div>
+      </div>
+      <div class="genome">
+        <div class="g-h"><div class="g-glyph">💧</div><div><h4>Freshwater</h4><div class="g-niche">e.g. fish / algae colony</div></div></div>
+        <div class="g-desc">An aquatic life fully submerged — tuned to water temperature, pH and conductivity; moisture is meaningless.</div>
+        <div class="wt"><div class="wt-h"><span class="n">Temperature</span><span class="v">0.9</span></div><div class="wt-bar"><i style="width:90%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">pH</span><span class="v">0.8</span></div><div class="wt-bar"><i style="width:80%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Nutrients (EC)</span><span class="v">0.7</span></div><div class="wt-bar"><i style="width:70%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Light</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Sound</span><span class="v">0.4</span></div><div class="wt-bar"><i style="width:40%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Air / VOC</span><span class="v">0.2</span></div><div class="wt-bar"><i style="width:20%"></i></div></div>
+        <div class="wt zero"><div class="wt-h"><span class="n">Moisture</span><span class="v">0 · n/a</span></div><div class="wt-bar"><i style="width:3%"></i></div></div>
+        <div class="g-note">Signature stress: temp ↑ + EC ↑ + pH ↓ together → <b style="color:var(--danger)">low-oxygen risk</b>.</div>
+      </div>
+      <div class="genome">
+        <div class="g-h"><div class="g-glyph">🌫️</div><div><h4>Indoor Air</h4><div class="g-niche">air shared with people</div></div></div>
+        <div class="g-desc">The indoor air itself, breathed alongside people — it cares about ventilation, humidity and noise.</div>
+        <div class="wt"><div class="wt-h"><span class="n">Air / VOC</span><span class="v">0.9</span></div><div class="wt-bar"><i style="width:90%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Humidity (air)</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Temperature</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Sound</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Light</span><span class="v">0.5</span></div><div class="wt-bar"><i style="width:50%"></i></div></div>
+        <div class="wt zero"><div class="wt-h"><span class="n">Moisture</span><span class="v">0 · n/a</span></div><div class="wt-bar"><i style="width:3%"></i></div></div>
+        <div class="wt zero"><div class="wt-h"><span class="n">pH / EC</span><span class="v">0 · n/a</span></div><div class="wt-bar"><i style="width:3%"></i></div></div>
+        <div class="g-note">Signature stress: VOC ↑ + humidity ↑ + temp steady → <b style="color:var(--warn)">poor ventilation</b>.</div>
+      </div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">04 / 07</div>
+</section>
+
+<!-- ==================================================== SLIDE 5 · EXPRESSION -->
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">04</div>
+    <div class="s-title">From Feeling to Light</div>
+    <div class="s-sub">The five-dimensional emotion becomes non-verbal physical expression. It conveys <b>what the environment is going through</b> — never what the device “wants.”</div>
+    <div class="head-rule"></div>
+    <div class="express">
+      <div class="orb-stage">
+        <div class="orb-wrap"><div class="orb-halo"></div><div class="orb-halo h2"></div><div class="orb-halo h3"></div><div class="orbcore"></div></div>
+        <div class="orb-cap">The light core breathes at ~4.5&nbsp;s<br>calm · secure · quietly growing</div>
+      </div>
+      <div class="maps">
+        <div class="map"><span class="swatch" style="background:linear-gradient(90deg,#ff6b6b,#6ee7d0)"></span><div class="m-dim"><b>Valence</b><span>distress ↔ pleasure</span></div><div class="m-out"><b>LED hue</b><p>Positive → green / cyan; negative → orange / red; neutral → warm white.</p></div></div>
+        <div class="map"><span class="swatch" style="background:#7dd3fc"></span><div class="m-dim"><b>Arousal</b><span>calm ↔ aroused</span></div><div class="m-out"><b>Breathing speed</b><p>Low arousal → slow, gentle brightening and dimming; high → quick, urgent flicker.</p></div></div>
+        <div class="map"><span class="swatch" style="background:#a5f3e4"></span><div class="m-dim"><b>Safety</b><span>alert ↔ secure</span></div><div class="m-out"><b>Stability</b><p>Secure → steady and even; unsafe → a faint tremor or wavering brightness.</p></div></div>
+        <div class="map"><span class="swatch" style="background:#6ee7d0"></span><div class="m-dim"><b>Connection</b><span>isolated ↔ answered</span></div><div class="m-out"><b>Flowing ring</b><p>When it senses a response — a person nearing, sound shifting — a ring of light flows around the core.</p></div></div>
+        <div class="map"><span class="swatch" style="background:#c9a2ff"></span><div class="m-dim"><b>Seeking</b><span>content ↔ needful</span></div><div class="m-out"><b>Pulse + optional tone</b><p>Unrelieved stress raises the pulse rate; sound is reserved for extremes — never speech.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">05 / 07</div>
+</section>
+
+<!-- ==================================================== SLIDE 6 · THE OBJECT -->
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">05</div>
+    <div class="s-title">The Object</div>
+    <div class="s-sub">A closed, egg-like form that sits in the space it listens to — a diffuse glowing body with probes that reach into soil, water or air.</div>
+    <div class="head-rule"></div>
+    <div class="object">
+      <div class="egg-stage">
+        <div class="egg"><div class="egg-glow"></div><div class="egg-slit"></div></div>
+        <div class="probes"><div class="probe"></div><div class="probe" style="height:108px"></div><div class="probe" style="height:76px"></div></div>
+      </div>
+      <div class="anatomy">
+        <div class="layer"><div class="l-n">A</div><div class="l-b"><h4>Diffuser shell</h4><p>A closed, egg-shaped translucent enclosure that turns the LED core into a soft, whole-body glow — the object’s “skin.”</p></div></div>
+        <div class="layer"><div class="l-n">B</div><div class="l-b"><h4>Light core</h4><p><b>Addressable WS2812 LEDs</b> driven from the Pi — the single expressive organ carrying hue, breath and flow.</p></div></div>
+        <div class="layer"><div class="l-n">C</div><div class="l-b"><h4>Cognitive core</h4><p><b>Raspberry Pi 4B</b> runs the liquid neural network, the journal, and the local PWA server over Wi-Fi.</p></div></div>
+        <div class="layer"><div class="l-n">D</div><div class="l-b"><h4>Sensory board</h4><p><b>Arduino Uno</b> with the seven sensors, linked to the Pi by a single internal USB-C data line.</p></div></div>
+        <div class="layer"><div class="l-n">E</div><div class="l-b"><h4>Power</h4><p>A <b>21700 battery tower, 5V / 4A</b>, pogo-pin fed — fully self-contained, no tethered supply.</p></div></div>
+        <div class="layer"><div class="l-n">F</div><div class="l-b"><h4>Probes</h4><p>Waterproof temperature, pH and EC probes reach out of the shell into the medium being sensed.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">06 / 07</div>
+</section>
+
+<!-- ==================================================== SLIDE 7 · PRINCIPLES -->
+<section class="slide dark">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">06</div>
+    <div class="s-title">Why a Liquid Neural Network</div>
+    <div class="s-sub" style="color:#aeb6c0">Three architectural principles make the object smarter than a threshold alarm — and true to its purpose.</div>
+    <div class="head-rule" style="background:linear-gradient(90deg,rgba(255,255,255,0.16),transparent)"></div>
+    <div class="principles">
+      <div class="principle"><div class="p-n">01</div><h4>Rate of change over absolute value</h4><p>The CfC network flags a departure from the environment’s <b>own recent rhythm</b>. The same temperature drop is danger in spring and normal at night — context, not a hard-coded number.</p></div>
+      <div class="principle"><div class="p-n">02</div><h4>Multi-channel consistency</h4><p>A single drifting sensor is usually noise. An event is declared only when <b>two independent channels</b> trend the same way — sensor fusion that suppresses false alarms.</p></div>
+      <div class="principle"><div class="p-n">03</div><h4>Zero weight ≠ blind</h4><p>Muted channels are still logged, leaving room for the object to one day suggest <b>“this looks more like water — switch genome?”</b> The senses stay whole; only attention shifts.</p></div>
+    </div>
+    <div class="closing">
+      <b>ANIMA</b> — an emotional translation device for the ecological environment.<br>
+      Raspberry Pi 4 &amp; Arduino · Liquid Neural Network (CfC + AutoNCP) · a translation medium, not a companion pet.
+    </div>
+  </div>
+  <div class="brandtag" style="color:#5c6674">ANIMA · RCA Graduate Diploma · Unit 3</div>
+  <div class="sno" style="color:#5c6674">07 / 07</div>
+</section>
+
+<nav class="pager" id="pager">
+  <button id="prev" title="Previous (←)">‹</button>
+  <span class="count"><b id="cur">1</b> / <span id="total">7</span></span>
+  <div class="dots" id="dots"></div>
+  <button id="next" title="Next (→)">›</button>
+  <span class="hint">← → keys · H hide · P print</span>
+</nav>
+
+<script>
+(function(){
+  var slides=[].slice.call(document.querySelectorAll('.slide'));
+  var total=slides.length, i=0;
+  document.body.classList.add('paged');
+  var pager=document.getElementById('pager');
+  var curEl=document.getElementById('cur');
+  var prev=document.getElementById('prev');
+  var next=document.getElementById('next');
+  var dotsWrap=document.getElementById('dots');
+  document.getElementById('total').textContent=total;
+  slides.forEach(function(_,n){
+    var d=document.createElement('span');
+    d.className='dot';
+    d.title='Slide '+(n+1);
+    d.addEventListener('click',function(){go(n);});
+    dotsWrap.appendChild(d);
+  });
+  var dots=[].slice.call(dotsWrap.children);
+  function go(n){
+    i=Math.max(0,Math.min(total-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('active',k===i);});
+    dots.forEach(function(d,k){d.classList.toggle('on',k===i);});
+    curEl.textContent=i+1;
+    prev.disabled=i===0; next.disabled=i===total-1;
+    window.scrollTo(0,0);
+    if(location.hash!=='#'+(i+1)) history.replaceState(null,'','#'+(i+1));
+  }
+  prev.addEventListener('click',function(){go(i-1);});
+  next.addEventListener('click',function(){go(i+1);});
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){go(i+1);e.preventDefault();}
+    else if(e.key==='ArrowLeft'||e.key==='PageUp'){go(i-1);e.preventDefault();}
+    else if(e.key==='Home'){go(0);}
+    else if(e.key==='End'){go(total-1);}
+    else if(e.key.toLowerCase()==='h'){pager.classList.toggle('hidden');}
+    else if(e.key.toLowerCase()==='p'){window.print();}
+  });
+  var start=parseInt((location.hash||'').replace('#',''),10);
+  go(isNaN(start)?0:start-1);
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ANIMA — Portfolio Showcase</title>
+<style>
+  :root{
+    /* app palette (dark ambient UI) */
+    --bg:#0a0c10; --bg2:#0e1219;
+    --panel:rgba(255,255,255,0.04); --border:rgba(255,255,255,0.08);
+    --text:#eef2f8; --dim:#8b93a3; --faint:#565e6e;
+    --accent:#6ee7d0; --danger:#ff6b6b; --warn:#ffb454; --relief:#7dd3fc;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{
+    font-family:var(--font);color:#1a2233;-webkit-font-smoothing:antialiased;
+    background:
+      radial-gradient(120% 90% at 12% 0%, rgba(110,231,208,0.18), transparent 45%),
+      radial-gradient(120% 90% at 100% 100%, rgba(125,150,255,0.16), transparent 45%),
+      linear-gradient(160deg,#f4f6fb 0%,#e9edf5 55%,#e3e8f1 100%);
+    min-height:100vh;
+  }
+
+  /* ---------------- page layout ---------------- */
+  .wrap{max-width:1360px;margin:0 auto;padding:64px 40px 100px}
+
+  .masthead{display:flex;justify-content:space-between;align-items:flex-end;gap:40px;flex-wrap:wrap;margin-bottom:14px}
+  .brand-mark{display:flex;align-items:center;gap:16px}
+  .brand-seed{
+    width:54px;height:54px;border-radius:50%;flex:0 0 auto;
+    background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.7),transparent 46%),var(--accent);
+    box-shadow:0 0 34px 4px rgba(110,231,208,0.5);
+  }
+  .brand-name{font-size:34px;font-weight:800;letter-spacing:8px;color:#12203a}
+  .brand-name span{font-weight:300;color:#8a94a8;letter-spacing:2px}
+  .tagline{font-size:15px;color:#5c6a82;letter-spacing:.3px;max-width:430px;text-align:right;line-height:1.6}
+
+  .lede{max-width:820px;margin:26px 0 8px}
+  .lede h1{font-size:30px;font-weight:700;line-height:1.3;color:#111a2e;letter-spacing:-.4px}
+  .lede h1 em{font-style:normal;background:linear-gradient(90deg,#17b79a,#3aa0ff);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .lede p{font-size:15.5px;color:#57657e;line-height:1.8;margin-top:16px}
+
+  .meta-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+  .chip{font-size:12px;font-weight:600;letter-spacing:.4px;color:#2f6f63;background:rgba(110,231,208,0.16);border:1px solid rgba(23,183,154,0.25);padding:7px 14px;border-radius:999px}
+  .chip.alt{color:#3a5b9e;background:rgba(125,150,255,0.14);border-color:rgba(90,120,255,0.22)}
+
+  .section-title{font-size:12px;font-weight:700;letter-spacing:2.4px;color:#8a94a8;text-transform:uppercase;margin:70px 0 6px}
+  .section-rule{height:1px;background:linear-gradient(90deg,rgba(0,0,0,0.12),transparent);margin-bottom:40px}
+
+  /* ---------------- device gallery ---------------- */
+  .gallery{display:flex;gap:52px 46px;flex-wrap:wrap;justify-content:center;align-items:flex-start}
+  .device{display:flex;flex-direction:column;align-items:center;width:300px}
+  .cap{margin-top:24px;text-align:center}
+  .cap .num{font-size:11px;font-weight:700;letter-spacing:2px;color:#17b79a}
+  .cap h3{font-size:16px;font-weight:700;color:#1b2740;margin-top:5px}
+  .cap p{font-size:12.5px;color:#6b788f;line-height:1.6;margin-top:6px;max-width:270px}
+
+  /* stagger for editorial feel */
+  .device:nth-child(2){margin-top:44px}
+  .device:nth-child(4){margin-top:44px}
+
+  /* ---------------- phone frame ---------------- */
+  .phone{
+    position:relative;width:300px;height:632px;flex:0 0 auto;
+    background:linear-gradient(160deg,#22262e,#0c0e13);
+    border-radius:46px;padding:12px;
+    box-shadow:
+      inset 0 0 0 2px rgba(255,255,255,0.10),
+      inset 0 0 0 7px #05070a,
+      0 1px 3px rgba(0,0,0,0.2),
+      0 40px 70px -26px rgba(24,34,58,0.55);
+  }
+  .notch{position:absolute;top:12px;left:50%;transform:translateX(-50%);width:132px;height:28px;background:#05070a;border-radius:0 0 18px 18px;z-index:5}
+  .screen{
+    position:relative;width:100%;height:100%;border-radius:36px;overflow:hidden;
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(110,231,208,0.08), transparent 55%),
+      radial-gradient(100% 70% at 90% 115%, rgba(120,140,255,0.07), transparent 55%),
+      var(--bg);
+    color:var(--text);
+  }
+  .scroll{position:absolute;inset:0;overflow:hidden}
+
+  /* status bar */
+  .statusbar{display:flex;justify-content:space-between;align-items:center;padding:14px 26px 6px;font-size:12px;font-weight:600;color:var(--text)}
+  .statusbar .ic{display:flex;gap:6px;align-items:center}
+  .statusbar .ic svg{width:16px;height:12px}
+  .sb-bat{width:22px;height:11px;border:1px solid rgba(255,255,255,0.65);border-radius:3px;position:relative}
+  .sb-bat::after{content:"";position:absolute;right:-3px;top:3px;width:2px;height:5px;background:rgba(255,255,255,0.65);border-radius:0 1px 1px 0}
+  .sb-bat i{position:absolute;left:1px;top:1px;bottom:1px;width:75%;background:var(--text);border-radius:1px}
+
+  .pad{padding:6px 18px 26px}
+
+  /* generic app bits (ported from live app) */
+  .top{display:flex;align-items:center;justify-content:space-between;margin:8px 0 16px}
+  .top .who{font-size:11px;color:var(--accent);letter-spacing:.4px}
+  .top h2{font-size:18px;font-weight:600;margin-top:2px}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;color:var(--dim);background:var(--panel);border:1px solid var(--border);padding:5px 10px;border-radius:999px}
+  .dot{width:6px;height:6px;border-radius:50%;background:var(--accent);box-shadow:0 0 8px var(--accent)}
+
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:14px;margin-top:14px}
+  .panel-t{font-size:10px;text-transform:uppercase;letter-spacing:1.2px;color:var(--faint);font-weight:600;margin-bottom:12px;display:flex;justify-content:space-between}
+
+  /* birth */
+  .birth-hero{text-align:center;margin:30px 0 26px}
+  .birth-seed{width:74px;height:74px;border-radius:50%;margin:0 auto 20px;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.5),transparent 46%),var(--accent);box-shadow:0 0 44px 5px rgba(110,231,208,0.42)}
+  .birth-hero h1{font-size:20px;font-weight:600;margin-bottom:10px}
+  .birth-hero p{font-size:12px;color:var(--dim);line-height:1.7;padding:0 6px}
+  .birth-label{font-size:10px;text-transform:uppercase;letter-spacing:1.4px;color:var(--faint);margin:4px 2px 12px;font-weight:600}
+  .niche{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px;margin-bottom:10px}
+  .niche.sel{border-color:rgba(110,231,208,0.6);background:linear-gradient(180deg,rgba(110,231,208,0.14),rgba(110,231,208,0.04))}
+  .niche h3{font-size:15px;font-weight:600;margin-bottom:5px;display:flex;align-items:center;gap:8px}
+  .niche .glyph{width:24px;height:24px;border-radius:7px;flex:0 0 auto;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:14px}
+  .niche p{font-size:11.5px;color:var(--dim);line-height:1.6}
+  .birth-btn{margin-top:16px;width:100%;padding:15px;border:none;border-radius:14px;background:linear-gradient(90deg,var(--accent),#a5f3e4);color:#04150f;font-size:15px;font-weight:700;letter-spacing:.5px}
+  .birth-note{text-align:center;font-size:10.5px;color:var(--faint);margin-top:14px;line-height:1.7}
+
+  /* being */
+  .being{display:flex;flex-direction:column;align-items:center;padding:10px 0 6px}
+  .orb-wrap{position:relative;width:180px;height:180px;display:flex;align-items:center;justify-content:center}
+  .orb-halo{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,0.05)}
+  .orb-halo.h2{inset:24px;border-color:rgba(255,255,255,0.04)}
+  .orb{width:120px;height:120px;border-radius:50%;background:rgb(73,211,175);box-shadow:0 0 60px 6px rgba(73,211,175,0.55)}
+  .mood{font-size:19px;font-weight:600;margin-top:8px}
+  .mood-sub{font-size:11.5px;color:var(--dim);margin-top:5px;text-align:center;line-height:1.5;padding:0 10px}
+  .age{font-size:11px;color:var(--faint);margin-top:10px;letter-spacing:.4px}
+
+  .journal{display:flex;flex-direction:column}
+  .entry{display:flex;gap:11px;padding:9px 2px;position:relative}
+  .entry:not(:last-child)::after{content:"";position:absolute;left:5px;top:22px;bottom:-9px;width:1px;background:rgba(255,255,255,0.07)}
+  .entry .tick{width:9px;height:9px;border-radius:50%;background:var(--dim);flex:0 0 auto;margin-top:4px}
+  .entry.birth .tick{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  .entry.alarm .tick{background:var(--danger)}
+  .entry.unease .tick{background:var(--warn)}
+  .entry.relief .tick{background:var(--relief)}
+  .entry .txt{font-size:12.5px;line-height:1.5}
+  .entry.birth .txt{color:var(--accent);font-weight:500}
+  .entry .when{font-size:10px;color:var(--faint);margin-top:2px}
+
+  .mini-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+  .mini{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:11px;padding:10px 8px;text-align:center}
+  .mini .m-l{font-size:9.5px;color:var(--dim)}
+  .mini .m-v{font-size:14px;font-weight:600;margin-top:3px}
+  .mini .m-v .u{font-size:8px;color:var(--faint);margin-left:1px}
+  .mini .m-bar{height:3px;border-radius:2px;background:rgba(255,255,255,0.08);margin-top:7px;position:relative}
+  .mini .m-bar i{position:absolute;top:0;bottom:0;width:2px;background:var(--accent)}
+
+  /* data */
+  .sensor-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:9px}
+  .sensor-card.off{opacity:.4}
+  .sc-top{display:flex;justify-content:space-between;align-items:baseline}
+  .sc-l{font-size:12px;color:var(--dim)}
+  .sc-w{font-size:9.5px;color:var(--faint)}
+  .sc-v{font-size:23px;font-weight:600;margin-top:4px}
+  .sc-v .u{font-size:10px;color:var(--faint);margin-left:3px;font-weight:400}
+  .sc-v.miss{font-size:13px;font-weight:400;color:var(--faint)}
+  .spark{display:block;margin-top:6px;width:100%;height:30px}
+  .emo-row{margin-bottom:12px}
+  .emo-h{display:flex;justify-content:space-between;font-size:12px;margin-bottom:5px}
+  .emo-h .v{color:var(--dim);font-variant-numeric:tabular-nums}
+  .emo-track{height:7px;background:rgba(255,255,255,0.06);border-radius:4px;position:relative;overflow:hidden}
+  .emo-track .c{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12)}
+  .emo-fill{position:absolute;top:0;bottom:0;left:50%;background:linear-gradient(90deg,var(--accent),#a5f3e4);border-radius:4px}
+  .emo-fill.neg{background:linear-gradient(90deg,#ff8a8a,var(--danger))}
+  .emo-ends{display:flex;justify-content:space-between;font-size:9.5px;color:var(--faint);margin-top:3px}
+
+  /* life management */
+  .life-card{background:var(--panel);border:1px solid var(--border);border-radius:15px;padding:18px;text-align:center}
+  .life-card .big-orb{width:88px;height:88px;border-radius:50%;margin:2px auto 14px;background:rgb(73,211,175);box-shadow:0 0 40px 4px rgba(73,211,175,.42)}
+  .life-card h3{font-size:18px;font-weight:600}
+  .life-card .sub{font-size:11.5px;color:var(--dim);margin-top:5px;line-height:1.5}
+  .life-meta{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:16px}
+  .life-meta .item{background:rgba(255,255,255,0.03);border-radius:10px;padding:11px}
+  .life-meta .k{font-size:10px;color:var(--faint)}
+  .life-meta .val{font-size:14px;font-weight:600;margin-top:3px}
+  .freeze-card{border:1px solid rgba(125,211,252,0.28);border-radius:15px;padding:15px;margin-top:12px;background:rgba(125,211,252,0.05)}
+  .freeze-card h4{font-size:13px;color:var(--relief);margin-bottom:7px}
+  .freeze-card p{font-size:11px;color:var(--dim);line-height:1.65;margin-bottom:12px}
+  .freeze-btn{width:100%;padding:12px;border:1px solid rgba(125,211,252,0.5);background:transparent;color:var(--relief);border-radius:11px;font-size:13px;font-weight:600}
+  .cryo{display:flex;align-items:center;gap:11px;background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:12px;padding:11px 13px;margin-bottom:9px}
+  .cryo .cg{width:38px;height:38px;border-radius:11px;flex:0 0 auto;background:rgba(125,211,252,0.12);display:flex;align-items:center;justify-content:center;font-size:18px;filter:grayscale(.4)}
+  .cryo .cb{flex:1;min-width:0}
+  .cryo .cn{font-size:13px;font-weight:600}
+  .cryo .cm{font-size:10.5px;color:var(--faint);margin-top:2px}
+  .cryo .cw{font-size:11px;color:var(--relief);border:1px solid rgba(125,211,252,0.4);padding:5px 11px;border-radius:999px}
+  .danger-zone{border:1px solid rgba(255,107,107,0.3);border-radius:15px;padding:15px;margin-top:12px;background:rgba(255,107,107,0.04)}
+  .danger-zone h4{font-size:13px;color:var(--danger);margin-bottom:7px}
+  .danger-zone p{font-size:11px;color:var(--dim);line-height:1.65;margin-bottom:12px}
+  .rebirth-btn{width:100%;padding:12px;border:1px solid rgba(255,107,107,0.5);background:transparent;color:var(--danger);border-radius:11px;font-size:13px;font-weight:600}
+  .death-btn{width:100%;padding:12px;border:none;background:linear-gradient(90deg,#c53030,var(--danger));color:#fff;border-radius:11px;font-size:13px;font-weight:700}
+
+  /* bottom nav */
+  .nav{position:absolute;bottom:0;left:0;right:0;background:rgba(10,12,16,0.9);backdrop-filter:blur(14px);border-top:1px solid var(--border);display:flex;padding:9px 0 16px}
+  .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;color:var(--faint)}
+  .nav-item.active{color:var(--accent)}
+  .nav-item svg{width:21px;height:21px}
+  .nav-item span{font-size:9.5px}
+
+  .footer{margin-top:80px;text-align:center;color:#98a2b6;font-size:12.5px;line-height:1.8}
+  .footer b{color:#4a5670;font-weight:600}
+
+  @media(max-width:720px){.wrap{padding:40px 18px 60px}.tagline{text-align:left}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===================== MASTHEAD ===================== -->
+  <div class="masthead">
+    <div class="brand-mark">
+      <div class="brand-seed"></div>
+      <div class="brand-name">ANIMA<span> / A LIVING PRESENCE</span></div>
+    </div>
+    <div class="tagline">An ambient life that feels the environment it lives in — and tells you how it feels.</div>
+  </div>
+
+  <div class="lede">
+    <h1>An emotional translation device for the <em>ecological environment</em>.</h1>
+    <p>
+      ANIMA gives an environment a body and an inner life. Streams of environmental sensor data —
+      temperature, soil moisture, air quality, light, sound, pH, nutrients — are read on a microcontroller,
+      weighted through a genome that defines <em>what this life cares about</em>, and translated by a
+      liquid neural network (CfC) into a five-dimensional emotional state. That state becomes colour,
+      breathing rhythm, and a first-person journal of lived experience. A life is born by choosing an
+      ecological niche, grows continuously, can be cryo-frozen and later revived, reborn, or let go.
+    </p>
+    <div class="meta-row">
+      <span class="chip">Mobile PWA</span>
+      <span class="chip">Raspberry Pi 4 + Arduino</span>
+      <span class="chip">Liquid Neural Network · CfC</span>
+      <span class="chip alt">Real-time sensing</span>
+      <span class="chip alt">Emotional interface</span>
+    </div>
+  </div>
+
+  <div class="section-title">Screens</div>
+  <div class="section-rule"></div>
+
+  <!-- ===================== GALLERY ===================== -->
+  <div class="gallery">
+
+    <!-- ---------- 1. BIRTH ---------- -->
+    <div class="device">
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="scroll">
+          <!-- statusbar -->
+          <div class="statusbar"><span>9:41</span><span class="ic">
+            <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
+            <svg viewBox="0 0 16 12" fill="currentColor"><path d="M8 2.5c2.2 0 4.2.9 5.7 2.3l1.1-1.2C13.9 1.9 11.1.8 8 .8S2.1 1.9.2 3.6l1.1 1.2C2.8 3.4 5.8 2.5 8 2.5z" opacity=".85"/><path d="M8 6c1.2 0 2.3.5 3.1 1.3l1.1-1.2C11.1 4.9 9.6 4.3 8 4.3s-3.1.6-4.2 1.8l1.1 1.2C5.7 6.5 6.8 6 8 6z"/><circle cx="8" cy="9.6" r="1.6"/></svg>
+            <span class="sb-bat"><i></i></span>
+          </span></div>
+
+          <div class="pad">
+            <div class="birth-hero">
+              <div class="birth-seed"></div>
+              <h1>Give a life its beginning</h1>
+              <p>Choose an ecological niche. A life will awaken in its own way and begin to feel the environment it inhabits. This choice is its innate nature — bound to it for a lifetime.</p>
+            </div>
+            <div class="birth-label">Choose an ecological niche</div>
+            <div class="niche sel">
+              <h3><span class="glyph">🌱</span>Tomato / Soil Agent</h3>
+              <p>A crop's view rooted in the soil. Cares about moisture, temperature, nutrients and light; fears drought and waterlogging.</p>
+            </div>
+            <div class="niche">
+              <h3><span class="glyph">💧</span>Freshwater Agent</h3>
+              <p>An aquatic life submerged in water. Acutely sensitive to temperature, pH and water quality.</p>
+            </div>
+            <div class="niche">
+              <h3><span class="glyph">🌫</span>Indoor Air Agent</h3>
+              <p>The indoor air itself, shared with people. Cares about ventilation, humidity and noise.</p>
+            </div>
+            <button class="birth-btn">Breathe life into it</button>
+            <div class="birth-note">A life's genome can never be changed once born.<br>To choose rebirth is to end this life.</div>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap"><div class="num">01</div><h3>Birth Ritual</h3><p>The only moment of choice — pick the niche whose body and instincts this life will wake into.</p></div>
+    </div>
+
+    <!-- ---------- 2. THE BEING ---------- -->
+    <div class="device">
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="scroll">
+          <div class="statusbar"><span>9:41</span><span class="ic">
+            <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
+            <span class="sb-bat"><i></i></span></span></div>
+
+          <div class="pad">
+            <div class="top">
+              <div><div class="who">As Tomato / Soil Agent</div><h2>This moment</h2></div>
+              <div class="pill"><span class="dot"></span>Sensing</div>
+            </div>
+
+            <div class="being">
+              <div class="orb-wrap"><div class="orb-halo"></div><div class="orb-halo h2"></div><div class="orb"></div></div>
+              <div class="mood">At ease · Secure</div>
+              <div class="mood-sub">Overall positive · calm · feeling safe</div>
+              <div class="age">Alive for 3 h 42 m</div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-t"><span>Journal of experience</span><span style="color:var(--faint)">6 entries</span></div>
+              <div class="journal">
+                <div class="entry relief"><div class="tick"></div><div><div class="txt">The light has softened — just right now.</div><div class="when">09:36</div></div></div>
+                <div class="entry unease"><div class="tick"></div><div><div class="txt">The soil is drying; I begin to feel thirsty.</div><div class="when">08:12</div></div></div>
+                <div class="entry"><div class="tick"></div><div><div class="txt">All is well. I am quietly growing.</div><div class="when">07:03</div></div></div>
+                <div class="entry birth"><div class="tick"></div><div><div class="txt">I awoke in the soil, my roots unfurling for the first time.</div><div class="when">05:59</div></div></div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-t">Senses right now</div>
+              <div class="mini-grid">
+                <div class="mini"><div class="m-l">Temp</div><div class="m-v">24.6<span class="u">°C</span></div><div class="m-bar"><i style="left:52%"></i></div></div>
+                <div class="mini"><div class="m-l">Soil</div><div class="m-v">38<span class="u">%</span></div><div class="m-bar"><i style="left:34%;background:var(--warn)"></i></div></div>
+                <div class="mini"><div class="m-l">Light</div><div class="m-v">1,240<span class="u">lx</span></div><div class="m-bar"><i style="left:61%"></i></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="nav">
+          <div class="nav-item active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg><span>Life</span></div>
+          <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 15l5-5 4 3 6-7"/></svg><span>Data</span></div>
+          <div class="nav-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/></svg><span>Being</span></div>
+        </div>
+      </div></div>
+      <div class="cap"><div class="num">02</div><h3>The Living Being</h3><p>A breathing orb whose colour is its mood, above a first-person journal of what it has lived through.</p></div>
+    </div>
+
+    <!-- ---------- 3. DATA ---------- -->
+    <div class="device">
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="scroll">
+          <div class="statusbar"><span>9:41</span><span class="ic">
+            <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
+            <span class="sb-bat"><i></i></span></span></div>
+
+          <div class="pad">
+            <div class="top"><div><div class="who">Data</div><h2>Senses &amp; emotion</h2></div></div>
+
+            <div class="panel">
+              <div class="panel-t">Live sensor readings</div>
+              <div class="sensor-card">
+                <div class="sc-top"><span class="sc-l">Temperature</span><span class="sc-w">weight 0.9</span></div>
+                <div class="sc-v">24.6<span class="u">°C</span></div>
+                <svg class="spark" viewBox="0 0 240 30" preserveAspectRatio="none"><polyline fill="none" stroke="#6ee7d0" stroke-width="1.6" points="0,20 30,18 60,19 90,15 120,16 150,12 180,14 210,11 240,13"/><circle cx="240" cy="13" r="2.2" fill="#6ee7d0"/></svg>
+              </div>
+              <div class="sensor-card">
+                <div class="sc-top"><span class="sc-l">Soil Moisture</span><span class="sc-w">weight 1.0</span></div>
+                <div class="sc-v">38<span class="u">%</span></div>
+                <svg class="spark" viewBox="0 0 240 30" preserveAspectRatio="none"><polyline fill="none" stroke="#6ee7d0" stroke-width="1.6" points="0,8 30,10 60,12 90,15 120,17 150,19 180,20 210,22 240,23"/><circle cx="240" cy="23" r="2.2" fill="#6ee7d0"/></svg>
+              </div>
+              <div class="sensor-card off">
+                <div class="sc-top"><span class="sc-l">Air Odor (VOC)</span><span class="sc-w">not perceived</span></div>
+                <div class="sc-v miss">Not part of this view</div>
+              </div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-t">Emotional state · 5 dimensions</div>
+              <div class="emo-row"><div class="emo-h"><span>Valence</span><span class="v">+0.42</span></div><div class="emo-track"><div class="c"></div><div class="emo-fill" style="width:21%"></div></div><div class="emo-ends"><span>Distress</span><span>Pleasure</span></div></div>
+              <div class="emo-row"><div class="emo-h"><span>Arousal</span><span class="v">−0.18</span></div><div class="emo-track"><div class="c"></div><div class="emo-fill neg" style="right:50%;left:auto;width:9%"></div></div><div class="emo-ends"><span>Calm</span><span>Aroused</span></div></div>
+              <div class="emo-row"><div class="emo-h"><span>Safety</span><span class="v">+0.31</span></div><div class="emo-track"><div class="c"></div><div class="emo-fill" style="width:15.5%"></div></div><div class="emo-ends"><span>Alert</span><span>Secure</span></div></div>
+              <div class="emo-row"><div class="emo-h"><span>Connection</span><span class="v">+0.12</span></div><div class="emo-track"><div class="c"></div><div class="emo-fill" style="width:6%"></div></div><div class="emo-ends"><span>Isolated</span><span>Answered</span></div></div>
+            </div>
+
+            <div class="panel">
+              <div class="panel-t">History · Valence · last 180 frames</div>
+              <svg viewBox="0 0 260 90" preserveAspectRatio="none" style="width:100%;height:90px;display:block">
+                <line x1="0" y1="45" x2="260" y2="45" stroke="rgba(255,255,255,0.12)" stroke-dasharray="4 4"/>
+                <path d="M0,60 C30,52 50,66 80,48 C110,32 140,56 170,40 C200,26 230,44 260,34 L260,90 L0,90 Z" fill="rgba(110,231,208,0.18)"/>
+                <path d="M0,60 C30,52 50,66 80,48 C110,32 140,56 170,40 C200,26 230,44 260,34" fill="none" stroke="#6ee7d0" stroke-width="2"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap"><div class="num">03</div><h3>Senses &amp; Emotion</h3><p>The raw physiology: weighted sensor streams, the five emotional axes, and their history over time.</p></div>
+    </div>
+
+    <!-- ---------- 4. LIFE MANAGEMENT ---------- -->
+    <div class="device">
+      <div class="phone"><div class="notch"></div><div class="screen">
+        <div class="scroll">
+          <div class="statusbar"><span>9:41</span><span class="ic">
+            <svg viewBox="0 0 18 12" fill="currentColor"><rect x="0" y="8" width="3" height="4" rx="1"/><rect x="5" y="5" width="3" height="7" rx="1"/><rect x="10" y="2" width="3" height="10" rx="1"/><rect x="15" y="0" width="3" height="12" rx="1" opacity=".4"/></svg>
+            <span class="sb-bat"><i></i></span></span></div>
+
+          <div class="pad">
+            <div class="top"><div><div class="who">This life</div><h2>About it</h2></div></div>
+
+            <div class="life-card">
+              <div class="big-orb"></div>
+              <h3>Tomato / Soil Agent</h3>
+              <div class="sub">A crop's view rooted in the soil.</div>
+              <div class="life-meta">
+                <div class="item"><div class="k">Born on</div><div class="val">Jul 5, 14:11</div></div>
+                <div class="item"><div class="k">Alive for</div><div class="val">3 h 42 m</div></div>
+                <div class="item"><div class="k">Experiences</div><div class="val">6</div></div>
+                <div class="item"><div class="k">Frames sensed</div><div class="val">6,684</div></div>
+              </div>
+            </div>
+
+            <div class="freeze-card">
+              <h4>Gene Cryo-Freeze</h4>
+              <p>Freezing pauses this life's growth and preserves it — memory and journal intact — in the cryo-bank. It can be revived at any time. Frozen time is never counted toward its age.</p>
+              <button class="freeze-btn">Freeze &amp; preserve this life</button>
+            </div>
+
+            <div class="panel">
+              <div class="panel-t"><span>Cryo-bank</span><span style="color:var(--faint)">2 kept</span></div>
+              <div class="cryo"><div class="cg">💧</div><div class="cb"><div class="cn">Freshwater Agent</div><div class="cm">grew 1 d 05 h · 41 experiences</div></div><div class="cw">Revive</div></div>
+              <div class="cryo"><div class="cg">🌫</div><div class="cb"><div class="cn">Indoor Air Agent</div><div class="cm">grew 8 h 20 m · 18 experiences</div></div><div class="cw">Revive</div></div>
+            </div>
+
+            <div class="danger-zone">
+              <h4>Rebirth</h4>
+              <p>Rebirth ends this life: its memories and journal dissolve, and a new life is born from a genome you choose. The cryo-bank is untouched. This cannot be undone.</p>
+              <button class="rebirth-btn">End this life, be reborn anew</button>
+            </div>
+
+            <div class="danger-zone">
+              <h4>Death</h4>
+              <p>Death wipes everything on the device — this life and every life kept in the cryo-bank. All returns to nothing, back to the first birth screen.</p>
+              <button class="death-btn">Erase everything</button>
+            </div>
+          </div>
+        </div>
+      </div></div>
+      <div class="cap"><div class="num">04</div><h3>Life &amp; Cryo-bank</h3><p>Stewardship of the life: freeze it, revive frozen ones, let it be reborn, or end everything.</p></div>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    <b>ANIMA</b> · An emotional translation device for the ecological environment<br>
+    Raspberry Pi 4 &amp; Arduino · Liquid Neural Network (CfC + AutoNCP) · Progressive Web App
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1078" viewBox="0 0 1920 1078">
+<defs>
+<linearGradient id="pbg" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#f4f6fb"/><stop offset="0.55" stop-color="#e9edf5"/><stop offset="1" stop-color="#e3e8f1"/></linearGradient>
+    <radialGradient id="tealTL" cx="0.1" cy="0" r="0.9"><stop offset="0" stop-color="#6ee7d0" stop-opacity="0.18"/><stop offset="0.46" stop-color="#6ee7d0" stop-opacity="0"/></radialGradient>
+    <radialGradient id="blueBR" cx="1" cy="1" r="0.9"><stop offset="0" stop-color="#7d96ff" stop-opacity="0.16"/><stop offset="0.46" stop-color="#7d96ff" stop-opacity="0"/></radialGradient>
+<radialGradient id="rhseed" cx="0.38" cy="0.32" r="0.7"><stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/><stop offset="0.46" stop-color="#6ee7d0" stop-opacity="0"/></radialGradient>
+<linearGradient id="rule03" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#000000"/><stop offset="1" stop-color="#000000" stop-opacity="0"/></linearGradient>
+<linearGradient id="wtfill" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#6ee7d0"/><stop offset="1" stop-color="#a5f3e4"/></linearGradient>
+</defs>
+<rect width="1920" height="1078" fill="url(#pbg)"/><rect width="1920" height="1078" fill="url(#tealTL)"/><rect width="1920" height="1078" fill="url(#blueBR)"/>
+<circle cx="125" cy="92" r="15" fill="#6ee7d0"/><circle cx="125" cy="92" r="15" fill="url(#rhseed)"/>
+<text x="150" y="100" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="22" font-weight="800" fill="#12203a" letter-spacing="5">ANIMA</text>
+<text x="1810" y="98" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14" font-weight="700" fill="#17b79a" text-anchor="end" letter-spacing="3">PRODUCT DESIGN</text>
+<text x="110" y="150" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="16" font-weight="800" fill="#17b79a" letter-spacing="2">03</text>
+<text x="110" y="198" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="46" font-weight="800" fill="#111a2e" letter-spacing="-1">The Genome — one body, many natures</text>
+<text x="110" y="236" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="19" xml:space="preserve"><tspan fill="#57657e" font-weight="400">A </tspan><tspan fill="#57657e" font-weight="400">genome </tspan><tspan fill="#57657e" font-weight="400">is </tspan><tspan fill="#57657e" font-weight="400">not </tspan><tspan fill="#57657e" font-weight="400">different </tspan><tspan fill="#57657e" font-weight="400">hardware </tspan><tspan fill="#57657e" font-weight="400">— </tspan><tspan fill="#57657e" font-weight="400">it </tspan><tspan fill="#57657e" font-weight="400">is </tspan><tspan fill="#57657e" font-weight="400">a </tspan><tspan fill="#2b3852" font-weight="600">sensory </tspan><tspan fill="#2b3852" font-weight="600">weighting </tspan><tspan fill="#2b3852" font-weight="600">table </tspan><tspan fill="#57657e" font-weight="400">: </tspan><tspan fill="#57657e" font-weight="400">a </tspan><tspan fill="#57657e" font-weight="400">weight </tspan><tspan fill="#57657e" font-weight="400">(0–1), </tspan><tspan fill="#57657e" font-weight="400">a </tspan><tspan fill="#57657e" font-weight="400">comfort </tspan><tspan fill="#57657e" font-weight="400">range </tspan><tspan fill="#57657e" font-weight="400">and </tspan><tspan fill="#57657e" font-weight="400">a </tspan><tspan fill="#57657e" font-weight="400">sensitivity</tspan></text>
+<text x="110" y="263" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="19" xml:space="preserve"><tspan fill="#57657e" font-weight="400">curve </tspan><tspan fill="#57657e" font-weight="400">per </tspan><tspan fill="#57657e" font-weight="400">channel. </tspan><tspan fill="#57657e" font-weight="400">Switching </tspan><tspan fill="#57657e" font-weight="400">it </tspan><tspan fill="#57657e" font-weight="400">lets </tspan><tspan fill="#57657e" font-weight="400">the </tspan><tspan fill="#57657e" font-weight="400">same </tspan><tspan fill="#57657e" font-weight="400">object </tspan><tspan fill="#57657e" font-weight="400">inhabit </tspan><tspan fill="#57657e" font-weight="400">a </tspan><tspan fill="#57657e" font-weight="400">different </tspan><tspan fill="#57657e" font-weight="400">niche.</tspan></text>
+<rect x="110" y="302" width="1200" height="1.4" fill="url(#rule03)" opacity="0.13"/>
+<rect x="110.0" y="350" width="545.3333333333334" height="600" rx="22" fill="#0c0f15" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+<rect x="140.0" y="380" width="52" height="52" rx="15" fill="rgba(255,255,255,0.06)"/>
+<text x="166.0" y="416" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="26" font-weight="400" fill="#000" text-anchor="middle">🌱</text>
+<text x="206.0" y="405" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="23" font-weight="600" fill="#eef2f8">Soil / Root</text>
+<text x="206.0" y="428" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13" font-weight="400" fill="#6ee7d0">e.g. a tomato rooted in soil</text>
+<text x="140.0" y="468" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14.5" xml:space="preserve"><tspan fill="#8b93a3" font-weight="400">A </tspan><tspan fill="#8b93a3" font-weight="400">crop’s </tspan><tspan fill="#8b93a3" font-weight="400">view </tspan><tspan fill="#8b93a3" font-weight="400">from </tspan><tspan fill="#8b93a3" font-weight="400">within </tspan><tspan fill="#8b93a3" font-weight="400">the </tspan><tspan fill="#8b93a3" font-weight="400">soil </tspan><tspan fill="#8b93a3" font-weight="400">— </tspan><tspan fill="#8b93a3" font-weight="400">moisture</tspan></text>
+<text x="140.0" y="489" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14.5" xml:space="preserve"><tspan fill="#8b93a3" font-weight="400">and </tspan><tspan fill="#8b93a3" font-weight="400">nutrients </tspan><tspan fill="#8b93a3" font-weight="400">matter </tspan><tspan fill="#8b93a3" font-weight="400">most; </tspan><tspan fill="#8b93a3" font-weight="400">it </tspan><tspan fill="#8b93a3" font-weight="400">fears </tspan><tspan fill="#8b93a3" font-weight="400">drought</tspan></text>
+<text x="140.0" y="510" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14.5" xml:space="preserve"><tspan fill="#8b93a3" font-weight="400">and </tspan><tspan fill="#8b93a3" font-weight="400">root </tspan><tspan fill="#8b93a3" font-weight="400">suffocation.</tspan></text>
+<text x="140.0" y="540" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Moisture</text>
+<text x="625.3333333333334" y="540" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.9</text>
+<rect x="140.0" y="548" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="140.0" y="548" width="436.8" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="140.0" y="574" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Temperature</text>
+<text x="625.3333333333334" y="574" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.8</text>
+<rect x="140.0" y="582" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="140.0" y="582" width="388.2666666666667" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="140.0" y="608" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Light</text>
+<text x="625.3333333333334" y="608" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.7</text>
+<rect x="140.0" y="616" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="140.0" y="616" width="339.73333333333335" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="140.0" y="642" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">pH</text>
+<text x="625.3333333333334" y="642" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.7</text>
+<rect x="140.0" y="650" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="140.0" y="650" width="339.73333333333335" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="140.0" y="676" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Air / VOC</text>
+<text x="625.3333333333334" y="676" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.6</text>
+<rect x="140.0" y="684" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="140.0" y="684" width="291.20000000000005" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="140.0" y="710" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Nutrients (EC)</text>
+<text x="625.3333333333334" y="710" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.6</text>
+<rect x="140.0" y="718" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="140.0" y="718" width="291.20000000000005" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="140.0" y="744" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Sound</text>
+<text x="625.3333333333334" y="744" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.15</text>
+<rect x="140.0" y="752" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="140.0" y="752" width="72.80000000000001" height="6" rx="3" fill="url(#wtfill)"/>
+<rect x="140.0" y="780" width="485.33333333333337" height="1" fill="rgba(255,255,255,0.10)"/>
+<text x="140.0" y="804" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13" xml:space="preserve"><tspan fill="#565e6e" font-weight="400">Signature </tspan><tspan fill="#565e6e" font-weight="400">stress: </tspan><tspan fill="#565e6e" font-weight="400">moisture </tspan><tspan fill="#565e6e" font-weight="400">↓ </tspan><tspan fill="#565e6e" font-weight="400">+ </tspan><tspan fill="#565e6e" font-weight="400">temp </tspan><tspan fill="#565e6e" font-weight="400">↑ </tspan><tspan fill="#565e6e" font-weight="400">+ </tspan><tspan fill="#565e6e" font-weight="400">light </tspan><tspan fill="#565e6e" font-weight="400">↑ </tspan><tspan fill="#565e6e" font-weight="400">over</tspan></text>
+<text x="140.0" y="823" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13" xml:space="preserve"><tspan fill="#565e6e" font-weight="400">hours </tspan><tspan fill="#565e6e" font-weight="400">→ </tspan><tspan fill="#ffb454" font-weight="600">drought</tspan></text>
+<rect x="687.3333333333334" y="350" width="545.3333333333334" height="600" rx="22" fill="#0c0f15" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+<rect x="717.3333333333334" y="380" width="52" height="52" rx="15" fill="rgba(255,255,255,0.06)"/>
+<text x="743.3333333333334" y="416" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="26" font-weight="400" fill="#000" text-anchor="middle">💧</text>
+<text x="783.3333333333334" y="405" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="23" font-weight="600" fill="#eef2f8">Freshwater</text>
+<text x="783.3333333333334" y="428" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13" font-weight="400" fill="#6ee7d0">e.g. fish / algae colony</text>
+<text x="717.3333333333334" y="468" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14.5" xml:space="preserve"><tspan fill="#8b93a3" font-weight="400">An </tspan><tspan fill="#8b93a3" font-weight="400">aquatic </tspan><tspan fill="#8b93a3" font-weight="400">life </tspan><tspan fill="#8b93a3" font-weight="400">fully </tspan><tspan fill="#8b93a3" font-weight="400">submerged </tspan><tspan fill="#8b93a3" font-weight="400">— </tspan><tspan fill="#8b93a3" font-weight="400">tuned </tspan><tspan fill="#8b93a3" font-weight="400">to</tspan></text>
+<text x="717.3333333333334" y="489" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14.5" xml:space="preserve"><tspan fill="#8b93a3" font-weight="400">water </tspan><tspan fill="#8b93a3" font-weight="400">temperature, </tspan><tspan fill="#8b93a3" font-weight="400">pH </tspan><tspan fill="#8b93a3" font-weight="400">and </tspan><tspan fill="#8b93a3" font-weight="400">conductivity;</tspan></text>
+<text x="717.3333333333334" y="510" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14.5" xml:space="preserve"><tspan fill="#8b93a3" font-weight="400">moisture </tspan><tspan fill="#8b93a3" font-weight="400">is </tspan><tspan fill="#8b93a3" font-weight="400">meaningless.</tspan></text>
+<text x="717.3333333333334" y="540" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Temperature</text>
+<text x="1202.6666666666667" y="540" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.9</text>
+<rect x="717.3333333333334" y="548" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="717.3333333333334" y="548" width="436.8" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="717.3333333333334" y="574" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">pH</text>
+<text x="1202.6666666666667" y="574" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.8</text>
+<rect x="717.3333333333334" y="582" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="717.3333333333334" y="582" width="388.2666666666667" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="717.3333333333334" y="608" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Nutrients (EC)</text>
+<text x="1202.6666666666667" y="608" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.7</text>
+<rect x="717.3333333333334" y="616" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="717.3333333333334" y="616" width="339.73333333333335" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="717.3333333333334" y="642" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Light</text>
+<text x="1202.6666666666667" y="642" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.6</text>
+<rect x="717.3333333333334" y="650" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="717.3333333333334" y="650" width="291.20000000000005" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="717.3333333333334" y="676" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Sound</text>
+<text x="1202.6666666666667" y="676" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.4</text>
+<rect x="717.3333333333334" y="684" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="717.3333333333334" y="684" width="194.13333333333335" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="717.3333333333334" y="710" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Air / VOC</text>
+<text x="1202.6666666666667" y="710" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.2</text>
+<rect x="717.3333333333334" y="718" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="717.3333333333334" y="718" width="97.06666666666668" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="717.3333333333334" y="744" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Moisture · n/a</text>
+<text x="1202.6666666666667" y="744" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0 · n/a</text>
+<rect x="717.3333333333334" y="752" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="717.3333333333334" y="752" width="14.56" height="6" rx="3" fill="rgba(255,255,255,0.14)"/>
+<rect x="717.3333333333334" y="780" width="485.33333333333337" height="1" fill="rgba(255,255,255,0.10)"/>
+<text x="717.3333333333334" y="804" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13" xml:space="preserve"><tspan fill="#565e6e" font-weight="400">Signature </tspan><tspan fill="#565e6e" font-weight="400">stress: </tspan><tspan fill="#565e6e" font-weight="400">temp </tspan><tspan fill="#565e6e" font-weight="400">↑ </tspan><tspan fill="#565e6e" font-weight="400">+ </tspan><tspan fill="#565e6e" font-weight="400">EC </tspan><tspan fill="#565e6e" font-weight="400">↑ </tspan><tspan fill="#565e6e" font-weight="400">+ </tspan><tspan fill="#565e6e" font-weight="400">pH </tspan><tspan fill="#565e6e" font-weight="400">↓ </tspan><tspan fill="#565e6e" font-weight="400">together </tspan><tspan fill="#565e6e" font-weight="400">→</tspan></text>
+<text x="717.3333333333334" y="823" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13" xml:space="preserve"><tspan fill="#ff6b6b" font-weight="600">low-oxygen </tspan><tspan fill="#ff6b6b" font-weight="600">risk</tspan></text>
+<rect x="1264.6666666666667" y="350" width="545.3333333333334" height="600" rx="22" fill="#0c0f15" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+<rect x="1294.6666666666667" y="380" width="52" height="52" rx="15" fill="rgba(255,255,255,0.06)"/>
+<text x="1320.6666666666667" y="416" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="26" font-weight="400" fill="#000" text-anchor="middle">🫧</text>
+<text x="1360.6666666666667" y="405" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="23" font-weight="600" fill="#eef2f8">Indoor Air</text>
+<text x="1360.6666666666667" y="428" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13" font-weight="400" fill="#6ee7d0">air shared with people</text>
+<text x="1294.6666666666667" y="468" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14.5" xml:space="preserve"><tspan fill="#8b93a3" font-weight="400">The </tspan><tspan fill="#8b93a3" font-weight="400">indoor </tspan><tspan fill="#8b93a3" font-weight="400">air </tspan><tspan fill="#8b93a3" font-weight="400">itself, </tspan><tspan fill="#8b93a3" font-weight="400">breathed </tspan><tspan fill="#8b93a3" font-weight="400">alongside</tspan></text>
+<text x="1294.6666666666667" y="489" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14.5" xml:space="preserve"><tspan fill="#8b93a3" font-weight="400">people </tspan><tspan fill="#8b93a3" font-weight="400">— </tspan><tspan fill="#8b93a3" font-weight="400">it </tspan><tspan fill="#8b93a3" font-weight="400">cares </tspan><tspan fill="#8b93a3" font-weight="400">about </tspan><tspan fill="#8b93a3" font-weight="400">ventilation, </tspan><tspan fill="#8b93a3" font-weight="400">humidity</tspan></text>
+<text x="1294.6666666666667" y="510" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14.5" xml:space="preserve"><tspan fill="#8b93a3" font-weight="400">and </tspan><tspan fill="#8b93a3" font-weight="400">noise.</tspan></text>
+<text x="1294.6666666666667" y="540" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Air / VOC</text>
+<text x="1780.0" y="540" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.9</text>
+<rect x="1294.6666666666667" y="548" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="1294.6666666666667" y="548" width="436.8" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="1294.6666666666667" y="574" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Humidity (air)</text>
+<text x="1780.0" y="574" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.6</text>
+<rect x="1294.6666666666667" y="582" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="1294.6666666666667" y="582" width="291.20000000000005" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="1294.6666666666667" y="608" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Temperature</text>
+<text x="1780.0" y="608" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.6</text>
+<rect x="1294.6666666666667" y="616" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="1294.6666666666667" y="616" width="291.20000000000005" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="1294.6666666666667" y="642" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Sound</text>
+<text x="1780.0" y="642" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.6</text>
+<rect x="1294.6666666666667" y="650" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="1294.6666666666667" y="650" width="291.20000000000005" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="1294.6666666666667" y="676" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Light</text>
+<text x="1780.0" y="676" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0.5</text>
+<rect x="1294.6666666666667" y="684" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="1294.6666666666667" y="684" width="242.66666666666669" height="6" rx="3" fill="url(#wtfill)"/>
+<text x="1294.6666666666667" y="710" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">Moisture · n/a</text>
+<text x="1780.0" y="710" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0 · n/a</text>
+<rect x="1294.6666666666667" y="718" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="1294.6666666666667" y="718" width="14.56" height="6" rx="3" fill="rgba(255,255,255,0.14)"/>
+<text x="1294.6666666666667" y="744" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#8b93a3">pH / EC · n/a</text>
+<text x="1780.0" y="744" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13.5" font-weight="400" fill="#565e6e" text-anchor="end">0 · n/a</text>
+<rect x="1294.6666666666667" y="752" width="485.33333333333337" height="6" rx="3" fill="rgba(255,255,255,0.07)"/>
+<rect x="1294.6666666666667" y="752" width="14.56" height="6" rx="3" fill="rgba(255,255,255,0.14)"/>
+<rect x="1294.6666666666667" y="780" width="485.33333333333337" height="1" fill="rgba(255,255,255,0.10)"/>
+<text x="1294.6666666666667" y="804" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13" xml:space="preserve"><tspan fill="#565e6e" font-weight="400">Signature </tspan><tspan fill="#565e6e" font-weight="400">stress: </tspan><tspan fill="#565e6e" font-weight="400">VOC </tspan><tspan fill="#565e6e" font-weight="400">↑ </tspan><tspan fill="#565e6e" font-weight="400">+ </tspan><tspan fill="#565e6e" font-weight="400">humidity </tspan><tspan fill="#565e6e" font-weight="400">↑ </tspan><tspan fill="#565e6e" font-weight="400">+ </tspan><tspan fill="#565e6e" font-weight="400">temp </tspan><tspan fill="#565e6e" font-weight="400">steady </tspan><tspan fill="#565e6e" font-weight="400">→</tspan></text>
+<text x="1294.6666666666667" y="823" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="13" xml:space="preserve"><tspan fill="#ffb454" font-weight="600">poor </tspan><tspan fill="#ffb454" font-weight="600">ventilation</tspan></text>
+<text x="110" y="1034" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14" font-weight="600" fill="#9aa6b8" letter-spacing="2">ANIMA · PRODUCT DESIGN</text><text x="1864" y="1034" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="16" font-weight="400" fill="#565e6e" text-anchor="end" letter-spacing="1">04 / 07</text>
+</svg>

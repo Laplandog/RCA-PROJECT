@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ANIMA — Product Design · 3/7 Sensory Organs</title>
+<style>
+  :root{--border:rgba(255,255,255,0.08);--text:#eef2f8;--dim:#8b93a3;--faint:#565e6e;--accent:#6ee7d0;--ink:#111a2e;--sub:#57657e;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#2a2d33;font-family:var(--font);-webkit-font-smoothing:antialiased;display:flex;justify-content:center}
+  .slide{position:relative;width:1920px;height:1078px;overflow:hidden;color:var(--ink);
+    background:radial-gradient(120% 90% at 10% 0%, rgba(110,231,208,0.18), transparent 46%),radial-gradient(120% 90% at 100% 100%, rgba(125,150,255,0.16), transparent 46%),linear-gradient(160deg,#f4f6fb 0%,#e9edf5 55%,#e3e8f1 100%)}
+  .pad{position:absolute;inset:0;padding:82px 110px}
+  .sno{position:absolute;right:56px;bottom:44px;font-size:16px;color:var(--faint);letter-spacing:1px}
+  .brandtag{position:absolute;left:110px;bottom:44px;font-size:14px;letter-spacing:2px;color:#9aa6b8;text-transform:uppercase;font-weight:600}
+
+  .runhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+  .rh-brand{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:800;letter-spacing:5px;color:#12203a}
+  .rh-seed{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.7),transparent 46%),var(--accent);box-shadow:0 0 20px 2px rgba(110,231,208,0.5)}
+  .rh-sec{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#17b79a;font-weight:700}
+  .s-num{font-size:16px;font-weight:800;letter-spacing:2px;color:#17b79a}
+  .s-title{font-size:46px;font-weight:800;letter-spacing:-1px;color:var(--ink);margin:6px 0 10px}
+  .s-sub{font-size:19px;color:var(--sub);line-height:1.6;max-width:1100px}
+  .head-rule{height:1px;background:linear-gradient(90deg,rgba(0,0,0,0.13),transparent);margin:26px 0 46px}
+
+  .grid-sensors{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .sensor{background:#fff;border:1px solid rgba(20,30,50,0.08);border-radius:18px;padding:26px 26px 22px;box-shadow:0 16px 36px -26px rgba(24,34,58,0.5)}
+  .sensor .s-top{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+  .sensor .s-ic{width:56px;height:56px;border-radius:15px;flex:0 0 auto;display:flex;align-items:center;justify-content:center;font-size:27px;background:linear-gradient(160deg,#eafaf5,#dff0ff)}
+  .sensor .s-ch{font-size:12px;font-weight:700;letter-spacing:1.6px;color:#17b79a}
+  .sensor h4{font-size:21px;font-weight:700;color:#1b2740}
+  .sensor .s-model{font-size:13.5px;color:#93a0b4;margin:2px 0 12px}
+  .sensor .s-sense{font-size:15px;color:#5b6a82;line-height:1.6}
+  .sensor .s-sense b{color:#2b3852;font-weight:600}
+  .sensor.dark{background:linear-gradient(160deg,#0c0f15,#0a0c10);border-color:rgba(110,231,208,0.22);color:var(--text)}
+  .sensor.dark h4{color:var(--text)}
+  .sensor.dark .s-ic{background:rgba(110,231,208,0.12)}
+  .sensor.dark .s-sense{color:var(--dim)}
+  .sensor.dark .s-sense b{color:var(--accent)}
+</style>
+</head>
+<body>
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">02</div>
+    <div class="s-title">Sensory Organs</div>
+    <div class="s-sub">Seven universal channels — one shared body of senses. Every genome listens to all of them; it only cares about them differently.</div>
+    <div class="head-rule"></div>
+    <div class="grid-sensors">
+      <div class="sensor"><div class="s-top"><div class="s-ic">🌡️</div><div><div class="s-ch">CH · T</div><h4>Temperature</h4></div></div><div class="s-model">DS18B20 · waterproof probe</div><p class="s-sense">The <b>core of metabolism</b> — the internal temperature of the soil or water the life is rooted in.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">💧</div><div><div class="s-ch">CH · M</div><h4>Moisture</h4></div></div><div class="s-model">Capacitive soil probe</div><p class="s-sense"><b>Thirst</b> — substrate water content. Zeroed when submerged or in air, where it does not apply.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">🫧</div><div><div class="s-ch">CH · G</div><h4>Air &amp; VOC</h4></div></div><div class="s-model">BME680 · T/RH/pressure/VOC</div><p class="s-sense"><b>Breath &amp; staleness</b> — a sudden VOC rise hints at rot, poor ventilation, or an unusual source.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">☀️</div><div><div class="s-ch">CH · L</div><h4>Light</h4></div></div><div class="s-model">BH1750 · lux (digital)</div><p class="s-sense"><b>Day &amp; night rhythm</b> — dark at night is normal; bright when it should be dark is a disturbed cycle.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">🔊</div><div><div class="s-ch">CH · S</div><h4>Sound</h4></div></div><div class="s-model">INMP441 mic · peak-to-peak</div><p class="s-sense"><b>Disturbance</b> — mechanical agitation, water flow, or sustained noise as an independent stressor.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">⚗️</div><div><div class="s-ch">CH · pH</div><h4>Acidity</h4></div></div><div class="s-model">PH-4502C · glass electrode</div><p class="s-sense"><b>Chemical comfort</b> — the acidity of the medium; slow drift out of range affects nutrient uptake.</p></div>
+      <div class="sensor"><div class="s-top"><div class="s-ic">⚡</div><div><div class="s-ch">CH · EC</div><h4>Nutrients</h4></div></div><div class="s-model">TDS module · conductivity</div><p class="s-sense"><b>Nourishment</b> — ion concentration: too low reads as starvation, too high as salt stress.</p></div>
+      <div class="sensor dark"><div class="s-top"><div class="s-ic">🧬</div><div><div class="s-ch">Principle</div><h4>Complete senses</h4></div></div><p class="s-sense">A channel weighted to zero is <b>still recorded</b> — the body always senses fully; the genome only decides what it feels.</p></div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">03 / 07</div>
+</section>
+</body>
+</html>

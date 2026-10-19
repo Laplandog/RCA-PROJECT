@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ANIMA — Product Design · 6/7 The Object</title>
+<style>
+  :root{--border:rgba(255,255,255,0.08);--accent:#6ee7d0;--faint:#565e6e;--ink:#111a2e;--sub:#57657e;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#2a2d33;font-family:var(--font);-webkit-font-smoothing:antialiased;display:flex;justify-content:center}
+  .slide{position:relative;width:1920px;height:1078px;overflow:hidden;color:var(--ink);
+    background:radial-gradient(120% 90% at 10% 0%, rgba(110,231,208,0.18), transparent 46%),radial-gradient(120% 90% at 100% 100%, rgba(125,150,255,0.16), transparent 46%),linear-gradient(160deg,#f4f6fb 0%,#e9edf5 55%,#e3e8f1 100%)}
+  .pad{position:absolute;inset:0;padding:82px 110px}
+  .sno{position:absolute;right:56px;bottom:44px;font-size:16px;color:var(--faint);letter-spacing:1px}
+  .brandtag{position:absolute;left:110px;bottom:44px;font-size:14px;letter-spacing:2px;color:#9aa6b8;text-transform:uppercase;font-weight:600}
+
+  .runhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+  .rh-brand{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:800;letter-spacing:5px;color:#12203a}
+  .rh-seed{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.7),transparent 46%),var(--accent);box-shadow:0 0 20px 2px rgba(110,231,208,0.5)}
+  .rh-sec{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#17b79a;font-weight:700}
+  .s-num{font-size:16px;font-weight:800;letter-spacing:2px;color:#17b79a}
+  .s-title{font-size:46px;font-weight:800;letter-spacing:-1px;color:var(--ink);margin:6px 0 10px}
+  .s-sub{font-size:19px;color:var(--sub);line-height:1.6;max-width:1100px}
+  .head-rule{height:1px;background:linear-gradient(90deg,rgba(0,0,0,0.13),transparent);margin:26px 0 46px}
+
+  .object{display:grid;grid-template-columns:560px 1fr;gap:64px;align-items:center;height:648px}
+  .egg-stage{position:relative;height:100%;min-height:520px;border-radius:26px;background:#0a0c10;border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;background-image:radial-gradient(90% 70% at 50% 34%,rgba(110,231,208,0.14),transparent 60%)}
+  .egg{position:relative;width:300px;height:410px;border-radius:50% 50% 50% 50% / 62% 62% 40% 40%;background:linear-gradient(160deg,#eef3f6 0%,#d6dee6 55%,#b9c4cf 100%);box-shadow:inset -22px -28px 58px rgba(60,80,110,0.35),inset 18px 20px 38px rgba(255,255,255,0.75),0 50px 90px -30px rgba(24,34,58,0.6);display:flex;align-items:center;justify-content:center}
+  .egg::after{content:"";position:absolute;top:34px;left:44px;width:74px;height:128px;border-radius:50%;background:linear-gradient(160deg,rgba(255,255,255,0.85),transparent);filter:blur(7px);opacity:.7}
+  .egg-glow{width:150px;height:150px;border-radius:50%;background:radial-gradient(circle at 45% 40%,rgba(255,255,255,0.9),rgba(110,231,208,0.95) 40%,rgba(43,169,140,0.6) 70%,transparent 78%);box-shadow:0 0 80px 14px rgba(110,231,208,0.55);animation:breathe 4.5s ease-in-out infinite}
+  .egg-slit{position:absolute;bottom:92px;width:186px;height:2px;background:rgba(110,231,208,0.35);border-radius:2px}
+  .probes{position:absolute;bottom:70px;left:50%;transform:translateX(-50%);display:flex;gap:20px}
+  .probe{width:2px;height:88px;background:linear-gradient(180deg,rgba(155,166,184,0.1),rgba(155,166,184,0.6));position:relative}
+  .probe::after{content:"";position:absolute;bottom:-5px;left:-2px;width:7px;height:7px;border-radius:50%;background:#9aa6b8}
+  @keyframes breathe{0%,100%{transform:scale(0.94);opacity:.82}50%{transform:scale(1.06);opacity:1}}
+
+  .anatomy{display:flex;flex-direction:column}
+  .layer{display:flex;gap:20px;padding:19px 0;border-bottom:1px solid rgba(20,30,50,0.1)}
+  .layer:last-child{border-bottom:none}
+  .layer .l-n{width:34px;height:34px;border-radius:10px;flex:0 0 auto;background:#0c0f15;color:var(--accent);font-size:15px;font-weight:700;display:flex;align-items:center;justify-content:center}
+  .layer .l-b h4{font-size:19px;color:#1b2740;font-weight:700}
+  .layer .l-b p{font-size:15px;color:#63718a;line-height:1.55;margin-top:3px}
+  .layer .l-b p b{color:#2f6f63;font-weight:600}
+</style>
+</head>
+<body>
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">05</div>
+    <div class="s-title">The Object</div>
+    <div class="s-sub">A closed, egg-like form that sits in the space it listens to — a diffuse glowing body with probes that reach into soil, water or air.</div>
+    <div class="head-rule"></div>
+    <div class="object">
+      <div class="egg-stage">
+        <div class="egg"><div class="egg-glow"></div><div class="egg-slit"></div></div>
+        <div class="probes"><div class="probe"></div><div class="probe" style="height:108px"></div><div class="probe" style="height:76px"></div></div>
+      </div>
+      <div class="anatomy">
+        <div class="layer"><div class="l-n">A</div><div class="l-b"><h4>Diffuser shell</h4><p>A closed, egg-shaped translucent enclosure that turns the LED core into a soft, whole-body glow — the object’s “skin.”</p></div></div>
+        <div class="layer"><div class="l-n">B</div><div class="l-b"><h4>Light core</h4><p><b>Addressable WS2812 LEDs</b> driven from the Pi — the single expressive organ carrying hue, breath and flow.</p></div></div>
+        <div class="layer"><div class="l-n">C</div><div class="l-b"><h4>Cognitive core</h4><p><b>Raspberry Pi 4B</b> runs the liquid neural network, the journal, and the local PWA server over Wi-Fi.</p></div></div>
+        <div class="layer"><div class="l-n">D</div><div class="l-b"><h4>Sensory board</h4><p><b>Arduino Uno</b> with the seven sensors, linked to the Pi by a single internal USB-C data line.</p></div></div>
+        <div class="layer"><div class="l-n">E</div><div class="l-b"><h4>Power</h4><p>A <b>21700 battery tower, 5V / 4A</b>, pogo-pin fed — fully self-contained, no tethered supply.</p></div></div>
+        <div class="layer"><div class="l-n">F</div><div class="l-b"><h4>Probes</h4><p>Waterproof temperature, pH and EC probes reach out of the shell into the medium being sensed.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">06 / 07</div>
+</section>
+</body>
+</html>

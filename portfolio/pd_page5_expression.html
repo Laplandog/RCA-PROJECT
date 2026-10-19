@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ANIMA — Product Design · 5/7 From Feeling to Light</title>
+<style>
+  :root{--border:rgba(255,255,255,0.08);--dim:#8b93a3;--faint:#565e6e;--accent:#6ee7d0;--ink:#111a2e;--sub:#57657e;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#2a2d33;font-family:var(--font);-webkit-font-smoothing:antialiased;display:flex;justify-content:center}
+  .slide{position:relative;width:1920px;height:1078px;overflow:hidden;color:var(--ink);
+    background:radial-gradient(120% 90% at 10% 0%, rgba(110,231,208,0.18), transparent 46%),radial-gradient(120% 90% at 100% 100%, rgba(125,150,255,0.16), transparent 46%),linear-gradient(160deg,#f4f6fb 0%,#e9edf5 55%,#e3e8f1 100%)}
+  .pad{position:absolute;inset:0;padding:82px 110px}
+  .sno{position:absolute;right:56px;bottom:44px;font-size:16px;color:var(--faint);letter-spacing:1px}
+  .brandtag{position:absolute;left:110px;bottom:44px;font-size:14px;letter-spacing:2px;color:#9aa6b8;text-transform:uppercase;font-weight:600}
+
+  .runhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+  .rh-brand{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:800;letter-spacing:5px;color:#12203a}
+  .rh-seed{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.7),transparent 46%),var(--accent);box-shadow:0 0 20px 2px rgba(110,231,208,0.5)}
+  .rh-sec{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#17b79a;font-weight:700}
+  .s-num{font-size:16px;font-weight:800;letter-spacing:2px;color:#17b79a}
+  .s-title{font-size:46px;font-weight:800;letter-spacing:-1px;color:var(--ink);margin:6px 0 10px}
+  .s-sub{font-size:19px;color:var(--sub);line-height:1.6;max-width:1100px}
+  .s-sub b{color:#2b3852;font-weight:600}
+  .head-rule{height:1px;background:linear-gradient(90deg,rgba(0,0,0,0.13),transparent);margin:26px 0 46px}
+
+  .express{display:grid;grid-template-columns:440px 1fr;gap:56px;align-items:center;height:648px}
+  .orb-stage{display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;background:#0a0c10;border:1px solid var(--border);border-radius:24px;background-image:radial-gradient(100% 80% at 50% 40%,rgba(110,231,208,0.14),transparent 60%)}
+  .orb-wrap{position:relative;width:280px;height:280px;display:flex;align-items:center;justify-content:center}
+  .orb-halo{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,0.06)}
+  .orb-halo.h2{inset:40px;border-color:rgba(255,255,255,0.045)}
+  .orb-halo.h3{inset:80px;border-color:rgba(255,255,255,0.04)}
+  .orbcore{width:170px;height:170px;border-radius:50%;background:rgb(73,211,175);box-shadow:0 0 90px 12px rgba(73,211,175,0.55);animation:breathe 4.5s ease-in-out infinite}
+  .orb-cap{color:var(--dim);font-size:15px;margin-top:34px;letter-spacing:.4px;text-align:center;line-height:1.6}
+  .maps{display:flex;flex-direction:column}
+  .map{display:flex;align-items:flex-start;gap:22px;padding:20px 6px;border-bottom:1px dashed rgba(20,30,50,0.12)}
+  .map:last-child{border-bottom:none}
+  .map .swatch{width:20px;height:20px;border-radius:50%;flex:0 0 auto;margin-top:4px}
+  .map .m-dim{width:190px;flex:0 0 auto}
+  .map .m-dim b{font-size:19px;color:#1b2740;font-weight:700;display:block}
+  .map .m-dim span{font-size:13.5px;color:#93a0b4}
+  .map .m-out{flex:1}
+  .map .m-out b{font-size:16px;color:#2f6f63;font-weight:600}
+  .map .m-out p{font-size:15px;color:#5b6a82;line-height:1.55;margin-top:3px}
+  @keyframes breathe{0%,100%{transform:scale(0.94);opacity:.82}50%{transform:scale(1.06);opacity:1}}
+</style>
+</head>
+<body>
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">04</div>
+    <div class="s-title">From Feeling to Light</div>
+    <div class="s-sub">The five-dimensional emotion becomes non-verbal physical expression. It conveys <b>what the environment is going through</b> — never what the device “wants.”</div>
+    <div class="head-rule"></div>
+    <div class="express">
+      <div class="orb-stage">
+        <div class="orb-wrap"><div class="orb-halo"></div><div class="orb-halo h2"></div><div class="orb-halo h3"></div><div class="orbcore"></div></div>
+        <div class="orb-cap">The light core breathes at ~4.5&nbsp;s<br>calm · secure · quietly growing</div>
+      </div>
+      <div class="maps">
+        <div class="map"><span class="swatch" style="background:linear-gradient(90deg,#ff6b6b,#6ee7d0)"></span><div class="m-dim"><b>Valence</b><span>distress ↔ pleasure</span></div><div class="m-out"><b>LED hue</b><p>Positive → green / cyan; negative → orange / red; neutral → warm white.</p></div></div>
+        <div class="map"><span class="swatch" style="background:#7dd3fc"></span><div class="m-dim"><b>Arousal</b><span>calm ↔ aroused</span></div><div class="m-out"><b>Breathing speed</b><p>Low arousal → slow, gentle brightening and dimming; high → quick, urgent flicker.</p></div></div>
+        <div class="map"><span class="swatch" style="background:#a5f3e4"></span><div class="m-dim"><b>Safety</b><span>alert ↔ secure</span></div><div class="m-out"><b>Stability</b><p>Secure → steady and even; unsafe → a faint tremor or wavering brightness.</p></div></div>
+        <div class="map"><span class="swatch" style="background:#6ee7d0"></span><div class="m-dim"><b>Connection</b><span>isolated ↔ answered</span></div><div class="m-out"><b>Flowing ring</b><p>When it senses a response — a person nearing, sound shifting — a ring of light flows around the core.</p></div></div>
+        <div class="map"><span class="swatch" style="background:#c9a2ff"></span><div class="m-dim"><b>Seeking</b><span>content ↔ needful</span></div><div class="m-out"><b>Pulse + optional tone</b><p>Unrelieved stress raises the pulse rate; sound is reserved for extremes — never speech.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">05 / 07</div>
+</section>
+</body>
+</html>

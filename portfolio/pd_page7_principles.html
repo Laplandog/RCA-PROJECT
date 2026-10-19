@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ANIMA — Product Design · 7/7 Why a Liquid Neural Network</title>
+<style>
+  :root{--accent:#6ee7d0;--text:#eef2f8;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#2a2d33;font-family:var(--font);-webkit-font-smoothing:antialiased;display:flex;justify-content:center}
+  .slide{position:relative;width:1920px;height:1078px;overflow:hidden;color:var(--text);
+    background:radial-gradient(120% 90% at 80% 0%, rgba(110,231,208,0.10), transparent 50%),linear-gradient(160deg,#0d1118,#0a0c10)}
+  .pad{position:absolute;inset:0;padding:82px 110px}
+  .sno{position:absolute;right:56px;bottom:44px;font-size:16px;color:#5c6674;letter-spacing:1px}
+  .brandtag{position:absolute;left:110px;bottom:44px;font-size:14px;letter-spacing:2px;color:#5c6674;text-transform:uppercase;font-weight:600}
+
+  .runhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+  .rh-brand{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:800;letter-spacing:5px;color:#eaf0f6}
+  .rh-seed{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.7),transparent 46%),var(--accent);box-shadow:0 0 20px 2px rgba(110,231,208,0.5)}
+  .rh-sec{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#17b79a;font-weight:700}
+  .s-num{font-size:16px;font-weight:800;letter-spacing:2px;color:#17b79a}
+  .s-title{font-size:46px;font-weight:800;letter-spacing:-1px;color:#eef2f8;margin:6px 0 10px}
+  .s-sub{font-size:19px;color:#aeb6c0;line-height:1.6;max-width:1100px}
+  .head-rule{height:1px;background:linear-gradient(90deg,rgba(255,255,255,0.16),transparent);margin:26px 0 46px}
+
+  .principles{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:10px}
+  .principle{background:#fff;border:1px solid rgba(20,30,50,0.08);border-radius:20px;padding:38px 36px;box-shadow:0 16px 36px -28px rgba(24,34,58,0.5)}
+  .principle .p-n{font-size:44px;font-weight:800;color:#cfd8e2;font-family:Georgia,serif;line-height:1}
+  .principle h4{font-size:24px;font-weight:700;color:#1b2740;margin:16px 0 14px;letter-spacing:-.3px}
+  .principle p{font-size:16.5px;color:#5b6a82;line-height:1.62}
+  .principle p b{color:#2f6f63;font-weight:600}
+  .closing{margin-top:60px;font-size:17px;color:#9aa6b8;line-height:1.8}
+  .closing b{color:#eef2f8;font-weight:700}
+</style>
+</head>
+<body>
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">06</div>
+    <div class="s-title">Why a Liquid Neural Network</div>
+    <div class="s-sub">Three architectural principles make the object smarter than a threshold alarm — and true to its purpose.</div>
+    <div class="head-rule"></div>
+    <div class="principles">
+      <div class="principle"><div class="p-n">01</div><h4>Rate of change over absolute value</h4><p>The CfC network flags a departure from the environment’s <b>own recent rhythm</b>. The same temperature drop is danger in spring and normal at night — context, not a hard-coded number.</p></div>
+      <div class="principle"><div class="p-n">02</div><h4>Multi-channel consistency</h4><p>A single drifting sensor is usually noise. An event is declared only when <b>two independent channels</b> trend the same way — sensor fusion that suppresses false alarms.</p></div>
+      <div class="principle"><div class="p-n">03</div><h4>Zero weight ≠ blind</h4><p>Muted channels are still logged, leaving room for the object to one day suggest <b>“this looks more like water — switch genome?”</b> The senses stay whole; only attention shifts.</p></div>
+    </div>
+    <div class="closing">
+      <b>ANIMA</b> — an emotional translation device for the ecological environment.<br>
+      Raspberry Pi 4 &amp; Arduino · Liquid Neural Network (CfC + AutoNCP) · a translation medium, not a companion pet.
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · RCA Graduate Diploma · Unit 3</div>
+  <div class="sno">07 / 07</div>
+</section>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{
+  "step": 144000,
+  "dev_progress": 1.0,
+  "stage": "maturation",
+  "virtual_age": "2y 0m",
+  "emotion": {
+    "valence": -29.3,
+    "arousal": 73.1,
+    "safety": 62.0,
+    "connection": 26.9,
+    "seeking": 26.9
+  },
+  "autonomic_zone": "Sympathetic(fight)",
+  "body": {
+    "energy": 1.0,
+    "hydration": 0.897,
+    "thermal": 1.0
+  },
+  "symbol_score": 0.6401000022888184,
+  "transition_entropy": 0.1894,
+  "structure_ratio": 0.9369,
+  "n_active_clusters": 1,
+  "sensor_mode": "sim",
+  "speed_factor": 25,
+  "real_ts": "2026-07-05T19:32:31"
+}

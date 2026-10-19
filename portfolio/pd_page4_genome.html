@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ANIMA — Product Design · 4/7 The Genome</title>
+<style>
+  :root{--border:rgba(255,255,255,0.08);--text:#eef2f8;--dim:#8b93a3;--faint:#565e6e;--accent:#6ee7d0;--danger:#ff6b6b;--warn:#ffb454;--ink:#111a2e;--sub:#57657e;--font:-apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Roboto,Helvetica,Arial,sans-serif}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:#2a2d33;font-family:var(--font);-webkit-font-smoothing:antialiased;display:flex;justify-content:center}
+  .slide{position:relative;width:1920px;height:1078px;overflow:hidden;color:var(--ink);
+    background:radial-gradient(120% 90% at 10% 0%, rgba(110,231,208,0.18), transparent 46%),radial-gradient(120% 90% at 100% 100%, rgba(125,150,255,0.16), transparent 46%),linear-gradient(160deg,#f4f6fb 0%,#e9edf5 55%,#e3e8f1 100%)}
+  .pad{position:absolute;inset:0;padding:82px 110px}
+  .sno{position:absolute;right:56px;bottom:44px;font-size:16px;color:var(--faint);letter-spacing:1px}
+  .brandtag{position:absolute;left:110px;bottom:44px;font-size:14px;letter-spacing:2px;color:#9aa6b8;text-transform:uppercase;font-weight:600}
+
+  .runhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+  .rh-brand{display:flex;align-items:center;gap:14px;font-size:22px;font-weight:800;letter-spacing:5px;color:#12203a}
+  .rh-seed{width:30px;height:30px;border-radius:50%;background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.7),transparent 46%),var(--accent);box-shadow:0 0 20px 2px rgba(110,231,208,0.5)}
+  .rh-sec{font-size:14px;letter-spacing:3px;text-transform:uppercase;color:#17b79a;font-weight:700}
+  .s-num{font-size:16px;font-weight:800;letter-spacing:2px;color:#17b79a}
+  .s-title{font-size:46px;font-weight:800;letter-spacing:-1px;color:var(--ink);margin:6px 0 10px}
+  .s-sub{font-size:19px;color:var(--sub);line-height:1.6;max-width:1100px}
+  .s-sub b{color:#2b3852;font-weight:600}
+  .head-rule{height:1px;background:linear-gradient(90deg,rgba(0,0,0,0.13),transparent);margin:26px 0 46px}
+
+  .grid-genomes{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+  .genome{background:#0c0f15;border:1px solid var(--border);border-radius:22px;padding:30px 30px;color:var(--text);background-image:radial-gradient(130% 90% at 100% 0,rgba(110,231,208,0.09),transparent 55%)}
+  .genome .g-h{display:flex;align-items:center;gap:14px;margin-bottom:8px}
+  .genome .g-glyph{width:52px;height:52px;border-radius:15px;background:rgba(255,255,255,0.06);display:flex;align-items:center;justify-content:center;font-size:26px;flex:0 0 auto}
+  .genome h4{font-size:23px;font-weight:600}
+  .genome .g-niche{font-size:13px;color:var(--accent);letter-spacing:.3px}
+  .genome .g-desc{font-size:14.5px;color:var(--dim);line-height:1.6;margin:14px 0 22px}
+  .wt{margin-bottom:12px}
+  .wt-h{display:flex;justify-content:space-between;font-size:13.5px;margin-bottom:5px}
+  .wt-h .n{color:var(--dim)}
+  .wt-h .v{color:var(--faint);font-variant-numeric:tabular-nums}
+  .wt-bar{height:6px;border-radius:3px;background:rgba(255,255,255,0.07);overflow:hidden}
+  .wt-bar i{display:block;height:100%;border-radius:3px;background:linear-gradient(90deg,var(--accent),#a5f3e4)}
+  .wt.zero .wt-bar i{background:rgba(255,255,255,0.14)}
+  .genome .g-note{font-size:13px;color:var(--faint);line-height:1.55;margin-top:16px;border-top:1px solid var(--border);padding-top:16px}
+</style>
+</head>
+<body>
+<section class="slide">
+  <div class="pad">
+    <div class="runhead"><div class="rh-brand"><span class="rh-seed"></span>ANIMA</div><div class="rh-sec">Product Design</div></div>
+    <div class="s-num">03</div>
+    <div class="s-title">The Genome — one body, many natures</div>
+    <div class="s-sub">A genome is not different hardware — it is a <b>sensory weighting table</b>: a weight (0–1), a comfort range and a sensitivity curve per channel. Switching it lets the same object inhabit a different niche.</div>
+    <div class="head-rule"></div>
+    <div class="grid-genomes">
+      <div class="genome">
+        <div class="g-h"><div class="g-glyph">🌱</div><div><h4>Soil / Root</h4><div class="g-niche">e.g. a tomato rooted in soil</div></div></div>
+        <div class="g-desc">A crop’s view from within the soil — moisture and nutrients matter most; it fears drought and root suffocation.</div>
+        <div class="wt"><div class="wt-h"><span class="n">Moisture</span><span class="v">0.9</span></div><div class="wt-bar"><i style="width:90%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Temperature</span><span class="v">0.8</span></div><div class="wt-bar"><i style="width:80%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Light</span><span class="v">0.7</span></div><div class="wt-bar"><i style="width:70%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">pH</span><span class="v">0.7</span></div><div class="wt-bar"><i style="width:70%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Air / VOC</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Nutrients (EC)</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Sound</span><span class="v">0.15</span></div><div class="wt-bar"><i style="width:15%"></i></div></div>
+        <div class="g-note">Signature stress: moisture ↓ + temp ↑ + light ↑ over hours → <b style="color:var(--warn)">drought</b>.</div>
+      </div>
+      <div class="genome">
+        <div class="g-h"><div class="g-glyph">💧</div><div><h4>Freshwater</h4><div class="g-niche">e.g. fish / algae colony</div></div></div>
+        <div class="g-desc">An aquatic life fully submerged — tuned to water temperature, pH and conductivity; moisture is meaningless.</div>
+        <div class="wt"><div class="wt-h"><span class="n">Temperature</span><span class="v">0.9</span></div><div class="wt-bar"><i style="width:90%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">pH</span><span class="v">0.8</span></div><div class="wt-bar"><i style="width:80%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Nutrients (EC)</span><span class="v">0.7</span></div><div class="wt-bar"><i style="width:70%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Light</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Sound</span><span class="v">0.4</span></div><div class="wt-bar"><i style="width:40%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Air / VOC</span><span class="v">0.2</span></div><div class="wt-bar"><i style="width:20%"></i></div></div>
+        <div class="wt zero"><div class="wt-h"><span class="n">Moisture</span><span class="v">0 · n/a</span></div><div class="wt-bar"><i style="width:3%"></i></div></div>
+        <div class="g-note">Signature stress: temp ↑ + EC ↑ + pH ↓ together → <b style="color:var(--danger)">low-oxygen risk</b>.</div>
+      </div>
+      <div class="genome">
+        <div class="g-h"><div class="g-glyph">🌫️</div><div><h4>Indoor Air</h4><div class="g-niche">air shared with people</div></div></div>
+        <div class="g-desc">The indoor air itself, breathed alongside people — it cares about ventilation, humidity and noise.</div>
+        <div class="wt"><div class="wt-h"><span class="n">Air / VOC</span><span class="v">0.9</span></div><div class="wt-bar"><i style="width:90%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Humidity (air)</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Temperature</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Sound</span><span class="v">0.6</span></div><div class="wt-bar"><i style="width:60%"></i></div></div>
+        <div class="wt"><div class="wt-h"><span class="n">Light</span><span class="v">0.5</span></div><div class="wt-bar"><i style="width:50%"></i></div></div>
+        <div class="wt zero"><div class="wt-h"><span class="n">Moisture</span><span class="v">0 · n/a</span></div><div class="wt-bar"><i style="width:3%"></i></div></div>
+        <div class="wt zero"><div class="wt-h"><span class="n">pH / EC</span><span class="v">0 · n/a</span></div><div class="wt-bar"><i style="width:3%"></i></div></div>
+        <div class="g-note">Signature stress: VOC ↑ + humidity ↑ + temp steady → <b style="color:var(--warn)">poor ventilation</b>.</div>
+      </div>
+    </div>
+  </div>
+  <div class="brandtag">ANIMA · Product Design</div>
+  <div class="sno">04 / 07</div>
+</section>
+</body>
+</html>

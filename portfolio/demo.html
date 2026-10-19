@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, viewport-fit=cover, user-scalable=no">
+<meta name="theme-color" content="#0a0c10">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ANIMA">
+<title>ANIMA · Demo (mock data)</title>
+<style>
+  :root{
+    --bg:#0a0c10; --bg2:#0e1219;
+    --panel:rgba(255,255,255,0.04); --border:rgba(255,255,255,0.08);
+    --text:#eef2f8; --dim:#8b93a3; --faint:#565e6e;
+    --accent:#6ee7d0; --danger:#ff6b6b; --warn:#ffb454; --relief:#7dd3fc;
+    --font:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    --safe-top:env(safe-area-inset-top,0px);
+    --safe-bot:env(safe-area-inset-bottom,0px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+  html,body{background:var(--bg);color:var(--text);font-family:var(--font);-webkit-font-smoothing:antialiased;overscroll-behavior:none}
+  body{
+    min-height:100vh;
+    background:
+      radial-gradient(120% 80% at 50% -10%, rgba(110,231,208,0.07), transparent 55%),
+      radial-gradient(100% 70% at 90% 115%, rgba(120,140,255,0.06), transparent 55%),
+      var(--bg);
+  }
+  .app{max-width:520px;margin:0 auto;min-height:100vh;position:relative}
+
+  /* ---------- screens ---------- */
+  .screen{display:none;padding:calc(var(--safe-top) + 18px) 18px 120px;animation:fade .5s ease}
+  .screen.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  /* ---------- Birth ---------- */
+  #screen-birth{display:none;min-height:100vh;padding:calc(var(--safe-top) + 40px) 22px 40px;flex-direction:column}
+  #screen-birth.active{display:flex}
+  .birth-hero{text-align:center;margin-bottom:34px}
+  .birth-seed{
+    width:88px;height:88px;border-radius:50%;margin:0 auto 26px;
+    background:radial-gradient(circle at 38% 32%,rgba(255,255,255,0.5),transparent 46%),var(--accent);
+    box-shadow:0 0 50px 6px rgba(110,231,208,0.4);
+    animation:seed 4s ease-in-out infinite;
+  }
+  @keyframes seed{0%,100%{transform:scale(.9);opacity:.85}50%{transform:scale(1.05);opacity:1}}
+  .birth-hero h1{font-size:23px;font-weight:600;letter-spacing:.5px;margin-bottom:12px}
+  .birth-hero p{font-size:14px;color:var(--dim);line-height:1.75;max-width:340px;margin:0 auto}
+  .birth-label{font-size:12px;text-transform:uppercase;letter-spacing:1.6px;color:var(--faint);margin:6px 4px 14px;font-weight:600}
+  .niche{
+    background:var(--panel);border:1px solid var(--border);border-radius:16px;
+    padding:18px;margin-bottom:12px;cursor:pointer;transition:all .25s;position:relative;overflow:hidden;
+  }
+  .niche:active{transform:scale(.985)}
+  .niche.sel{border-color:rgba(110,231,208,0.6);background:linear-gradient(180deg,rgba(110,231,208,0.14),rgba(110,231,208,0.04))}
+  .niche h3{font-size:17px;font-weight:600;margin-bottom:6px;display:flex;align-items:center;gap:9px}
+  .niche .glyph{width:26px;height:26px;border-radius:8px;flex:0 0 auto;background:rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;font-size:15px}
+  .niche p{font-size:12.5px;color:var(--dim);line-height:1.65}
+  .birth-btn{
+    margin-top:20px;width:100%;padding:17px;border:none;border-radius:15px;cursor:pointer;
+    background:linear-gradient(90deg,var(--accent),#a5f3e4);color:#04150f;font-size:16px;font-weight:700;
+    font-family:var(--font);letter-spacing:1px;transition:all .25s;
+  }
+  .birth-btn:disabled{opacity:.35;cursor:default}
+  .birth-note{text-align:center;font-size:11.5px;color:var(--faint);margin-top:16px;line-height:1.7}
+
+  /* birth overlay animation */
+  #birthOverlay{position:fixed;inset:0;background:var(--bg);z-index:100;display:none;align-items:center;justify-content:center;flex-direction:column}
+  #birthOverlay.show{display:flex;animation:fade .4s}
+  .birth-orb{width:120px;height:120px;border-radius:50%;background:var(--accent);box-shadow:0 0 80px 20px rgba(110,231,208,0.5);animation:born 2.4s ease-in-out}
+  @keyframes born{0%{transform:scale(0);opacity:0}40%{transform:scale(1.15);opacity:1}100%{transform:scale(1);opacity:1}}
+  #birthOverlay p{margin-top:26px;color:var(--dim);font-size:14px;letter-spacing:2px;animation:fade 1s .6s both}
+
+  /* ---------- Header ---------- */
+  .top{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px}
+  .top .who{font-size:12px;color:var(--accent);letter-spacing:.5px}
+  .top h2{font-size:19px;font-weight:600;margin-top:2px}
+  .pill{display:inline-flex;align-items:center;gap:6px;font-size:11px;color:var(--dim);background:var(--panel);border:1px solid var(--border);padding:6px 11px;border-radius:999px}
+  .dot{width:7px;height:7px;border-radius:50%;background:var(--faint)}
+  .dot.live{background:var(--accent);box-shadow:0 0 8px var(--accent);animation:blink 2s infinite}
+  .dot.dead{background:var(--danger)}
+  @keyframes blink{0%,100%{opacity:1}50%{opacity:.35}}
+
+  /* ---------- Being (hero orb) ---------- */
+  .being{display:flex;flex-direction:column;align-items:center;padding:14px 0 8px;position:relative}
+  .orb-wrap{position:relative;width:200px;height:200px;display:flex;align-items:center;justify-content:center}
+  .orb-halo{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,255,255,0.05)}
+  .orb-halo.h2{inset:26px;border-color:rgba(255,255,255,0.04)}
+  .orb{width:130px;height:130px;border-radius:50%;background:#888;box-shadow:0 0 60px 6px rgba(136,136,136,0.5);animation:breathe 3s ease-in-out infinite;transition:background 1s,box-shadow 1s}
+  @keyframes breathe{0%,100%{transform:scale(.86);opacity:.82}50%{transform:scale(1.06);opacity:1}}
+  .mood{font-size:20px;font-weight:600;margin-top:10px;text-align:center}
+  .mood-sub{font-size:12.5px;color:var(--dim);margin-top:6px;text-align:center;line-height:1.6;padding:0 10px}
+  .age{font-size:11.5px;color:var(--faint);margin-top:12px;letter-spacing:.5px}
+  .alert{display:inline-block;margin-top:12px;font-size:11.5px;color:var(--warn);border:1px solid rgba(255,180,84,.35);background:rgba(255,180,84,.08);padding:5px 12px;border-radius:8px}
+
+  /* ---------- panels ---------- */
+  .panel{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:16px;margin-top:16px}
+  .panel-t{font-size:11px;text-transform:uppercase;letter-spacing:1.3px;color:var(--faint);font-weight:600;margin-bottom:13px;display:flex;justify-content:space-between;align-items:center}
+
+  /* ---------- Journal (narrative) ---------- */
+  .journal{display:flex;flex-direction:column;gap:2px}
+  .entry{display:flex;gap:12px;padding:11px 2px;position:relative}
+  .entry:not(:last-child)::after{content:"";position:absolute;left:5px;top:26px;bottom:-11px;width:1px;background:rgba(255,255,255,0.07)}
+  .entry .tl{flex:0 0 auto;width:11px;display:flex;justify-content:center;padding-top:5px}
+  .entry .tick{width:9px;height:9px;border-radius:50%;background:var(--dim);flex:0 0 auto}
+  .entry.birth .tick{background:var(--accent);box-shadow:0 0 8px var(--accent)}
+  .entry.alarm .tick{background:var(--danger)}
+  .entry.unease .tick{background:var(--warn)}
+  .entry.relief .tick{background:var(--relief)}
+  .entry.calm .tick{background:var(--dim)}
+  .entry .body{flex:1}
+  .entry .txt{font-size:14px;line-height:1.55}
+  .entry.birth .txt{color:var(--accent);font-weight:500}
+  .entry .when{font-size:10.5px;color:var(--faint);margin-top:3px}
+  .journal-empty{font-size:13px;color:var(--faint);text-align:center;padding:20px 0;line-height:1.7}
+
+  /* ---------- Sensor mini (on home) ---------- */
+  .mini-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:9px}
+  .mini{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:12px;padding:11px 10px;text-align:center}
+  .mini.off{opacity:.35}
+  .mini .m-l{font-size:10.5px;color:var(--dim)}
+  .mini .m-v{font-size:16px;font-weight:600;margin-top:4px}
+  .mini .m-v .u{font-size:9px;color:var(--faint);margin-left:1px}
+  .mini .m-bar{height:3px;border-radius:2px;background:rgba(255,255,255,0.08);margin-top:8px;position:relative;overflow:hidden}
+  .mini .m-bar i{position:absolute;top:0;bottom:0;width:2px;background:var(--accent);transition:left .5s,background .5s}
+
+  /* ---------- Data screen ---------- */
+  .sensor-card{background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:13px;padding:14px;margin-bottom:11px}
+  .sensor-card.off{opacity:.4}
+  .sc-top{display:flex;justify-content:space-between;align-items:baseline}
+  .sc-l{font-size:13px;color:var(--dim)}
+  .sc-w{font-size:10px;color:var(--faint)}
+  .sc-v{font-size:26px;font-weight:600;margin-top:5px}
+  .sc-v .u{font-size:11px;color:var(--faint);margin-left:3px;font-weight:400}
+  .sc-v.miss{font-size:14px;font-weight:400;color:var(--faint)}
+  .spark{width:100%;height:34px;display:block;margin-top:8px}
+  .emo-row{margin-bottom:14px}
+  .emo-h{display:flex;justify-content:space-between;font-size:12.5px;margin-bottom:6px}
+  .emo-h .v{color:var(--dim);font-variant-numeric:tabular-nums}
+  .emo-track{height:7px;background:rgba(255,255,255,0.06);border-radius:4px;position:relative;overflow:hidden}
+  .emo-track .c{position:absolute;left:50%;top:0;bottom:0;width:1px;background:rgba(255,255,255,0.12)}
+  .emo-fill{position:absolute;top:0;bottom:0;left:50%;background:linear-gradient(90deg,var(--accent),#a5f3e4);border-radius:4px;transition:all .6s cubic-bezier(.2,.8,.2,1)}
+  .emo-fill.neg{background:linear-gradient(90deg,#ff8a8a,var(--danger))}
+  .emo-ends{display:flex;justify-content:space-between;font-size:10px;color:var(--faint);margin-top:3px}
+  .hist-tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .htab{font-size:11.5px;color:var(--dim);background:rgba(255,255,255,0.03);border:1px solid var(--border);padding:5px 11px;border-radius:8px;cursor:pointer}
+  .htab.active{color:var(--accent);border-color:rgba(110,231,208,0.4)}
+  #histCanvas{width:100%;height:170px;display:block}
+  .hist-legend{font-size:11px;color:var(--faint);margin-top:8px}
+
+  /* ---------- Life screen ---------- */
+  .life-card{background:var(--panel);border:1px solid var(--border);border-radius:16px;padding:20px;text-align:center;margin-bottom:16px}
+  .life-card .big-orb{width:96px;height:96px;border-radius:50%;margin:4px auto 16px;background:#888;box-shadow:0 0 44px 4px rgba(136,136,136,.4);animation:breathe 3.4s ease-in-out infinite;transition:background 1s,box-shadow 1s}
+  .life-card h3{font-size:19px;font-weight:600}
+  .life-card .sub{font-size:12.5px;color:var(--dim);margin-top:5px;line-height:1.6}
+  .life-meta{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
+  .life-meta .item{background:rgba(255,255,255,0.03);border-radius:11px;padding:12px}
+  .life-meta .k{font-size:10.5px;color:var(--faint)}
+  .life-meta .val{font-size:15px;font-weight:600;margin-top:4px}
+  .danger-zone{border:1px solid rgba(255,107,107,0.3);border-radius:16px;padding:18px;margin-top:8px;background:rgba(255,107,107,0.04)}
+  .danger-zone h4{font-size:14px;color:var(--danger);margin-bottom:8px}
+  .danger-zone p{font-size:12px;color:var(--dim);line-height:1.7;margin-bottom:14px}
+  .danger-zone + .danger-zone{margin-top:14px}
+  .rebirth-btn{width:100%;padding:14px;border:1px solid rgba(255,107,107,0.5);background:transparent;color:var(--danger);border-radius:12px;font-size:14px;font-weight:600;font-family:var(--font);cursor:pointer;transition:all .2s}
+  .rebirth-btn:active{background:rgba(255,107,107,0.12)}
+  .death-btn{width:100%;padding:14px;border:none;background:linear-gradient(90deg,#c53030,var(--danger));color:#fff;border-radius:12px;font-size:14px;font-weight:700;font-family:var(--font);cursor:pointer;transition:all .2s;letter-spacing:.5px}
+  .death-btn:active{transform:scale(.985);opacity:.9}
+
+  /* ---------- freeze card ---------- */
+  .freeze-card{border:1px solid rgba(125,211,252,0.28);border-radius:16px;padding:18px;margin-top:8px;background:rgba(125,211,252,0.05)}
+  .freeze-card h4{font-size:14px;color:var(--relief);margin-bottom:8px}
+  .freeze-card p{font-size:12px;color:var(--dim);line-height:1.7;margin-bottom:14px}
+  .freeze-btn{width:100%;padding:14px;border:1px solid rgba(125,211,252,0.5);background:transparent;color:var(--relief);border-radius:12px;font-size:14px;font-weight:600;font-family:var(--font);cursor:pointer;transition:all .2s}
+  .freeze-btn:active{background:rgba(125,211,252,0.12)}
+
+  /* ---------- frozen list (birth screen) ---------- */
+  .birth-divider{text-align:center;font-size:11.5px;color:var(--faint);letter-spacing:1px;margin:22px 0 18px}
+  .frozen-item{background:var(--panel);border:1px solid rgba(125,211,252,0.22);border-radius:14px;padding:14px 16px;margin-bottom:10px;cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:13px}
+  .frozen-item:active{transform:scale(.985)}
+  .frozen-item .fi-glyph{width:40px;height:40px;border-radius:11px;flex:0 0 auto;background:rgba(125,211,252,0.12);display:flex;align-items:center;justify-content:center;font-size:19px;filter:grayscale(.4)}
+  .frozen-item .fi-body{flex:1;min-width:0}
+  .frozen-item .fi-name{font-size:15px;font-weight:600}
+  .frozen-item .fi-meta{font-size:11.5px;color:var(--dim);margin-top:3px}
+  .frozen-item .fi-go{flex:0 0 auto;font-size:12px;color:var(--relief);border:1px solid rgba(125,211,252,0.4);padding:6px 12px;border-radius:999px}
+  .frozen-manage{margin-top:16px}
+  .frozen-manage .fm-item{display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.025);border:1px solid var(--border);border-radius:12px;padding:12px 14px;margin-bottom:9px}
+  .frozen-manage .fm-body{flex:1;min-width:0}
+  .frozen-manage .fm-name{font-size:14px;font-weight:600}
+  .frozen-manage .fm-meta{font-size:11px;color:var(--faint);margin-top:2px}
+  .frozen-manage .fm-wake{font-size:12px;color:var(--relief);border:1px solid rgba(125,211,252,0.4);padding:6px 12px;border-radius:999px;background:transparent;font-family:var(--font);cursor:pointer}
+  .frozen-empty{font-size:12.5px;color:var(--faint);text-align:center;padding:14px 0;line-height:1.7}
+
+  /* ---------- rebirth modal ---------- */
+  .modal{position:fixed;inset:0;background:rgba(0,0,0,0.7);z-index:60;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(3px)}
+  .modal.show{display:flex;animation:fade .25s}
+  .sheet{background:var(--bg2);border:1px solid var(--border);border-radius:22px 22px 0 0;width:100%;max-width:520px;padding:24px 20px calc(28px + var(--safe-bot));animation:slideup .3s cubic-bezier(.2,.8,.2,1)}
+  @keyframes slideup{from{transform:translateY(100%)}to{transform:none}}
+  .sheet h3{font-size:18px;margin-bottom:8px}
+  .sheet .warn-txt{font-size:13px;color:var(--dim);line-height:1.7;margin-bottom:18px}
+  .sheet .warn-txt b{color:var(--warn)}
+  .modal-actions{display:flex;flex-direction:column;gap:10px}
+  .btn-ghost{padding:13px;border:1px solid var(--border);background:transparent;color:var(--dim);border-radius:12px;font-size:14px;font-family:var(--font);cursor:pointer}
+  .step2{display:none}
+
+  /* ---------- bottom nav ---------- */
+  .nav{position:fixed;bottom:0;left:0;right:0;z-index:40;background:rgba(10,12,16,0.85);backdrop-filter:blur(16px);border-top:1px solid var(--border);display:flex;padding:8px 0 calc(8px + var(--safe-bot));max-width:520px;margin:0 auto}
+  .nav.hidden{display:none}
+  .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;padding:6px 0;cursor:pointer;color:var(--faint);transition:color .2s}
+  .nav-item.active{color:var(--accent)}
+  .nav-item svg{width:22px;height:22px}
+  .nav-item span{font-size:10px}
+
+  /* ---------- language switch ---------- */
+  .lang-switch{position:fixed;top:calc(var(--safe-top) + 12px);right:14px;z-index:120;
+    display:flex;background:rgba(20,24,32,0.7);backdrop-filter:blur(12px);
+    border:1px solid var(--border);border-radius:999px;padding:3px;font-size:11px;font-weight:600}
+  .lang-switch button{border:none;background:none;color:var(--faint);font-family:var(--font);
+    font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px;cursor:pointer;letter-spacing:.5px;transition:all .2s}
+  .lang-switch button.on{background:var(--accent);color:#04150f}
+</style>
+</head>
+<body>
+<div class="lang-switch" id="langSwitch">
+  <button data-lang="zh">中</button><button data-lang="en">EN</button>
+</div>
+<div class="app">
+
+  <!-- ============ BIRTH ============ -->
+  <section id="screen-birth" class="screen">
+    <div class="birth-hero">
+      <div class="birth-seed"></div>
+      <h1 data-i18n="birth_title">孕育一条生命</h1>
+      <p data-i18n="birth_intro">选择一种生态位，一条生命将以它的方式醒来，开始感受这片它所栖居的环境。这个选择是它的先天本质，一经诞生便伴随一生。</p>
+    </div>
+    <div id="frozenBirthWrap" style="display:none">
+      <div class="birth-label" data-i18n="wake_frozen_label">唤醒一段冷冻的生命</div>
+      <div id="frozenBirthList"></div>
+      <div class="birth-divider" data-i18n="or_new_life">— 或者，孕育一条新的生命 —</div>
+    </div>
+    <div class="birth-label" data-i18n="choose_niche">选择生态位</div>
+    <div id="nicheList"></div>
+    <button class="birth-btn" id="birthBtn" data-i18n="birth_btn" disabled>孕育这条生命</button>
+    <div class="birth-note" data-i18n-html="birth_note">生命一旦诞生便不可更改基因组。<br>若日后选择重生，即意味着这条生命的终结。</div>
+  </section>
+
+  <!-- ============ HOME (life) ============ -->
+  <section id="screen-home" class="screen">
+    <div class="top">
+      <div>
+        <div class="who" id="homeWho">—</div>
+        <h2 data-i18n="home_h2">此刻的它</h2>
+      </div>
+      <div class="pill"><span class="dot" id="homeDot"></span><span id="homeStatus">…</span></div>
+    </div>
+
+    <div class="being">
+      <div class="orb-wrap">
+        <div class="orb-halo"></div><div class="orb-halo h2"></div>
+        <div class="orb" id="orb"></div>
+      </div>
+      <div class="mood" id="mood">正在感知…</div>
+      <div class="mood-sub" id="moodSub"></div>
+      <div class="age" id="age"></div>
+      <div class="alert" id="alert" data-i18n="alert_stress" style="display:none">⚠ 持续胁迫未缓解 · 需要关注</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-t"><span data-i18n="journal_title">经历日记</span><span id="journalCount" style="color:var(--faint)"></span></div>
+      <div class="journal" id="journal"></div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-t" data-i18n="senses_now">此刻的感官</div>
+      <div class="mini-grid" id="miniGrid"></div>
+    </div>
+  </section>
+
+  <!-- ============ DATA ============ -->
+  <section id="screen-data" class="screen">
+    <div class="top"><div><div class="who" data-i18n="data_who">数据</div><h2 data-i18n="data_h2">感官与情感</h2></div></div>
+    <div class="panel">
+      <div class="panel-t" data-i18n="sensor_realtime">实时传感读数</div>
+      <div id="sensorList"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-t" data-i18n="emotion_5d">情感状态 · 五维</div>
+      <div id="emoList"></div>
+    </div>
+    <div class="panel">
+      <div class="panel-t" data-i18n="history_trend">历史趋势</div>
+      <div class="hist-tabs" id="histTabs"></div>
+      <canvas id="histCanvas"></canvas>
+      <div class="hist-legend" id="histLegend"></div>
+    </div>
+  </section>
+
+  <!-- ============ LIFE ============ -->
+  <section id="screen-life" class="screen">
+    <div class="top"><div><div class="who" data-i18n="life_who">这条生命</div><h2 data-i18n="life_h2">关于它</h2></div></div>
+    <div class="life-card">
+      <div class="big-orb" id="lifeOrb"></div>
+      <h3 id="lifeName">—</h3>
+      <div class="sub" id="lifeIntro"></div>
+      <div class="life-meta">
+        <div class="item"><div class="k" data-i18n="born_at_k">出生于</div><div class="val" id="lifeBorn">—</div></div>
+        <div class="item"><div class="k" data-i18n="grown_k">已生长</div><div class="val" id="lifeAge">—</div></div>
+        <div class="item"><div class="k" data-i18n="events_k">经历条目</div><div class="val" id="lifeEvents">—</div></div>
+        <div class="item"><div class="k" data-i18n="ticks_k">感知帧数</div><div class="val" id="lifeTicks">—</div></div>
+      </div>
+    </div>
+    <div class="freeze-card">
+      <h4 data-i18n="freeze_h">基因冷冻</h4>
+      <p data-i18n-html="freeze_desc">冷冻会<b style="color:var(--relief)">暂停</b>这条生命的成长，把它连同全部记忆与日记完整封存进冷冻库。此后你可以去唤醒别的生命、或孕育新的个体；被冻结的它随时可被重新唤醒续命。冷冻期间不计入年龄。</p>
+      <button class="freeze-btn" id="openFreeze" data-i18n="freeze_btn_open">冷冻并封存这条生命</button>
+    </div>
+
+    <div class="panel" id="frozenLibPanel" style="display:none">
+      <div class="panel-t"><span data-i18n="cryobank">冷冻库</span><span id="frozenLibCount" style="color:var(--faint)"></span></div>
+      <div class="frozen-manage" id="frozenLibList"></div>
+    </div>
+
+    <div class="danger-zone">
+      <h4 data-i18n="rebirth_h">重生</h4>
+      <p data-i18n-html="rebirth_desc">重生意味着当前这条生命的<b style="color:var(--danger)">终结</b>：它的全部成长记忆与经历日记都将消散，然后作为一个全新的基因重新诞生。冷冻库中的其它生命不受影响。此动作不可撤销。</p>
+      <button class="rebirth-btn" id="openRebirth" data-i18n="rebirth_btn_open">结束这条生命，以新基因重生</button>
+    </div>
+
+    <div class="danger-zone">
+      <h4 data-i18n="death_h">死亡</h4>
+      <p data-i18n-html="death_desc">死亡将<b style="color:var(--danger)">彻底清空</b>树莓派上的全部数据 —— 当前这条生命、以及冷冻库里封存的每一段生命，都会永久消失，一切归零后回到最初的出生界面。此动作不可撤销。</p>
+      <button class="death-btn" id="openDeath" data-i18n="death_btn_open">终结一切，清空全部数据</button>
+    </div>
+  </section>
+
+  <!-- bottom nav -->
+  <nav class="nav" id="nav">
+    <div class="nav-item" data-screen="home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3" fill="currentColor" stroke="none"/></svg>
+      <span data-i18n="nav_life">生命</span>
+    </div>
+    <div class="nav-item" data-screen="data">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19V5M4 15l5-5 4 3 6-7"/></svg>
+      <span data-i18n="nav_data">数据</span>
+    </div>
+    <div class="nav-item" data-screen="life">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21s-7-4.5-7-10a7 7 0 0114 0c0 5.5-7 10-7 10z"/></svg>
+      <span data-i18n="nav_it">它</span>
+    </div>
+  </nav>
+</div>
+
+<!-- birth overlay -->
+<div id="birthOverlay"><div class="birth-orb"></div><p id="birthOverlayText">正在孕育…</p></div>
+
+<!-- rebirth modal -->
+<div class="modal" id="rebirthModal">
+  <div class="sheet">
+    <div id="rbStep1">
+      <h3 data-i18n="rb_title1">确认终结这条生命？</h3>
+      <div class="warn-txt" data-i18n-html="rb_warn1">这条生命已经生长了 <b id="rbAge">—</b>，积累了 <b id="rbEvents">—</b> 段经历。<br>重生将<b>永久清除</b>它的记忆与日记，无法恢复。</div>
+      <div class="modal-actions">
+        <button class="rebirth-btn" id="rbConfirm1" data-i18n="rb_confirm1">我明白，继续重生</button>
+        <button class="btn-ghost" id="rbCancel1" data-i18n="rb_cancel1">取消，让它继续活着</button>
+      </div>
+    </div>
+    <div id="rbStep2" class="step2">
+      <h3 data-i18n="rb_title2">为新生命选择基因组</h3>
+      <div class="warn-txt" data-i18n="rb_warn2">一条全新的生命即将以你选择的生态位诞生。</div>
+      <div id="rbNiche"></div>
+      <div class="modal-actions" style="margin-top:16px">
+        <button class="birth-btn" id="rbConfirm2" data-i18n="rb_confirm2" disabled style="margin-top:0">诞生新生命</button>
+        <button class="btn-ghost" id="rbCancel2" data-i18n="cancel">取消</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- freeze modal -->
+<div class="modal" id="freezeModal">
+  <div class="sheet">
+    <h3 data-i18n="fz_title">冷冻并封存这条生命？</h3>
+    <div class="warn-txt" data-i18n-html="fz_warn">它已生长 <b id="fzAge">—</b>，积累了 <b id="fzEvents">—</b> 段经历。<br>冷冻会<b style="color:var(--relief)">暂停</b>它的成长并完整封存，<b style="color:var(--relief)">不会丢失任何数据</b>，日后可在出生界面或冷冻库中随时唤醒。</div>
+    <div class="modal-actions">
+      <button class="freeze-btn" id="fzConfirm" data-i18n="fz_confirm">确认冷冻，封存记忆</button>
+      <button class="btn-ghost" id="fzCancel" data-i18n="fz_cancel">取消，让它继续成长</button>
+    </div>
+  </div>
+</div>
+
+<!-- death modal -->
+<div class="modal" id="deathModal">
+  <div class="sheet">
+    <div id="dtStep1">
+      <h3 style="color:var(--danger)" data-i18n="dt_title1">终结一切？</h3>
+      <div class="warn-txt" data-i18n-html="dt_warn1">这将<b style="color:var(--danger)">永久清空</b>树莓派上的全部数据：当前生命，以及冷冻库中 <b id="dtFrozen">—</b> 段封存的生命，全部无法恢复。<br>一切归零后，你将回到最初的出生界面。</div>
+      <div class="modal-actions">
+        <button class="death-btn" id="dtConfirm1" data-i18n="dt_confirm1">我明白后果，继续</button>
+        <button class="btn-ghost" id="dtCancel1" data-i18n="cancel">取消</button>
+      </div>
+    </div>
+    <div id="dtStep2" class="step2">
+      <h3 style="color:var(--danger)" data-i18n="dt_title2">最后确认</h3>
+      <div class="warn-txt" data-i18n-html="dt_warn2">这是不可撤销的终结。真的要清空<b style="color:var(--danger)">所有</b>生命的一切吗？</div>
+      <div class="modal-actions">
+        <button class="death-btn" id="dtConfirm2" data-i18n="dt_confirm2">是的，全部清空</button>
+        <button class="btn-ghost" id="dtCancel2" data-i18n="dt_cancel2">我再想想</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+let META={}, born=false, curScreen='home';
+let selectedNiche=null, rbSelectedNiche=null;
+let histField='valence';
+let sparkStore={};
+let genomes=[];
+
+/* ================= i18n ================= */
+let LANG=localStorage.getItem('anima_lang')||'zh';
+const I18N={
+ zh:{
+  birth_title:'孕育一条生命',
+  birth_intro:'选择一种生态位，一条生命将以它的方式醒来，开始感受这片它所栖居的环境。这个选择是它的先天本质，一经诞生便伴随一生。',
+  wake_frozen_label:'唤醒一段冷冻的生命',
+  or_new_life:'— 或者，孕育一条新的生命 —',
+  choose_niche:'选择生态位',
+  birth_btn:'孕育这条生命',
+  birth_note:'生命一旦诞生便不可更改基因组。<br>若日后选择重生，即意味着这条生命的终结。',
+  home_h2:'此刻的它',
+  alert_stress:'⚠ 持续胁迫未缓解 · 需要关注',
+  journal_title:'经历日记',
+  senses_now:'此刻的感官',
+  data_who:'数据', data_h2:'感官与情感',
+  sensor_realtime:'实时传感读数', emotion_5d:'情感状态 · 五维', history_trend:'历史趋势',
+  life_who:'这条生命', life_h2:'关于它',
+  born_at_k:'出生于', grown_k:'已生长', events_k:'经历条目', ticks_k:'感知帧数',
+  freeze_h:'基因冷冻',
+  freeze_desc:'冷冻会<b style="color:var(--relief)">暂停</b>这条生命的成长，把它连同全部记忆与日记完整封存进冷冻库。此后你可以去唤醒别的生命、或孕育新的个体；被冻结的它随时可被重新唤醒续命。冷冻期间不计入年龄。',
+  freeze_btn_open:'冷冻并封存这条生命',
+  cryobank:'冷冻库',
+  rebirth_h:'重生',
+  rebirth_desc:'重生意味着当前这条生命的<b style="color:var(--danger)">终结</b>：它的全部成长记忆与经历日记都将消散，然后作为一个全新的基因重新诞生。冷冻库中的其它生命不受影响。此动作不可撤销。',
+  rebirth_btn_open:'结束这条生命，以新基因重生',
+  death_h:'死亡',
+  death_desc:'死亡将<b style="color:var(--danger)">彻底清空</b>树莓派上的全部数据 —— 当前这条生命、以及冷冻库里封存的每一段生命，都会永久消失，一切归零后回到最初的出生界面。此动作不可撤销。',
+  death_btn_open:'终结一切，清空全部数据',
+  nav_life:'生命', nav_data:'数据', nav_it:'它',
+  rb_title1:'确认终结这条生命？',
+  rb_warn1:'这条生命已经生长了 <b id="rbAge">—</b>，积累了 <b id="rbEvents">—</b> 段经历。<br>重生将<b>永久清除</b>它的记忆与日记，无法恢复。',
+  rb_confirm1:'我明白，继续重生', rb_cancel1:'取消，让它继续活着',
+  rb_title2:'为新生命选择基因组', rb_warn2:'一条全新的生命即将以你选择的生态位诞生。',
+  rb_confirm2:'诞生新生命', cancel:'取消',
+  fz_title:'冷冻并封存这条生命？',
+  fz_warn:'它已生长 <b id="fzAge">—</b>，积累了 <b id="fzEvents">—</b> 段经历。<br>冷冻会<b style="color:var(--relief)">暂停</b>它的成长并完整封存，<b style="color:var(--relief)">不会丢失任何数据</b>，日后可在出生界面或冷冻库中随时唤醒。',
+  fz_confirm:'确认冷冻，封存记忆', fz_cancel:'取消，让它继续成长',
+  dt_title1:'终结一切？',
+  dt_warn1:'这将<b style="color:var(--danger)">永久清空</b>树莓派上的全部数据：当前生命，以及冷冻库中 <b id="dtFrozen">—</b> 段封存的生命，全部无法恢复。<br>一切归零后，你将回到最初的出生界面。',
+  dt_confirm1:'我明白后果，继续',
+  dt_title2:'最后确认', dt_warn2:'这是不可撤销的终结。真的要清空<b style="color:var(--danger)">所有</b>生命的一切吗？',
+  dt_confirm2:'是的，全部清空', dt_cancel2:'我再想想',
+  as_prefix:'作为 ', grown_prefix:'已生长 ',
+  status_sensing:'感知中', status_signal_lost:'信号中断', status_waiting:'等待数据',
+  journal_empty:'这条生命刚刚醒来，<br>尚未留下经历。',
+  weight_prefix:'权重 ', not_sensed:'本视角不感知', no_data:'未接入 / 无数据',
+  grown_word:'生长 ', exp_suffix:' 段经历', frozen_at_prefix:'冷冻于 ', frozen_generic:'已冷冻', wake_btn:'唤醒',
+  wake_confirm:'唤醒「%s」？当前这条活跃生命会被自动冷冻封存。',
+  ov_birth:'正在孕育…', ov_birth_done:'已诞生',
+  ov_wake:'正在解冻，唤醒沉睡的记忆…', ov_wake_done:'它醒来了',
+  ov_rebirth:'上一段生命已谢幕，新的生命正在孕育…', ov_rebirth_done:'已重生',
+  ov_freeze:'正在封存这段生命，让它安睡…', ov_freeze_done:'已封存进冷冻库',
+  ov_death:'一切正在归零…', ov_death_done:'归于虚无',
+  connect_lost:'连接中断，请稍后重试'
+ },
+ en:{
+  birth_title:'Bring a life into being',
+  birth_intro:'Choose an ecological niche, and a life will awaken in its own way, beginning to feel the environment it inhabits. This choice is its innate nature — once born, it stays with it for life.',
+  wake_frozen_label:'Wake a frozen life',
+  or_new_life:'— or, bring a new life into being —',
+  choose_niche:'Choose a niche',
+  birth_btn:'Bring this life into being',
+  birth_note:"A life's genome can never be changed once born.<br>Choosing rebirth later means the end of this life.",
+  home_h2:'How it feels now',
+  alert_stress:'⚠ Sustained stress unresolved · needs attention',
+  journal_title:'Experience journal',
+  senses_now:'Senses right now',
+  data_who:'Data', data_h2:'Senses & emotion',
+  sensor_realtime:'Live sensor readings', emotion_5d:'Emotional state · 5 dimensions', history_trend:'History trend',
+  life_who:'This life', life_h2:'About it',
+  born_at_k:'Born at', grown_k:'Grown for', events_k:'Journal entries', ticks_k:'Sense frames',
+  freeze_h:'Gene cryo-freeze',
+  freeze_desc:"Freezing <b style=\"color:var(--relief)\">pauses</b> this life's growth and seals it — together with all its memories and journal — into the cryo-bank. You can then wake another life or bring a new one into being; the frozen one can be revived at any time. Time spent frozen does not count toward its age.",
+  freeze_btn_open:'Freeze & seal this life',
+  cryobank:'Cryo-bank',
+  rebirth_h:'Rebirth',
+  rebirth_desc:'Rebirth means the <b style="color:var(--danger)">end</b> of this current life: all its growth, memories and journal will dissolve, and a brand-new gene will be born in its place. Other lives in the cryo-bank are unaffected. This action cannot be undone.',
+  rebirth_btn_open:'End this life, reborn as a new gene',
+  death_h:'Death',
+  death_desc:'Death will <b style="color:var(--danger)">permanently wipe</b> all data on the Raspberry Pi — this current life and every life sealed in the cryo-bank will be gone forever. Once everything is reset, you return to the original birth screen. This action cannot be undone.',
+  death_btn_open:'End everything, wipe all data',
+  nav_life:'Life', nav_data:'Data', nav_it:'It',
+  rb_title1:'End this life?',
+  rb_warn1:'This life has grown for <b id="rbAge">—</b> and accumulated <b id="rbEvents">—</b> experiences.<br>Rebirth will <b>permanently erase</b> its memories and journal, beyond recovery.',
+  rb_confirm1:'I understand, proceed with rebirth', rb_cancel1:'Cancel, let it keep living',
+  rb_title2:'Choose a genome for the new life', rb_warn2:'A brand-new life is about to be born in the niche you choose.',
+  rb_confirm2:'Bring the new life to life', cancel:'Cancel',
+  fz_title:'Freeze & seal this life?',
+  fz_warn:'It has grown for <b id="fzAge">—</b> and accumulated <b id="fzEvents">—</b> experiences.<br>Freezing <b style="color:var(--relief)">pauses</b> its growth and seals it completely, <b style="color:var(--relief)">without losing any data</b>. You can wake it anytime from the birth screen or the cryo-bank.',
+  fz_confirm:'Confirm freeze, seal its memory', fz_cancel:'Cancel, let it keep growing',
+  dt_title1:'End everything?',
+  dt_warn1:'This will <b style="color:var(--danger)">permanently wipe</b> all data on the Raspberry Pi: the current life, and the <b id="dtFrozen">—</b> lives sealed in the cryo-bank, all unrecoverable.<br>Once everything is reset, you return to the original birth screen.',
+  dt_confirm1:'I understand the consequences, proceed',
+  dt_title2:'Final confirmation', dt_warn2:'This is an irreversible end. Do you really want to erase everything of <b style="color:var(--danger)">all</b> lives?',
+  dt_confirm2:'Yes, wipe everything', dt_cancel2:'Let me reconsider',
+  as_prefix:'As ', grown_prefix:'Grown for ',
+  status_sensing:'Sensing', status_signal_lost:'Signal lost', status_waiting:'Awaiting data',
+  journal_empty:'This life has just awoken,<br>with no experiences yet.',
+  weight_prefix:'Weight ', not_sensed:'Not sensed in this view', no_data:'Not connected / no data',
+  grown_word:'Grown ', exp_suffix:' experiences', frozen_at_prefix:'Frozen at ', frozen_generic:'Frozen', wake_btn:'Wake',
+  wake_confirm:'Wake "%s"? The current active life will be automatically frozen and sealed.',
+  ov_birth:'Bringing to life…', ov_birth_done:'Born',
+  ov_wake:'Thawing, waking sleeping memories…', ov_wake_done:'It has awoken',
+  ov_rebirth:'The previous life has ended; a new one is forming…', ov_rebirth_done:'Reborn',
+  ov_freeze:'Sealing this life, letting it sleep…', ov_freeze_done:'Sealed into the cryo-bank',
+  ov_death:'Everything is returning to nothing…', ov_death_done:'Returned to the void',
+  connect_lost:'Connection lost, please retry later'
+ }
+};
+function t(k){const v=I18N[LANG]&&I18N[LANG][k]; return (v!=null)?v:(I18N.zh[k]!=null?I18N.zh[k]:k);}
+function ml(m){return LANG==='en'?((m&&(m.label_en||m.label))||''):((m&&m.label)||'');}
+function mpos(m){return LANG==='en'?((m&&(m.pos_en||m.pos))||''):((m&&m.pos)||'');}
+function mneg(m){return LANG==='en'?((m&&(m.neg_en||m.neg))||''):((m&&m.neg)||'');}
+function genomeById(id){return (genomes||[]).find(x=>x.id===id);}
+function gName(g,fb){return g?(LANG==='en'?(g.display_name_en||g.display_name):g.display_name):(fb||'—');}
+function gIntro(g){return g?(LANG==='en'?(g.intro_en||g.intro):g.intro):'';}
+function evText(e){return LANG==='en'?(e.text_en||e.text):e.text;}
+function localeStr(){return LANG==='en'?'en-US':'zh-CN';}
+function countEntries(n){return LANG==='en'?(n+(n===1?' entry':' entries')):(n+' 段');}
+function applyStatic(){
+  document.documentElement.lang = LANG==='en'?'en':'zh-CN';
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const v=t(el.getAttribute('data-i18n')); if(v!=null) el.textContent=v;});
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{const v=t(el.getAttribute('data-i18n-html')); if(v!=null) el.innerHTML=v;});
+  document.querySelectorAll('#langSwitch button').forEach(b=>b.classList.toggle('on',b.dataset.lang===LANG));
+}
+function setLang(l){
+  LANG=l; localStorage.setItem('anima_lang',l);
+  const nl=document.getElementById('nicheList'); if(nl) nl.innerHTML='';   // 强制按新语言重建生态位卡片
+  const ht=document.getElementById('histTabs'); if(ht) ht.innerHTML='';    // 历史趋势标签同理
+  applyStatic();
+  if(META&&META.state) apply(META);
+}
+
+/* ===================== MOCK DATA ENGINE (portfolio demo, no backend) ===================== */
+const MK_CHANNEL_META={
+  temperature:{label:'温度',label_en:'Temperature',unit:'°C',icon:'temp'},
+  moisture:{label:'土壤湿度',label_en:'Soil moisture',unit:'%',icon:'drop'},
+  voc:{label:'空气异味',label_en:'Air odor',unit:'ppm',icon:'wind'},
+  humidity_air:{label:'空气湿度',label_en:'Air humidity',unit:'%',icon:'cloud'},
+  light:{label:'光照',label_en:'Light',unit:'lux',icon:'sun'},
+  sound:{label:'声音',label_en:'Sound',unit:'',icon:'sound'},
+  ph:{label:'酸碱 pH',label_en:'pH',unit:'',icon:'ph'},
+  ec:{label:'养分 EC',label_en:'Nutrient EC',unit:'ppm',icon:'ec'}
+};
+const MK_EMOTION_META={
+  valence:{label:'效价',label_en:'Valence',pos:'愉悦',neg:'不适',pos_en:'pleasant',neg_en:'distress'},
+  arousal:{label:'唤醒',label_en:'Arousal',pos:'激动',neg:'平静',pos_en:'aroused',neg_en:'calm'},
+  safety:{label:'安全感',label_en:'Safety',pos:'安稳',neg:'警觉',pos_en:'secure',neg_en:'wary'},
+  connection:{label:'联结',label_en:'Connection',pos:'被响应',neg:'孤立',pos_en:'responded',neg_en:'isolated'},
+  seeking:{label:'探索',label_en:'Seeking',pos:'渴求',neg:'满足',pos_en:'yearning',neg_en:'content'}
+};
+const MK_CHANNEL_ORDER=['temperature','moisture','voc','humidity_air','light','sound','ph','ec'];
+const MK_EMOTION_DIMS=['valence','arousal','safety','connection','seeking'];
+const MK_GENOMES=[
+  {id:'freshwater',display_name:'淡水水体代理',display_name_en:'Freshwater Being',
+   intro:'浸没水中的水生生命。对水温、酸碱与水质变化极敏感，怕缺氧与污染。',
+   intro_en:'An aquatic life submerged in water. Acutely sensitive to water temperature, pH and water quality; it fears oxygen loss and pollution.'},
+  {id:'indoor_air',display_name:'室内空气代理',display_name_en:'Indoor Air',
+   intro:'与人共享的室内空气本身。在乎通风、湿度与噪音，怕闷塞与嘈杂。',
+   intro_en:'The indoor air itself, shared with people. It cares about ventilation, humidity and noise; it dreads stuffiness and clamor.'},
+  {id:'tomato_soil',display_name:'番茄 / 土壤代理',display_name_en:'Soil Crop',
+   intro:'扎根土壤的作物视角。在乎水分、温度、养分与光照，最怕干旱与涝渍。',
+   intro_en:"A soil-rooted crop's perspective. It cares about moisture, temperature, nutrients and light; it dreads drought and waterlogging."}
+];
+// indoor_air 的通道配置（active/weight/stress 区间），驱动感官卡片与迷你条
+const MK_ACTIVE={
+  temperature:{active:true,weight:0.6,stress_lo:10,stress_hi:35},
+  moisture:{active:false,weight:0.0,stress_lo:0,stress_hi:100},
+  voc:{active:true,weight:0.9,stress_lo:0,stress_hi:150},
+  humidity_air:{active:true,weight:0.6,stress_lo:15,stress_hi:85},
+  light:{active:true,weight:0.5,stress_lo:0,stress_hi:20000},
+  sound:{active:true,weight:0.6,stress_lo:0,stress_hi:85},
+  ph:{active:false,weight:0.0,stress_lo:0,stress_hi:14},
+  ec:{active:false,weight:0.0,stress_lo:0,stress_hi:3000}
+};
+const MK_BASE={temperature:23.4,moisture:null,voc:9,humidity_air:52,light:880,sound:31,ph:null,ec:null};
+const MK_NOW=Date.now()/1000;
+const MK_BORN_AT=MK_NOW-12480;          // 约 3 小时 28 分
+// 精选的双语经历日记（新→旧），措辞与叙事引擎一致
+const MK_EVENTS=[
+  {t:MK_NOW-40,  tone:'calm',   text:'周围的一切都在舒适的节律里，我很平静。', text_en:'Everything around me moves in a comfortable rhythm; I am calm.'},
+  {t:MK_NOW-360, tone:'relief', text:'光线柔和了下来，正合适', text_en:'The light softens, just right.'},
+  {t:MK_NOW-520, tone:'unease', text:'光变得强烈而刺眼', text_en:'The light grows harsh and glaring.'},
+  {t:MK_NOW-1180,tone:'relief', text:'那股气味散去了', text_en:'That odor has dispersed.'},
+  {t:MK_NOW-1360,tone:'alarm',  text:'空气里浮起一丝异样的气味', text_en:'A strange scent drifts through the air.'},
+  {t:MK_NOW-2600,tone:'relief', text:'喧嚣退去，重归安宁', text_en:'The noise recedes; calm returns.'},
+  {t:MK_NOW-2900,tone:'unease', text:'外界的声响变得喧嚣', text_en:'The outside world grows loud and restless.'},
+  {t:MK_NOW-6200,tone:'calm',   text:'一切安好，我在静静地生长。', text_en:'All is well; I am quietly growing.'},
+  {t:MK_BORN_AT,tone:'birth',   text:'我作为这片空气苏醒，与呼吸它的人共享同一个空间。', text_en:'I awaken as this air itself, sharing the same space with those who breathe it.'}
+];
+const MK_FROZEN=[
+  {life_id:'demo-f1',genome_id:'tomato_soil',genome_display:'番茄 / 土壤代理',lived_seconds:98400,events:41,frozen_at:MK_NOW-172800},
+  {life_id:'demo-f2',genome_id:'freshwater',genome_display:'淡水水体代理',lived_seconds:26700,events:17,frozen_at:MK_NOW-54000}
+];
+
+let MK_born=false;      // demo：从出生界面开始，选择生态位后"孕育"进入活体界面
+let MK_genome=null;
+let MK_emotion={valence:0.28,arousal:0.30,safety:0.42,connection:0.16,seeking:0.06};
+let MK_raw={temperature:23.4,voc:9,humidity_air:52,light:880,sound:31};
+let MK_tick=214;
+let MK_history=[];
+(function seedHistory(){
+  // 预填 ~46 帧，让历史曲线一打开就是满的
+  let e={...MK_emotion}, r={...MK_raw};
+  for(let i=46;i>0;i--){
+    e.valence+= (Math.random()-0.5)*0.05; e.arousal+=(Math.random()-0.5)*0.05;
+    e.safety+=(Math.random()-0.5)*0.04; e.connection+=(Math.random()-0.5)*0.04; e.seeking+=(Math.random()-0.5)*0.04;
+    r.temperature+=(Math.random()-0.5)*0.25; r.voc+=(Math.random()-0.5)*2.2;
+    r.humidity_air+=(Math.random()-0.5)*1.2; r.light+=(Math.random()-0.5)*70; r.sound+=(Math.random()-0.5)*3;
+    const hp={t:MK_NOW-i*3};
+    MK_CHANNEL_ORDER.forEach(c=>hp[c]=(MK_ACTIVE[c].active?( {temperature:r.temperature,voc:r.voc,humidity_air:r.humidity_air,light:r.light,sound:r.sound}[c] ):null));
+    MK_EMOTION_DIMS.forEach(d=>hp[d]=clamp(e[d]));
+    MK_history.push(hp);
+  }
+})();
+
+function clamp(v){return Math.max(-1,Math.min(1,v));}
+function mkStep(){
+  // 情感随机游走（保持在偏正面区间，画面舒展）
+  MK_emotion.valence=clamp(MK_emotion.valence+(Math.random()-0.5)*0.05 + (0.25-MK_emotion.valence)*0.05);
+  MK_emotion.arousal=clamp(MK_emotion.arousal+(Math.random()-0.5)*0.06 + (0.30-MK_emotion.arousal)*0.05);
+  MK_emotion.safety=clamp(MK_emotion.safety+(Math.random()-0.5)*0.04 + (0.42-MK_emotion.safety)*0.05);
+  MK_emotion.connection=clamp(MK_emotion.connection+(Math.random()-0.5)*0.04 + (0.16-MK_emotion.connection)*0.05);
+  MK_emotion.seeking=clamp(MK_emotion.seeking+(Math.random()-0.5)*0.04 + (0.06-MK_emotion.seeking)*0.05);
+  MK_raw.temperature+= (Math.random()-0.5)*0.2 + (23.4-MK_raw.temperature)*0.05;
+  MK_raw.voc+= (Math.random()-0.5)*1.8 + (9-MK_raw.voc)*0.05;
+  MK_raw.humidity_air+= (Math.random()-0.5)*1.0 + (52-MK_raw.humidity_air)*0.05;
+  MK_raw.light+= (Math.random()-0.5)*60 + (880-MK_raw.light)*0.05;
+  MK_raw.sound+= (Math.random()-0.5)*2.5 + (31-MK_raw.sound)*0.05;
+  MK_tick++;
+  const hp={t:Date.now()/1000};
+  MK_CHANNEL_ORDER.forEach(c=>hp[c]=(MK_ACTIVE[c].active?( {temperature:MK_raw.temperature,voc:MK_raw.voc,humidity_air:MK_raw.humidity_air,light:MK_raw.light,sound:MK_raw.sound}[c] ):null));
+  MK_EMOTION_DIMS.forEach(d=>hp[d]=MK_emotion[d]);
+  MK_history.push(hp); if(MK_history.length>46) MK_history.shift();
+}
+function mkState(){
+  const now=Date.now()/1000;
+  const hz=0.55+MK_emotion.arousal*0.9;
+  const raw_readings={};
+  MK_CHANNEL_ORDER.forEach(c=>raw_readings[c]=(MK_ACTIVE[c].active?MK_raw[c]:null));
+  const gid=MK_genome||'indoor_air';
+  const gd=(MK_GENOMES.find(g=>g.id===gid)||{}).display_name||'室内空气代理';
+  return {
+    life:{born:MK_born,life_id:'demo-active',genome_id:gid,genome_display:gd,
+          born_at:MK_BORN_AT,age_seconds:now-MK_BORN_AT},
+    frozen:MK_FROZEN,
+    state:{
+      timestamp:now, fresh:true, connected:true, tick:MK_tick,
+      emotion:{...MK_emotion},
+      expression:{rgb:[110,231,208],breathe_hz:hz,steadiness:0.9,pulse_alert:false},
+      raw_readings, active_channels:MK_ACTIVE, warnings:[]
+    },
+    history:MK_history.slice(),
+    events:MK_EVENTS.slice(),
+    genomes:MK_GENOMES,
+    channel_meta:MK_CHANNEL_META, emotion_meta:MK_EMOTION_META,
+    channel_order:MK_CHANNEL_ORDER, emotion_dims:MK_EMOTION_DIMS
+  };
+}
+function poll(){
+  mkStep();
+  const d=mkState();
+  META=d; genomes=d.genomes;
+  apply(d);
+}
+
+/* ---------- 生命动作统一处理：带失败兜底 + 硬超时 + 可手动关闭 ---------- */
+let _ovTimers=[];
+function hideOverlay(){
+  document.getElementById('birthOverlay').classList.remove('show');
+  _ovTimers.forEach(t=>clearTimeout(t)); _ovTimers=[];
+}
+function lifeAction({text,done,url,body,after,wait=2000}){
+  const ov=document.getElementById('birthOverlay');
+  const txt=document.getElementById('birthOverlayText');
+  _ovTimers.forEach(t=>clearTimeout(t)); _ovTimers=[];
+  txt.textContent=text;
+  ov.classList.add('show');
+  // demo：本地模拟动作结果，不请求后端
+  const u=url||'';
+  if(/birth|rebirth/.test(u)){ MK_born=true; if(body&&body.genome_id) MK_genome=body.genome_id; }
+  else if(/resume/.test(u)){ MK_born=true; const f=MK_FROZEN.find(x=>body&&x.life_id===body.life_id); if(f) MK_genome=f.genome_id; }
+  else if(/freeze|death/.test(u)){ MK_born=false; MK_genome=null; }
+  sparkStore={};
+  _ovTimers.push(setTimeout(()=>{
+    poll();
+    if(after){ try{ after(); }catch(e){} }
+    txt.textContent=done;
+    _ovTimers.push(setTimeout(hideOverlay,700));
+  }, Math.min(wait,1500)));
+}
+
+function apply(d){
+  const wasBorn=born;
+  born=d.life.born;
+  if(!born){ showBirth(d); return; }
+  if(!wasBorn){ // 刚出生/首次加载已存在生命
+    document.getElementById('screen-birth').classList.remove('active');
+    document.getElementById('nav').classList.remove('hidden');
+    go(curScreen);
+  }
+  renderHome(d); renderData(d); renderLife(d);
+}
+
+/* ---------- Birth ---------- */
+function showBirth(d){
+  document.getElementById('nav').classList.add('hidden');
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+  document.getElementById('screen-birth').classList.add('active');
+  const list=document.getElementById('nicheList');
+  if(list.children.length!==d.genomes.length){
+    list.innerHTML='';
+    d.genomes.forEach(g=>{
+      const el=document.createElement('div'); el.className='niche'; el.dataset.gid=g.id;
+      el.innerHTML=`<h3><span class="glyph">${glyph(g.id)}</span>${gName(g)}</h3><p>${gIntro(g)}</p>`;
+      el.onclick=()=>{ selectedNiche=g.id; [...list.children].forEach(c=>c.classList.toggle('sel',c.dataset.gid===g.id)); document.getElementById('birthBtn').disabled=false; };
+      list.appendChild(el);
+    });
+  }
+  renderFrozenBirth(d.frozen||[]);
+}
+
+function renderFrozenBirth(frozen){
+  const wrap=document.getElementById('frozenBirthWrap'), box=document.getElementById('frozenBirthList');
+  if(!frozen.length){ wrap.style.display='none'; return; }
+  wrap.style.display='block'; box.innerHTML='';
+  frozen.forEach(f=>{
+    const el=document.createElement('div'); el.className='frozen-item';
+    el.innerHTML=`<div class="fi-glyph">${glyph(f.genome_id)}</div>
+      <div class="fi-body"><div class="fi-name">${gName(genomeById(f.genome_id),f.genome_display||f.genome_id)}</div>
+      <div class="fi-meta">${t('grown_word')}${fmtAge(f.lived_seconds||0)} · ${f.events||0}${t('exp_suffix')} · ${f.frozen_at?(t('frozen_at_prefix')+fmtDate(f.frozen_at)):t('frozen_generic')}</div></div>
+      <div class="fi-go">${t('wake_btn')}</div>`;
+    el.onclick=()=>wakeFrozen(f);
+    box.appendChild(el);
+  });
+}
+
+function wakeFrozen(f){
+  lifeAction({text:t('ov_wake'),done:t('ov_wake_done'),url:'/api/resume',body:{life_id:f.life_id},after:()=>go('home'),wait:2000});
+}
+function glyph(id){return {tomato_soil:'🌱',freshwater:'💧',indoor_air:'🌫'}[id]||'◍';}
+
+document.getElementById('birthBtn').onclick=()=>{
+  if(!selectedNiche) return;
+  lifeAction({text:t('ov_birth'),done:t('ov_birth_done'),url:'/api/birth',body:{genome_id:selectedNiche},wait:2200});
+};
+
+/* ---------- nav ---------- */
+document.querySelectorAll('.nav-item').forEach(it=>it.onclick=()=>go(it.dataset.screen));
+function go(s){
+  curScreen=s;
+  document.querySelectorAll('.screen').forEach(x=>x.classList.remove('active'));
+  document.getElementById('screen-'+s).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(x=>x.classList.toggle('active',x.dataset.screen===s));
+  window.scrollTo(0,0);
+}
+
+function setStatus(live,txt){
+  const dot=document.getElementById('homeDot');
+  if(dot){dot.className='dot '+(live?'live':'dead');document.getElementById('homeStatus').textContent=txt;}
+}
+
+/* ---------- Home ---------- */
+function renderHome(d){
+  const s=d.state, life=d.life;
+  document.getElementById('homeWho').textContent=t('as_prefix')+gName(genomeById(life.genome_id),life.genome_display||'—');
+  if(s.fresh&&s.connected) setStatus(true,t('status_sensing'));
+  else setStatus(false, s.timestamp?t('status_signal_lost'):t('status_waiting'));
+
+  const [r,g,b]=moodColor(s.emotion), col=`rgb(${r},${g},${b})`;
+  const orb=document.getElementById('orb');
+  orb.style.background=`radial-gradient(circle at 35% 30%,rgba(255,255,255,0.55),transparent 45%),${col}`;
+  orb.style.boxShadow=`0 0 65px 7px rgba(${r},${g},${b},0.55)`;
+  const hz=s.expression.breathe_hz||1;
+  orb.style.animationDuration=Math.max(.5,Math.min(6,1/hz*2)).toFixed(2)+'s';
+
+  document.getElementById('mood').textContent=moodTitle(s.emotion);
+  document.getElementById('moodSub').textContent=moodSub(s.emotion);
+  document.getElementById('age').textContent=life.age_seconds?(t('grown_prefix')+fmtAge(life.age_seconds)):'';
+  document.getElementById('alert').style.display=s.expression.pulse_alert?'inline-block':'none';
+
+  renderJournal(d.events);
+  renderMini(d);
+}
+
+function renderJournal(events){
+  const j=document.getElementById('journal');
+  document.getElementById('journalCount').textContent=events.length?countEntries(events.length):'';
+  if(!events.length){ j.innerHTML='<div class="journal-empty">'+t('journal_empty')+'</div>'; return; }
+  j.innerHTML='';
+  events.slice(0,30).forEach(e=>{
+    const el=document.createElement('div'); el.className='entry '+(e.tone||'');
+    el.innerHTML=`<div class="tl"><div class="tick"></div></div><div class="body"><div class="txt">${evText(e)}</div><div class="when">${fmtTime(e.t)}</div></div>`;
+    j.appendChild(el);
+  });
+}
+
+function renderMini(d){
+  const s=d.state, ch=s.active_channels||{}, grid=document.getElementById('miniGrid');
+  grid.innerHTML='';
+  d.channel_order.forEach(c=>{
+    const cfg=ch[c]||{}; if(!cfg.active) return;
+    const meta=d.channel_meta[c]||{label:c,unit:''};
+    const raw=s.raw_readings[c];
+    let vtxt = (raw===null||raw===undefined)?'—':fmtVal(c,raw);
+    let bar='';
+    if(raw!==null&&raw!==undefined&&cfg.stress_lo!==undefined){
+      const p=devPos(raw,cfg); const cc=(p<0.12||p>0.88)?'var(--danger)':'var(--accent)';
+      bar=`<div class="m-bar"><i style="left:${(p*100).toFixed(0)}%;background:${cc}"></i></div>`;
+    }
+    const el=document.createElement('div'); el.className='mini';
+    el.innerHTML=`<div class="m-l">${ml(meta)}</div><div class="m-v">${vtxt}<span class="u">${meta.unit||''}</span></div>${bar}`;
+    grid.appendChild(el);
+  });
+}
+
+/* ---------- Data ---------- */
+function renderData(d){
+  const s=d.state, ch=s.active_channels||{};
+  const list=document.getElementById('sensorList'); list.innerHTML='';
+  d.channel_order.forEach(c=>{
+    const cfg=ch[c]||{}, active=!!cfg.active, meta=d.channel_meta[c]||{label:c,unit:''};
+    const raw=s.raw_readings[c];
+    if(!sparkStore[c]) sparkStore[c]=[];
+    if(raw!==null&&raw!==undefined){sparkStore[c].push(raw);if(sparkStore[c].length>44)sparkStore[c].shift();}
+    const val=(raw===null||raw===undefined)?null:fmtVal(c,raw);
+    const card=document.createElement('div'); card.className='sensor-card'+(active?'':' off');
+    const w=active?(t('weight_prefix')+(cfg.weight??'—')):t('not_sensed');
+    const vh=val===null?`<div class="sc-v miss">${t('no_data')}</div>`:`<div class="sc-v">${val}<span class="u">${meta.unit||''}</span></div>`;
+    card.innerHTML=`<div class="sc-top"><span class="sc-l">${ml(meta)}</span><span class="sc-w">${w}</span></div>${vh}<canvas class="spark" data-ch="${c}"></canvas>`;
+    list.appendChild(card);
+  });
+  requestAnimationFrame(()=>document.querySelectorAll('#screen-data .spark').forEach(cv=>drawSpark(cv,sparkStore[cv.dataset.ch]||[])));
+
+  const el=document.getElementById('emoList'); el.innerHTML='';
+  d.emotion_dims.forEach(dim=>{
+    const v=s.emotion[dim]||0, meta=d.emotion_meta[dim]||{label:dim,pos:'',neg:''};
+    const pct=Math.abs(v)*50, neg=v<0;
+    const row=document.createElement('div'); row.className='emo-row';
+    row.innerHTML=`<div class="emo-h"><span>${ml(meta)}</span><span class="v">${v>=0?'+':''}${v.toFixed(3)}</span></div>
+      <div class="emo-track"><div class="c"></div><div class="emo-fill ${neg?'neg':''}" style="${neg?('right:50%;left:auto;width:'+pct+'%'):('left:50%;width:'+pct+'%')}"></div></div>
+      <div class="emo-ends"><span>${mneg(meta)}</span><span>${mpos(meta)}</span></div>`;
+    el.appendChild(row);
+  });
+
+  buildHistTabs(d); drawHistory(d.history);
+}
+
+function buildHistTabs(d){
+  const tabs=document.getElementById('histTabs'); if(tabs.children.length) return;
+  const fields=[...d.emotion_dims.map(x=>({k:x,l:ml(d.emotion_meta[x])||x})),
+                ...d.channel_order.map(x=>({k:x,l:ml(d.channel_meta[x])||x}))];
+  fields.forEach(f=>{
+    const b=document.createElement('button'); b.className='htab'+(f.k===histField?' active':''); b.textContent=f.l; b.dataset.k=f.k;
+    b.onclick=()=>{histField=f.k;[...tabs.children].forEach(x=>x.classList.toggle('active',x.dataset.k===f.k));drawHistory(META.history);};
+    tabs.appendChild(b);
+  });
+}
+
+/* ---------- Life ---------- */
+function renderLife(d){
+  const life=d.life, s=d.state;
+  const [r,g,b]=moodColor(s.emotion);
+  const lo=document.getElementById('lifeOrb');
+  lo.style.background=`radial-gradient(circle at 35% 30%,rgba(255,255,255,0.5),transparent 45%),rgb(${r},${g},${b})`;
+  lo.style.boxShadow=`0 0 44px 4px rgba(${r},${g},${b},.45)`;
+  const gg=genomeById(life.genome_id);
+  document.getElementById('lifeName').textContent=gName(gg,life.genome_display||'—');
+  document.getElementById('lifeIntro').textContent=gIntro(gg);
+  document.getElementById('lifeBorn').textContent=life.born_at?fmtDate(life.born_at):'—';
+  document.getElementById('lifeAge').textContent=life.age_seconds?fmtAge(life.age_seconds):'—';
+  document.getElementById('lifeEvents').textContent=d.events.length;
+  document.getElementById('lifeTicks').textContent=s.tick;
+  renderFrozenLib(d.frozen||[]);
+}
+
+function renderFrozenLib(frozen){
+  const panel=document.getElementById('frozenLibPanel'), box=document.getElementById('frozenLibList');
+  if(!frozen.length){ panel.style.display='none'; return; }
+  panel.style.display='block';
+  document.getElementById('frozenLibCount').textContent=LANG==='en'?(frozen.length+(frozen.length===1?' life':' lives')):(frozen.length+' 段');
+  box.innerHTML='';
+  frozen.forEach(f=>{
+    const el=document.createElement('div'); el.className='fm-item';
+    const nm=gName(genomeById(f.genome_id),f.genome_display||f.genome_id);
+    el.innerHTML=`<div class="fi-glyph">${glyph(f.genome_id)}</div>
+      <div class="fm-body"><div class="fm-name">${nm}</div>
+      <div class="fm-meta">${t('grown_word')}${fmtAge(f.lived_seconds||0)} · ${f.events||0}${t('exp_suffix')}</div></div>
+      <button class="fm-wake">${t('wake_btn')}</button>`;
+    el.querySelector('.fm-wake').onclick=()=>{
+      if(confirm(t('wake_confirm').replace('%s',nm))) wakeFrozen(f);
+    };
+    box.appendChild(el);
+  });
+}
+
+/* ---------- Rebirth flow ---------- */
+document.getElementById('openRebirth').onclick=()=>{
+  const life=META.life;
+  document.getElementById('rbAge').textContent=life.age_seconds?fmtAge(life.age_seconds):'很短的时间';
+  document.getElementById('rbEvents').textContent=(META.events||[]).length;
+  document.getElementById('rbStep1').style.display='block';
+  document.getElementById('rbStep2').style.display='none';
+  document.getElementById('rebirthModal').classList.add('show');
+};
+document.getElementById('rbCancel1').onclick=()=>document.getElementById('rebirthModal').classList.remove('show');
+document.getElementById('rbCancel2').onclick=()=>document.getElementById('rebirthModal').classList.remove('show');
+document.getElementById('rbConfirm1').onclick=()=>{
+  document.getElementById('rbStep1').style.display='none';
+  document.getElementById('rbStep2').style.display='block';
+  const box=document.getElementById('rbNiche'); box.innerHTML='';
+  genomes.forEach(g=>{
+    const el=document.createElement('div'); el.className='niche'; el.dataset.gid=g.id;
+    el.innerHTML=`<h3><span class="glyph">${glyph(g.id)}</span>${gName(g)}</h3><p>${gIntro(g)}</p>`;
+    el.onclick=()=>{rbSelectedNiche=g.id;[...box.children].forEach(c=>c.classList.toggle('sel',c.dataset.gid===g.id));document.getElementById('rbConfirm2').disabled=false;};
+    box.appendChild(el);
+  });
+  document.getElementById('rbConfirm2').disabled=true;
+};
+document.getElementById('rbConfirm2').onclick=()=>{
+  if(!rbSelectedNiche) return;
+  document.getElementById('rebirthModal').classList.remove('show');
+  lifeAction({text:t('ov_rebirth'),done:t('ov_rebirth_done'),url:'/api/rebirth',body:{genome_id:rbSelectedNiche},after:()=>go('home'),wait:2400});
+};
+
+/* ---------- Freeze flow ---------- */
+document.getElementById('openFreeze').onclick=()=>{
+  const life=META.life;
+  document.getElementById('fzAge').textContent=life.age_seconds?fmtAge(life.age_seconds):'很短的时间';
+  document.getElementById('fzEvents').textContent=(META.events||[]).length;
+  document.getElementById('freezeModal').classList.add('show');
+};
+document.getElementById('fzCancel').onclick=()=>document.getElementById('freezeModal').classList.remove('show');
+document.getElementById('fzConfirm').onclick=()=>{
+  document.getElementById('freezeModal').classList.remove('show');
+  lifeAction({text:t('ov_freeze'),done:t('ov_freeze_done'),url:'/api/freeze',wait:2000});
+};
+
+/* ---------- Death flow ---------- */
+document.getElementById('openDeath').onclick=()=>{
+  document.getElementById('dtFrozen').textContent=(META.frozen||[]).length;
+  document.getElementById('dtStep1').style.display='block';
+  document.getElementById('dtStep2').style.display='none';
+  document.getElementById('deathModal').classList.add('show');
+};
+document.getElementById('dtCancel1').onclick=()=>document.getElementById('deathModal').classList.remove('show');
+document.getElementById('dtCancel2').onclick=()=>document.getElementById('deathModal').classList.remove('show');
+document.getElementById('dtConfirm1').onclick=()=>{
+  document.getElementById('dtStep1').style.display='none';
+  document.getElementById('dtStep2').style.display='block';
+};
+document.getElementById('dtConfirm2').onclick=()=>{
+  document.getElementById('deathModal').classList.remove('show');
+  lifeAction({text:t('ov_death'),done:t('ov_death_done'),url:'/api/death',wait:2000});
+};
+
+/* ---------- helpers ---------- */
+/* 与 led_driver.py 完全一致的心情判定 + 配色（球 / 灯带 / 文字三者统一） */
+const MOOD_COLOR={serene:[0,210,140],calm:[40,150,175],alert:[255,165,25],discomfort:[255,85,20],threat:[255,35,35]};
+function classifyMood(e){const v=e.valence,a=e.arousal,s=e.safety;
+  if(v>0.15&&s>0)return'serene';
+  if(v<-0.15&&s<0)return'threat';
+  if(a>0.3)return'alert';
+  if(v<-0.15)return'discomfort';
+  return'calm';}
+function moodColor(e){return MOOD_COLOR[classifyMood(e)]||MOOD_COLOR.calm;}
+const MOOD_TITLE={
+  zh:{serene:'舒展 · 安稳',threat:'紧绷 · 感到胁迫',alert:'警觉 · 环境有变',discomfort:'不适 · 偏离舒适',calm:'平稳 · 接近舒适'},
+  en:{serene:'At ease · secure',threat:'Tense · feels threatened',alert:'Alert · surroundings shifting',discomfort:'Uneasy · off comfort',calm:'Steady · near comfort'}
+};
+function moodTitle(e){return (MOOD_TITLE[LANG]||MOOD_TITLE.zh)[classifyMood(e)];}
+function moodSub(e){const p=[];
+  if(LANG==='en'){p.push(e.valence>=0?'overall positive':'overall negative');p.push(e.arousal>0.2?'arousal rising':'fairly calm');p.push(e.safety>=0?'feels safe enough':'safety low');}
+  else{p.push(e.valence>=0?'整体偏正面':'整体偏负面');p.push(e.arousal>0.2?'唤醒升高':'较为平静');p.push(e.safety>=0?'安全感尚可':'安全感偏低');}
+  return p.join(' · ');}
+function fmtVal(ch,v){if(v===null||v===undefined)return'—';if(ch==='light'||ch==='ec'||ch==='voc')return Math.round(v).toLocaleString();return(typeof v==='number')?v.toFixed(1):v;}
+function devPos(v,cfg){const sl=cfg.stress_lo,sh=cfg.stress_hi;if(sh===sl)return .5;return Math.max(0,Math.min(1,(v-sl)/(sh-sl)));}
+function fmtAge(sec){sec=Math.floor(sec);const d=Math.floor(sec/86400),h=Math.floor(sec%86400/3600),m=Math.floor(sec%3600/60);
+  if(LANG==='en'){if(d>0)return`${d}d ${h}h`;if(h>0)return`${h}h ${m}m`;if(m>0)return`${m} min`;return`${sec} sec`;}
+  if(d>0)return`${d}天${h}小时`;if(h>0)return`${h}小时${m}分`;if(m>0)return`${m}分钟`;return`${sec}秒`;}
+function fmtTime(ts){const d=new Date(ts*1000);return d.toLocaleTimeString(localeStr(),{hour:'2-digit',minute:'2-digit'});}
+function fmtDate(ts){const d=new Date(ts*1000);return d.toLocaleString(localeStr(),{month:'numeric',day:'numeric',hour:'2-digit',minute:'2-digit'});}
+
+function drawSpark(cv,data){const dpr=devicePixelRatio||1,w=cv.clientWidth,h=cv.clientHeight;cv.width=w*dpr;cv.height=h*dpr;const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,w,h);if(data.length<2)return;const mn=Math.min(...data),mx=Math.max(...data),rg=(mx-mn)||1;x.beginPath();data.forEach((v,i)=>{const px=i/(data.length-1)*w,py=h-((v-mn)/rg)*(h-6)-3;i?x.lineTo(px,py):x.moveTo(px,py);});x.strokeStyle='rgba(110,231,208,0.7)';x.lineWidth=1.5;x.stroke();const lx=w-2,ly=h-((data[data.length-1]-mn)/rg)*(h-6)-3;x.beginPath();x.arc(lx,ly,2,0,7);x.fillStyle='#6ee7d0';x.fill();}
+
+function drawHistory(history){
+  if(!history)return;
+  const cv=document.getElementById('histCanvas');const dpr=devicePixelRatio||1,w=cv.clientWidth,h=170;cv.width=w*dpr;cv.height=h*dpr;const x=cv.getContext('2d');x.scale(dpr,dpr);x.clearRect(0,0,w,h);
+  const isEmo=(META.emotion_dims||[]).includes(histField);
+  const pts=history.map(p=>p[histField]).filter(v=>v!==null&&v!==undefined);
+  const _hlbl=ml(META.channel_meta[histField])||ml(META.emotion_meta[histField])||histField;
+  document.getElementById('histLegend').textContent=_hlbl+(LANG==='en'?(' · last '+pts.length+' frames'+(isEmo?' (range -1~+1)':'')):(' · 最近 '+pts.length+' 帧'+(isEmo?' (范围 -1~+1)':'')));
+  x.strokeStyle='rgba(255,255,255,0.05)';for(let i=0;i<=4;i++){const y=i/4*h;x.beginPath();x.moveTo(0,y);x.lineTo(w,y);x.stroke();}
+  if(pts.length<2){x.fillStyle='rgba(255,255,255,0.25)';x.font='13px sans-serif';x.textAlign='center';x.fillText(LANG==='en'?'accumulating data…':'数据积累中…',w/2,h/2);return;}
+  let mn,mx;if(isEmo){mn=-1;mx=1;}else{mn=Math.min(...pts);mx=Math.max(...pts);const pad=((mx-mn)||1)*0.1;mn-=pad;mx+=pad;}
+  const rg=(mx-mn)||1;
+  if(isEmo){const zy=h-((0-mn)/rg)*h;x.strokeStyle='rgba(255,255,255,0.12)';x.setLineDash([4,4]);x.beginPath();x.moveTo(0,zy);x.lineTo(w,zy);x.stroke();x.setLineDash([]);}
+  x.beginPath();pts.forEach((v,i)=>{const px=i/(pts.length-1)*w,py=h-((v-mn)/rg)*h;i?x.lineTo(px,py):x.moveTo(px,py);});
+  const grad=x.createLinearGradient(0,0,0,h);grad.addColorStop(0,'rgba(110,231,208,0.25)');grad.addColorStop(1,'rgba(110,231,208,0)');
+  x.lineTo(w,h);x.lineTo(0,h);x.closePath();x.fillStyle=grad;x.fill();
+  x.beginPath();pts.forEach((v,i)=>{const px=i/(pts.length-1)*w,py=h-((v-mn)/rg)*h;i?x.lineTo(px,py):x.moveTo(px,py);});x.strokeStyle='#6ee7d0';x.lineWidth=2;x.stroke();
+  x.fillStyle='rgba(255,255,255,0.3)';x.font='10px sans-serif';x.textAlign='left';x.fillText(mx.toFixed(isEmo?1:0),4,12);x.fillText(mn.toFixed(isEmo?1:0),4,h-4);
+}
+
+/* init */
+document.getElementById('birthOverlay').addEventListener('click',hideOverlay); // 兜底：万一还卡住，点一下就能关
+document.querySelectorAll('#langSwitch button').forEach(b=>b.onclick=()=>setLang(b.dataset.lang));
+applyStatic();   // 按已保存的语言渲染静态文案
+go('home');
+poll();
+setInterval(poll,2000);
+</script>
+</body>
+</html>

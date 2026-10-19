@@ -1,0 +1,23 @@
+{
+  "genome_id": "indoor_air",
+  "display_name": "\u5ba4\u5185\u7a7a\u6c14\u4ee3\u7406",
+  "_calibration_status": "using literature-estimated defaults, not yet field-calibrated",
+
+  "channels": {
+    "temperature":  {"active": true,  "weight": 0.6,  "lo": 20, "hi": 26, "stress_lo": 10, "stress_hi": 35},
+    "moisture":     {"active": false, "weight": 0.0,  "lo": 0,  "hi": 100,"stress_lo": 0,  "stress_hi": 100},
+    "voc":          {"active": true,  "weight": 0.9,  "lo": 0,  "hi": 30, "stress_lo": 0,  "stress_hi": 150},
+    "humidity_air": {"active": true,  "weight": 0.6,  "lo": 40, "hi": 60, "stress_lo": 15, "stress_hi": 85},
+    "light":        {"active": true,  "weight": 0.5,  "lo": 100,"hi": 3000,"stress_lo": 0,  "stress_hi": 20000},
+    "sound":        {"active": true,  "weight": 0.6,  "lo": 0,  "hi": 35, "stress_lo": 0,  "stress_hi": 85},
+    "ph":           {"active": false, "weight": 0.0,  "lo": 0,  "hi": 14, "stress_lo": 0,  "stress_hi": 14},
+    "ec":           {"active": false, "weight": 0.0,  "lo": 0,  "hi": 3000,"stress_lo": 0, "stress_hi": 3000}
+  },
+
+  "baseline_params": {
+    "arousal_baseline": 0.35,
+    "emotional_inertia": 0.5,
+    "approach_bias": 0.5,
+    "_comment": "\u5ba4\u5185\u573a\u666f\uff0cpH\u548cEC\u901a\u9053\u7269\u7406\u4e0d\u9002\u7528\uff0c\u5f3a\u5236active=false"
+  }
+}

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1078" viewBox="0 0 1920 1078">
+<defs>
+<linearGradient id="pbg" x1="0" y1="0" x2="0.5" y2="1">
+      <stop offset="0" stop-color="#f4f6fb"/><stop offset="0.55" stop-color="#e9edf5"/><stop offset="1" stop-color="#e3e8f1"/></linearGradient>
+    <radialGradient id="tealTL" cx="0.1" cy="0" r="0.9"><stop offset="0" stop-color="#6ee7d0" stop-opacity="0.18"/><stop offset="0.46" stop-color="#6ee7d0" stop-opacity="0"/></radialGradient>
+    <radialGradient id="blueBR" cx="1" cy="1" r="0.9"><stop offset="0" stop-color="#7d96ff" stop-opacity="0.16"/><stop offset="0.46" stop-color="#7d96ff" stop-opacity="0"/></radialGradient>
+<radialGradient id="coverseed" cx="0.38" cy="0.32" r="0.7"><stop offset="0" stop-color="#ffffff" stop-opacity="0.7"/><stop offset="0.46" stop-color="#6ee7d0" stop-opacity="0"/></radialGradient>
+<linearGradient id="h1g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#17b79a"/><stop offset="1" stop-color="#3aa0ff"/></linearGradient>
+<radialGradient id="coverstagebg" cx="0.5" cy="-0.1" r="0.9"><stop offset="0" stop-color="#6ee7d0" stop-opacity="0.10"/><stop offset="0.6" stop-color="#6ee7d0" stop-opacity="0"/></radialGradient>
+<linearGradient id="coveregg_body" x1="0.1" y1="0" x2="0.9" y2="1"><stop offset="0" stop-color="#eef3f6"/><stop offset="0.55" stop-color="#d6dee6"/><stop offset="1" stop-color="#b9c4cf"/></linearGradient>
+    <radialGradient id="coveregg_glow" cx="0.45" cy="0.4" r="0.6"><stop offset="0" stop-color="#ffffff"/><stop offset="0.4" stop-color="#6ee7d0"/><stop offset="0.7" stop-color="#2ba98c" stop-opacity="0.6"/><stop offset="0.8" stop-color="#2ba98c" stop-opacity="0"/></radialGradient>
+</defs>
+<rect width="1920" height="1078" fill="url(#pbg)"/><rect width="1920" height="1078" fill="url(#tealTL)"/><rect width="1920" height="1078" fill="url(#blueBR)"/>
+<circle cx="140" cy="167" r="30" fill="#6ee7d0"/><circle cx="140" cy="167" r="30" fill="url(#coverseed)"/>
+<text x="188" y="175" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="44" font-weight="800" fill="#12203a" letter-spacing="9">ANIMA</text>
+<text x="488" y="175" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="30" font-weight="300" fill="#8a94a8" letter-spacing="3">/ A LIVING PRESENCE</text>
+<text x="110" y="250" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="15" font-weight="700" fill="#17b79a" letter-spacing="3">PRODUCT DESIGN</text>
+<text x="110" y="320" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="66" font-weight="800" letter-spacing="-2"><tspan fill="#111a2e">A </tspan><tspan fill="url(#h1g)">sensing body</tspan></text>
+<text x="110" y="390" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="66" font-weight="800" fill="#111a2e" letter-spacing="-2">for an environment</text>
+<text x="110" y="460" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="66" font-weight="800" fill="#111a2e" letter-spacing="-2">you cannot feel.</text>
+<text x="110" y="530" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="21" xml:space="preserve"><tspan fill="#57657e" font-weight="400">A </tspan><tspan fill="#57657e" font-weight="400">self-contained </tspan><tspan fill="#57657e" font-weight="400">ambient </tspan><tspan fill="#57657e" font-weight="400">object </tspan><tspan fill="#57657e" font-weight="400">that </tspan><tspan fill="#57657e" font-weight="400">gives </tspan><tspan fill="#57657e" font-weight="400">an </tspan><tspan fill="#57657e" font-weight="400">ecosystem </tspan><tspan fill="#57657e" font-weight="400">a </tspan><tspan fill="#57657e" font-weight="400">body.</tspan></text>
+<text x="110" y="564" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="21" xml:space="preserve"><tspan fill="#57657e" font-weight="400">Environment </tspan><tspan fill="#57657e" font-weight="400">flows </tspan><tspan fill="#57657e" font-weight="400">in </tspan><tspan fill="#57657e" font-weight="400">through </tspan><tspan fill="#57657e" font-weight="400">sensory </tspan><tspan fill="#57657e" font-weight="400">organs; </tspan><tspan fill="#57657e" font-weight="400">a </tspan><tspan fill="#57657e" font-weight="400">liquid </tspan><tspan fill="#57657e" font-weight="400">neural </tspan><tspan fill="#57657e" font-weight="400">network</tspan></text>
+<text x="110" y="598" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="21" xml:space="preserve"><tspan fill="#57657e" font-weight="400">translates </tspan><tspan fill="#57657e" font-weight="400">it </tspan><tspan fill="#57657e" font-weight="400">into </tspan><tspan fill="#57657e" font-weight="400">a </tspan><tspan fill="#57657e" font-weight="400">felt </tspan><tspan fill="#57657e" font-weight="400">state; </tspan><tspan fill="#57657e" font-weight="400">the </tspan><tspan fill="#57657e" font-weight="400">object </tspan><tspan fill="#57657e" font-weight="400">breathes </tspan><tspan fill="#57657e" font-weight="400">it </tspan><tspan fill="#57657e" font-weight="400">back </tspan><tspan fill="#57657e" font-weight="400">as</tspan></text>
+<text x="110" y="632" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="21" xml:space="preserve"><tspan fill="#57657e" font-weight="400">light. </tspan><tspan fill="#57657e" font-weight="400">One </tspan><tspan fill="#57657e" font-weight="400">body </tspan><tspan fill="#57657e" font-weight="400">— </tspan><tspan fill="#57657e" font-weight="400">a </tspan><tspan fill="#2f6f63" font-weight="600">genome </tspan><tspan fill="#57657e" font-weight="400">re-weights </tspan><tspan fill="#57657e" font-weight="400">the </tspan><tspan fill="#57657e" font-weight="400">senses </tspan><tspan fill="#57657e" font-weight="400">so </tspan><tspan fill="#57657e" font-weight="400">it </tspan><tspan fill="#57657e" font-weight="400">can </tspan><tspan fill="#57657e" font-weight="400">inhabit</tspan></text>
+<text x="110" y="666" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="21" xml:space="preserve"><tspan fill="#57657e" font-weight="400">soil, </tspan><tspan fill="#57657e" font-weight="400">water, </tspan><tspan fill="#57657e" font-weight="400">or </tspan><tspan fill="#57657e" font-weight="400">air.</tspan></text>
+<rect x="110" y="690" width="159.0" height="42" rx="21" fill="#6ee7d0" fill-opacity="0.16" stroke="#17b79a" stroke-opacity="0.25"/>
+<text x="189.5" y="717" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="15" font-weight="600" fill="#2f6f63" text-anchor="middle">Raspberry Pi 4B</text>
+<rect x="281.0" y="690" width="231.0" height="42" rx="21" fill="#6ee7d0" fill-opacity="0.16" stroke="#17b79a" stroke-opacity="0.25"/>
+<text x="396.5" y="717" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="15" font-weight="600" fill="#2f6f63" text-anchor="middle">Arduino Uno · 7 sensors</text>
+<rect x="524.0" y="690" width="267.0" height="42" rx="21" fill="#7d96ff" fill-opacity="0.14" stroke="#5a78ff" stroke-opacity="0.25"/>
+<text x="657.5" y="717" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="15" font-weight="600" fill="#3a5b9e" text-anchor="middle">Liquid Neural Network · CfC</text>
+<rect x="803.0" y="690" width="240.0" height="42" rx="21" fill="#7d96ff" fill-opacity="0.14" stroke="#5a78ff" stroke-opacity="0.25"/>
+<text x="923.0" y="717" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="15" font-weight="600" fill="#3a5b9e" text-anchor="middle">Self-contained · battery</text>
+<rect x="1090" y="120" width="720" height="840" rx="26" fill="#0a0c10" stroke="rgba(255,255,255,0.08)" stroke-width="1"/>
+<rect x="1090" y="120" width="720" height="840" rx="26" fill="url(#coverstagebg)"/>
+<path d="M 1450.0,255.0 C 1585.0,255.0 1600.0,438.75 1600.0,500.0 C 1600.0,590.75 1555.0,665.0 1450.0,665.0 C 1345.0,665.0 1300.0,590.75 1300.0,500.0 C 1300.0,438.75 1315.0,255.0 1450.0,255.0 Z" fill="url(#coveregg_body)"/>
+<ellipse cx="1410.0" cy="380.0" rx="30.0" ry="55.0" fill="#ffffff" opacity="0.45"/>
+<circle cx="1450.0" cy="500.0" r="75.0" fill="url(#coveregg_glow)"/>
+<rect x="1357.0" y="625.0" width="186.0" height="2" rx="1" fill="#6ee7d0" opacity="0.35"/>
+<rect x="1428.0" y="665.0" width="2" height="88" fill="#9aa6b8" opacity="0.5"/>
+<circle cx="1429.0" cy="753.0" r="3.5" fill="#9aa6b8"/>
+<rect x="1450.0" y="665.0" width="2" height="108" fill="#9aa6b8" opacity="0.5"/>
+<circle cx="1451.0" cy="773.0" r="3.5" fill="#9aa6b8"/>
+<rect x="1472.0" y="665.0" width="2" height="76" fill="#9aa6b8" opacity="0.5"/>
+<circle cx="1473.0" cy="741.0" r="3.5" fill="#9aa6b8"/>
+<text x="110" y="1034" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="14" font-weight="600" fill="#9aa6b8" letter-spacing="2">ANIMA · PRODUCT DESIGN</text><text x="1864" y="1034" font-family='Inter, "Segoe UI", Helvetica, Arial, sans-serif' font-size="16" font-weight="400" fill="#565e6e" text-anchor="end" letter-spacing="1">01 / 07</text>
+</svg>

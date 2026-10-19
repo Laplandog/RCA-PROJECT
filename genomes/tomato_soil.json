@@ -1,0 +1,23 @@
+{
+  "genome_id": "tomato_soil",
+  "display_name": "\u756a\u8304 / \u571f\u58e4\u4ee3\u7406",
+  "_calibration_status": "using literature-estimated defaults, not yet field-calibrated",
+
+  "channels": {
+    "temperature":  {"active": true,  "weight": 0.8,  "lo": 18,   "hi": 28,    "stress_lo": 5,    "stress_hi": 40},
+    "moisture":     {"active": true,  "weight": 0.9,  "lo": 40,   "hi": 70,    "stress_lo": 10,   "stress_hi": 95},
+    "voc":          {"active": true,  "weight": 0.6,  "lo": 0,    "hi": 50,    "stress_lo": 0,    "stress_hi": 200},
+    "humidity_air": {"active": true,  "weight": 0.3,  "lo": 40,   "hi": 70,    "stress_lo": 10,   "stress_hi": 95},
+    "light":        {"active": true,  "weight": 0.7,  "lo": 8000, "hi": 30000, "stress_lo": 500,  "stress_hi": 60000},
+    "sound":        {"active": true,  "weight": 0.15, "lo": 0,    "hi": 40,    "stress_lo": 0,    "stress_hi": 90},
+    "ph":           {"active": true,  "weight": 0.7,  "lo": 6.0,  "hi": 6.8,   "stress_lo": 4.5,  "stress_hi": 8.5},
+    "ec":           {"active": true,  "weight": 0.6,  "lo": 800,  "hi": 1500,  "stress_lo": 200,  "stress_hi": 3000}
+  },
+
+  "baseline_params": {
+    "arousal_baseline": 0.3,
+    "emotional_inertia": 0.6,
+    "approach_bias": 0.5,
+    "_comment": "\u5176\u4f59\u53c2\u6570\u6cbf\u7528\u73b0\u6709\u516b\u53c2\u6570\u57fa\u56e0\u7cfb\u7edf\u7684\u5b9a\u4e49"
+  }
+}
