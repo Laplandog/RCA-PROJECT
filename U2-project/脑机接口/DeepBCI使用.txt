@@ -1,0 +1,5 @@
+官网直接下载opebbci gui软件
+USB或者无线接收器插入电脑 openbci gui 可以自动识别到端口（Windows电脑）。
+操作指令和OpenBCI一致可以参考OpenBCI官方的说明。
+
+技术讨论Q群：66962690

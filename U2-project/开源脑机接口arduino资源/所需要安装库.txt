@@ -1,0 +1,2 @@
+ArduinoJson 5.13.5
+WiFiManager 2.0.17

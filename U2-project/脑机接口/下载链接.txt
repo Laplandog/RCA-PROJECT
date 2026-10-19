@@ -1,0 +1,8 @@
+processing
+https://processing.org/download
+
+https://github.com/OpenBCI/OpenBCI_GUI
+
+https://openbci.com/downloads
+
+https://shop.openbci.com/zh-cn/collections/frontpage

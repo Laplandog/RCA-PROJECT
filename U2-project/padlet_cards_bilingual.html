@@ -1,0 +1,159 @@
+
+<style>
+  .board { padding: 1rem 0; display: flex; flex-direction: column; gap: 14px; }
+  .card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: var(--border-radius-lg); padding: 1rem 1.25rem; }
+  .card-tag { display: inline-block; font-size: 11px; font-weight: 500; padding: 3px 10px; border-radius: var(--border-radius-md); margin-bottom: 10px; }
+  .tag-build   { background:#E6F1FB; color:#0C447C; }
+  .tag-debug   { background:#FAECE7; color:#993C1D; }
+  .tag-fix     { background:#EAF3DE; color:#3B6D11; }
+  .tag-design  { background:#EEEDFE; color:#3C3489; }
+  .tag-auto    { background:#FAEEDA; color:#854F0B; }
+  .zh { font-size: 15px; font-weight: 500; color: var(--color-text-primary); margin: 0 0 6px; line-height: 1.5; }
+  .en { font-size: 13px; color: var(--color-text-secondary); margin: 0 0 10px; line-height: 1.5; font-style: italic; }
+  .bullets { margin: 0; padding: 0 0 0 1rem; }
+  .bullets li { font-size: 13px; color: var(--color-text-secondary); margin-bottom: 4px; line-height: 1.6; }
+  .bullets li span.zh-b { color: var(--color-text-primary); font-weight: 500; }
+  .divider { border: none; border-top: 0.5px solid var(--color-border-tertiary); margin: 8px 0; }
+  .num { font-size: 11px; font-weight: 500; color: var(--color-text-secondary); margin-bottom: 4px; }
+</style>
+
+<div class="board">
+
+  <div class="card">
+    <span class="card-tag tag-build">🧩 项目背景 · Context</span>
+    <p class="zh">用 Python 构建了一个有情绪的 AI 婴儿生命体模拟器</p>
+    <p class="en">Built a Python-based AI life simulator with genuine emotional dynamics</p>
+    <hr class="divider">
+    <ul class="bullets">
+      <li><span class="zh-b">核心模型：</span>CfC（闭合连续时间神经网络），64 神经元，5 维情绪空间</li>
+      <li><span class="zh-b">Core model:</span> CfC neural network, 64 neurons, 5-dimensional emotion space</li>
+      <li><span class="zh-b">情绪维度：</span>效价 / 唤醒 / 安全感 / 连接感 / 探索欲</li>
+      <li><span class="zh-b">Emotion dims:</span> Valence / Arousal / Safety / Connection / Seeking</li>
+      <li><span class="zh-b">理论基础：</span>Barrett 具身情绪预测、Porges 多迷走神经理论、Bowlby 依恋理论</li>
+      <li><span class="zh-b">Theory base:</span> Barrett predictive emotion, Polyvagal theory, Bowlby attachment</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-tag tag-build">⚙️ Phase 2 实现 · Phase 2 Implementation</span>
+    <p class="zh">为婴儿添加了三套生理调节系统</p>
+    <p class="en">Added three physiological regulation systems to the infant agent</p>
+    <hr class="divider">
+    <ul class="bullets">
+      <li><span class="zh-b">昼夜节律振荡器</span>（Clark & Watson 1989）：24 小时正性情绪 / 唤醒节律，随发育逐渐成熟</li>
+      <li><span class="zh-b">Circadian Oscillator:</span> 24-hr PA/arousal rhythm, matures with development</li>
+      <li><span class="zh-b">身体预算系统</span>（Barrett 2017）：能量、水分、体温三维度，缺口直接影响情绪目标</li>
+      <li><span class="zh-b">Body Budget System:</span> Energy / hydration / thermal — deficits modulate emotion targets</li>
+      <li><span class="zh-b">自主神经控制器</span>（Porges 多迷走神经）：背侧迷走（冻结）→ 交感（应激）→ 腹侧迷走（安全）三区域层级</li>
+      <li><span class="zh-b">Autonomic Controller:</span> Dorsal vagal (freeze) → Sympathetic (fight-flight) → Ventral vagal (safe)</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-tag tag-build">🌍 世界书角色设计 · Character Design</span>
+    <p class="zh">为父母添加了 MBTI 人格标签与依恋风格，让性格驱动养育行为</p>
+    <p class="en">Added MBTI + attachment style to parents so personality drives parenting behavior</p>
+    <hr class="divider">
+    <ul class="bullets">
+      <li><span class="zh-b">母亲 陈若筠 ISTJ</span>：Big Five C↑↑ N↑，焦虑-回避型依恋，权威→专制养育，Si+Te 主导，缺乏对婴儿情绪的共情</li>
+      <li><span class="zh-b">Mother (ISTJ):</span> High conscientiousness, anxious-avoidant attachment, authoritarian parenting</li>
+      <li><span class="zh-b">父亲 周明哲 ISFJ</span>：Big Five A↑↑ C↑，安全→回避型依恋，允许式养育，Si+Fe 主导，和谐优先、不自我主张</li>
+      <li><span class="zh-b">Father (ISFJ):</span> High agreeableness, permissive parenting, harmony-first, avoids confrontation</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-tag tag-debug">🔴 问题诊断 · Diagnosis</span>
+    <p class="zh">训练到 44.8% 发育进度时，从日志数据发现三个严重 bug</p>
+    <p class="en">At 44.8% dev progress, log analysis revealed three critical bugs</p>
+    <hr class="divider">
+    <ul class="bullets">
+      <li><span class="zh-b">Bug 1：唤醒维度冻结</span> σ=0.00，永远 73.1，零波动 → 交感激活乘法门控把所有底层方差归一成一个固定点</li>
+      <li><span class="zh-b">Bug 1 – Arousal frozen:</span> Always 73.1, zero variance — sympathetic gating multiplied all variance to a fixed point</li>
+      <li><span class="zh-b">Bug 2：体温永久地板</span> thermal=0.1（最低值），睡眠恢复量（0.00015/帧）远小于消耗（0.001/帧）</li>
+      <li><span class="zh-b">Bug 2 – Thermal floor:</span> Sleep recovery (0.00015/frame) far below drain (0.001/frame) — never recovers</li>
+      <li><span class="zh-b">Bug 3：分离疏离永久锁死</span> 86.2% 时间处于 sep_phase=3（疏离），no_social_count 最高累计到 5011 帧无法重置</li>
+      <li><span class="zh-b">Bug 3 – Permanent detachment:</span> 86.2% in sep_phase=3, no_social_count reached 5011 with no recovery mechanism</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-tag tag-fix">✅ Bug 修复 · Bug Fixes</span>
+    <p class="zh">三处精确修改，恢复情绪系统的动态活性</p>
+    <p class="en">Three targeted fixes to restore emotional system vitality</p>
+    <hr class="divider">
+    <ul class="bullets">
+      <li><span class="zh-b">修 Bug 1：</span>交感门控 <code>aro_t × 1.2 + 10</code> → <code>aro_t + 20</code>（乘法→加法），底层方差得以保留</li>
+      <li><span class="zh-b">Fix 1:</span> Sympathetic gating changed from multiplicative to additive, preserving underlying variance</li>
+      <li><span class="zh-b">修 Bug 2：</span>睡眠改为固定恢复 +0.003/帧、睡眠期间暂停消耗、温度感知范围 33-37°C 扩宽到 31-38°C</li>
+      <li><span class="zh-b">Fix 2:</span> Sleep thermal recovery fixed-rate (+0.003/frame), drain suspended while sleeping, sensing range widened</li>
+      <li><span class="zh-b">修 Bug 3：</span>新增弱社交信号（0.05–0.3）渐进衰减 no_social_count；计数上限 cap 到 400 防无限累积</li>
+      <li><span class="zh-b">Fix 3:</span> Added gradual decay on weak social signal; capped no_social_count at 400 to allow recovery</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-tag tag-build">📊 Dashboard 修复 · Dashboard Fix</span>
+    <p class="zh">实时监测面板从"完全没数值"到"正常显示"，并重构布局</p>
+    <p class="en">Fixed the real-time monitoring dashboard — from blank values to working charts</p>
+    <hr class="divider">
+    <ul class="bullets">
+      <li><span class="zh-b">根本原因：</span>旧 Flask 进程占用 5000 端口，浏览器一直访问旧实例，新代码从未被执行</li>
+      <li><span class="zh-b">Root cause:</span> Old Flask process holding port 5000 — browser never reached the new code</li>
+      <li><span class="zh-b">路径修复：</span>用 <code>os.path.abspath(__file__)</code> 固定日志路径，不依赖启动目录</li>
+      <li><span class="zh-b">Path fix:</span> Absolute path via <code>__file__</code> — independent of working directory</li>
+      <li><span class="zh-b">布局重构：</span>Chart.js 图表用 wrapper div 控制高度；感觉图/损失图改为 fill:false 消除白板现象</li>
+      <li><span class="zh-b">Layout rebuild:</span> Wrapper divs for chart height; fill:false on sub-charts eliminated the white-canvas bug</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-tag tag-design">🧠 Phase 3 设计 · Phase 3 Design</span>
+    <p class="zh">社会共鸣系统 — 对应婴儿 3–6 月龄发育跃迁（dev ≥ 50%）</p>
+    <p class="en">SocialResonanceSystem — maps to 3–6 month infant development milestone</p>
+    <hr class="divider">
+    <ul class="bullets">
+      <li><span class="zh-b">理论依据：</span>Stern（1985）情感调谐理论</li>
+      <li><span class="zh-b">Theory:</span> Stern's affect attunement (1985)</li>
+      <li><span class="zh-b">情感调谐缓冲区：</span>照顾者接触积累 → 效价恢复窗口打开（不再永远负值）</li>
+      <li><span class="zh-b">Attunement buffer:</span> Caregiver contact accumulates → opens valence recovery window</li>
+      <li><span class="zh-b">迷走神经成熟：</span>降低腹侧迷走激活阈值 → 更容易进入"安全"自主区域</li>
+      <li><span class="zh-b">Vagal maturation:</span> Lowers ventral vagal threshold → easier access to safe autonomic state</li>
+      <li><span class="zh-b">社会性微笑萌芽：</span>高质量接触 + 调谐积累 → 触发 +35 效价爆发，~4 分钟冷却</li>
+      <li><span class="zh-b">Social smile:</span> Quality contact + attunement → +35 valence burst, ~4-min cooldown</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-tag tag-design">🧠 Phase 4 设计 · Phase 4 Design</span>
+    <p class="zh">原始意向性系统 — 对应婴儿 6–9 月龄发育跃迁（dev ≥ 70%）</p>
+    <p class="en">ProtoIntentionalitySystem — maps to 6–9 month infant development milestone</p>
+    <hr class="divider">
+    <ul class="bullets">
+      <li><span class="zh-b">理论依据：</span>Tomasello（1995）联合注意理论 + Piaget 客体永恒性</li>
+      <li><span class="zh-b">Theory:</span> Tomasello's joint attention (1995) + Piaget's object permanence</li>
+      <li><span class="zh-b">期望记忆：</span>对照顾者行为模式做慢速 EMA 学习，形成预期</li>
+      <li><span class="zh-b">Expectation memory:</span> Slow EMA learning of caregiver patterns, forming predictions</li>
+      <li><span class="zh-b">违反预期：</span>模式偏差 → 唤醒 + 探索欲双峰共振（好奇/警觉）</li>
+      <li><span class="zh-b">Violation of expectation:</span> Pattern mismatch → dual spike in arousal + seeking (curiosity/alertness)</li>
+      <li><span class="zh-b">分离个体化：</span>单独时探索欲不再归零，获得基础保底值</li>
+      <li><span class="zh-b">Individuation:</span> Exploring alone no longer collapses — gains a minimum floor value</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <span class="card-tag tag-auto">⏰ 自动化注入 · Automated Injection</span>
+    <p class="zh">创建定时任务：每 30 分钟检测发育进度，阈值达到时自动向 life_v2.py 注入代码</p>
+    <p class="en">Created a scheduled task: checks dev progress every 30 min, auto-injects Phase 3/4 code at thresholds</p>
+    <hr class="divider">
+    <ul class="bullets">
+      <li><span class="zh-b">标记注释系统：</span>在 life_v2.py 类定义区、main() 初始化区、主循环区各埋入 BEGIN/END 标记，训练时不影响运行</li>
+      <li><span class="zh-b">Marker system:</span> BEGIN/END comment anchors in class section, init, and main loop — invisible during training</li>
+      <li><span class="zh-b">phase_status.json：</span>记录哪些阶段已注入，保证幂等性（不重复注入）</li>
+      <li><span class="zh-b">State file:</span> Tracks which phases are applied — idempotent, won't inject twice</li>
+      <li><span class="zh-b">注入后：</span>任务提示用户重启 life_v2.py，新系统立即激活</li>
+      <li><span class="zh-b">After injection:</span> Task prompts user to restart life_v2.py — new system activates immediately</li>
+    </ul>
+  </div>
+
+</div>

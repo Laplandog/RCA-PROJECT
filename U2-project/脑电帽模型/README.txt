@@ -1,0 +1,4 @@
+EEG Modular Headset by AbhishekKaimal on Thingiverse: https://www.thingiverse.com/thing:5382893
+
+Summary:
+A Modular EEG Headset that users can print in order to collect EEG Data.Sensor locations are based on the 10-20 international system.The Modular headset follows an alphabetical sequence in order to aid the combination of different components.The stl file Modular Headset is used to show how the headset components can come together as one component.The stl file Completed Circuit Board Case is used to show how the headset components can come together as one component.The stl file Completed Battery Pack Case is used to show how the headset components can come together as one component.The Cable Holder stl file is used for cable management

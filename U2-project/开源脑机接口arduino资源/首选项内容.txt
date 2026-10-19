@@ -1,0 +1,2 @@
+https://github.com/chipKIT32/chipKIT-core/raw/master/package_chipkit_index.json
+https://arduino.esp8266.com/stable/package_esp8266com_index.json
