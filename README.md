@@ -7,13 +7,13 @@ Target programme: Innovation Design Engineering (IDE), RCA + Imperial College
 
 ---
 
-## U2 — EEG-Driven Tactile Neurofeedback Device
+## U2 — Tactile Neurofeedback Device
 
 Unit 2 (Material Culture) | March 2026
 
-A wearable haptic neurofeedback device for ADHD self-regulation. A silicone membrane filled with iron powder sits over an electromagnetic coil array driven by Arduino, receiving real-time brainwave data from an OpenBCI Cyton EEG headset. When attention drifts, the magnetic field shifts and the iron powder clusters — the wearer feels the texture change in their palm; when focus returns, the powder disperses and the sensation normalises. Three adaptive tactile modes (alerting / soothing / interactive) switch automatically based on EEG state — a closed-loop tactile neurofeedback system.
+A wearable haptic neurofeedback device for ADHD self-regulation. A silicone membrane filled with iron powder sits over an electromagnetic coil array driven by Arduino. In the intended design, real-time brainwave data from an OpenBCI EEG headset drives the device: when attention drifts, the magnetic field shifts and the iron powder clusters — the wearer feels the texture change in their palm; when focus returns, the powder disperses and the sensation normalises. Three adaptive tactile modes (alerting / soothing / interactive) would then switch automatically based on EEG state — a closed-loop tactile neurofeedback system.
 
-**Stage: working prototype** — OpenBCI EEG acquisition verified, 3D-printed EEG cap assembled, Arduino electromagnetic control tested, silicone-iron-powder membrane fabricated.
+**Stage: haptic prototype** — Arduino electromagnetic control tested, silicone-iron-powder membrane fabricated. EEG integration (OpenBCI) was explored but not completed.
 
 **Literature gap confirmed**: no prior research has used deformation-based haptics (non-vibration) for neurofeedback (Fleury et al., 2020, Frontiers in Neuroscience).
 
