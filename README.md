@@ -15,6 +15,8 @@ A wearable haptic neurofeedback device for ADHD self-regulation. A silicone memb
 
 **Literature gap confirmed**: no prior research has used deformation-based haptics (non-vibration) for neurofeedback (Fleury et al., 2020, Frontiers in Neuroscience).
 
+**[Material Culture Blog (Padlet)](https://padlet.com/royal_college_of_art/zixun-zhou-meterial-culture-n0lgsgwwqyvx3gr6)**
+
 ---
 
 ## U3 & U4 — Anima: Ecological Emotional Translation Device
@@ -47,6 +49,7 @@ An interactive device that reads real-time environmental sensor data (temperatur
 | `脑电帽零基础上手指南.docx` | Beginner's guide to EEG cap setup |
 | `脑波采样学习计划表.xlsx` | Brainwave sampling study plan |
 | `脑电帽电极位置图.html` | Interactive EEG electrode position map |
+| `chladni_skin_full/` | Arduino firmware for the haptic device — controls 3 electromagnets (12V) and 4 vibration motors (3V3) with three neurofeedback modes: Focus (20Hz pulse), Relax (10s sine wave sweep), Alert (3-burst) |
 | `padlet_cards_bilingual.html` | Bilingual Padlet blog cards |
 | `project2.pdf` | Project documentation PDF |
 
